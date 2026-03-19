@@ -3,8 +3,8 @@
 import { useState } from 'react';
 import MarioBackground from '@/components/MarioBackground';
 import Sidebar from '@/components/Sidebar';
+import HamburgerButton from '@/components/HamburgerButton';
 import PageTransition from '@/components/PageTransition';
-import AnimatedElement from '@/components/AnimatedElement';
 
 export default function About() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -12,125 +12,28 @@ export default function About() {
   return (
     <MarioBackground>
       <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
-
-      {/* Hamburger Menu Button */}
-      <button
-        onClick={() => setSidebarOpen(!sidebarOpen)}
-        style={{
-          position: 'fixed',
-          top: '16px',
-          left: '16px',
-          zIndex: 45,
-          backgroundColor: '#FFD700',
-          border: '4px solid #000',
-          padding: '12px 16px',
-          borderRadius: '4px',
-          cursor: 'pointer',
-          fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-          fontSize: '24px',
-          fontWeight: 900,
-          boxShadow: '5px 5px 0px rgba(0,0,0,0.3)',
-          transition: 'all 0.2s ease'
-        }}
-        onMouseEnter={(e) => {
-          const elem = e.currentTarget;
-          elem.style.transform = 'translateY(-2px)';
-          elem.style.boxShadow = '6px 6px 0px rgba(0,0,0,0.4)';
-        }}
-        onMouseLeave={(e) => {
-          const elem = e.currentTarget;
-          elem.style.transform = 'translateY(0)';
-          elem.style.boxShadow = '5px 5px 0px rgba(0,0,0,0.3)';
-        }}
-      >
-        ☰
-      </button>
-
-      <style>{`
-        @keyframes float {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-4px); }
-        }
-        @keyframes slideUp {
-          from { opacity: 0; transform: translateY(20px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-
-        .about-card {
-          animation: float 2s ease-in-out infinite;
-          border: 6px solid #000;
-          cursor: pointer;
-          transition: all 0.2s ease;
-          box-shadow: 8px 8px 0px rgba(0,0,0,0.4);
-          position: relative;
-        }
-
-        .about-card:hover {
-          transform: translateY(-6px);
-          box-shadow: 10px 10px 0px rgba(0,0,0,0.5);
-        }
-
-        .focus-item {
-          animation: slideUp 0.3s ease-out backwards;
-          border: 2px solid #000;
-          background: white;
-          padding: 12px 16px;
-          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-          font-size: 13px;
-          font-weight: 600;
-          box-shadow: 3px 3px 0px rgba(0,0,0,0.2);
-          display: block;
-          margin: 12px 0;
-          transition: all 0.2s ease;
-          border-radius: 2px;
-        }
-
-        .focus-item:hover {
-          transform: translateY(-2px);
-          box-shadow: 4px 4px 0px rgba(0,0,0,0.3);
-        }
-      `}</style>
+      <HamburgerButton onClick={() => setSidebarOpen(!sidebarOpen)} />
 
       <PageTransition>
-        <div style={{ minHeight: '100vh', padding: '16px', position: 'relative', zIndex: 10 }}>
-          <div style={{ maxWidth: '100%', margin: '0 auto', paddingTop: '32px' }}>
+        <main style={{ minHeight: '100vh', padding: '16px', position: 'relative', zIndex: 10 }}>
+          <div style={{ maxWidth: '1200px', margin: '0 auto', paddingTop: '32px' }}>
+          <div className="content-backdrop" style={{ marginBottom: '32px' }}>
             {/* Title */}
-          <div style={{ textAlign: 'center', marginBottom: '48px' }}>
-            <h1 style={{
-              textShadow: '4px 4px 0px rgba(0,0,0,0.3)',
-              color: '#FFD700',
-              fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-              fontSize: 'clamp(32px, 6vw, 56px)',
-              fontWeight: 900,
-              margin: 0,
-              marginBottom: '8px',
-              letterSpacing: '2px'
-            }}>
-              ABOUT ME
-            </h1>
-            <p style={{
-              color: '#FFF',
-              textShadow: '2px 2px 0px rgba(0,0,0,0.3)',
-              fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-              fontSize: 'clamp(14px, 3vw, 18px)',
-              fontWeight: 600,
-              margin: 0,
-              letterSpacing: '1px'
-            }}>
-              FULL-STACK DEVELOPER & AI ENTHUSIAST
-            </p>
-          </div>
+          <header style={{ textAlign: 'center', marginBottom: '48px' }}>
+            <h1 className="page-title">ABOUT ME</h1>
+            <p className="page-subtitle">FULL-STACK DEVELOPER & AI ENTHUSIAST</p>
+          </header>
 
-          {/* Main Content Grid */}
+          {/* Top 3 Cards Grid */}
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(300px, 100%), 1fr))',
             gap: '24px',
             padding: '0 8px',
-            marginBottom: '48px'
+            marginBottom: '24px'
           }}>
             {/* Who I Am Card */}
-            <div
+            <section
               className="about-card"
               style={{
                 backgroundColor: '#FF6B6B',
@@ -157,12 +60,12 @@ export default function About() {
                 margin: 0,
                 fontWeight: 500
               }}>
-                Full-stack developer with 3+ years of experience. I build web and mobile apps, work with databases, and love diving into AI and machine learning. Always thinking about clean data structures and writing code that actually makes sense.
+                I started coding 3 years ago and haven&apos;t stopped since. What began as curiosity turned into a passion for building real applications - from full-stack web apps and mobile platforms to AI-powered tools. Based in Toronto with an AWS certification, hackathon wins, and 7+ deployed projects, I bring energy, drive, and a strong portfolio to every team I join.
               </p>
-            </div>
+            </section>
 
             {/* My Focus Card */}
-            <div
+            <section
               className="about-card"
               style={{
                 backgroundColor: '#4ECDC4',
@@ -196,10 +99,10 @@ export default function About() {
                   <strong>Data Science:</strong> Analytics & recommendation systems
                 </span>
               </div>
-            </div>
+            </section>
 
             {/* What I Value Card */}
-            <div
+            <section
               className="about-card"
               style={{
                 backgroundColor: '#A8E6CF',
@@ -226,17 +129,19 @@ export default function About() {
                 margin: 0,
                 fontWeight: 500
               }}>
-                Clean code, real solutions, always learning. I care about quality and clear communication.
+                I believe in writing clean, readable code and building things that actually solve problems. I value continuous learning - every project I build teaches me something new. I care about clear communication, taking ownership of my work, and being the kind of teammate who makes everyone around them better.
               </p>
-            </div>
+            </section>
+          </div>
 
-            {/* Experience Card */}
+          {/* Experience Card - Full Width */}
+          <section style={{ padding: '0 8px', marginBottom: '48px' }}>
             <div
               className="about-card"
               style={{
                 backgroundColor: '#FFE66D',
                 padding: '24px',
-                animationDelay: '0.3s'
+                animationDelay: '0.3s',
               }}
             >
               <h2 style={{
@@ -251,32 +156,127 @@ export default function About() {
               }}>
                 EXPERIENCE
               </h2>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                <p style={{
-                  fontSize: '13px',
-                  fontWeight: 600,
-                  color: '#000',
-                  margin: 0
-                }}>
-                  3+ years professional development
-                </p>
-                <p style={{
-                  fontSize: '13px',
-                  color: '#000',
-                  margin: 0
-                }}>
-                  Multiple successful projects in production
-                </p>
-                <p style={{
-                  fontSize: '13px',
-                  color: '#000',
-                  margin: 0
-                }}>
-                  Collaborated with diverse teams globally
-                </p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                <div className="focus-item">
+                  <strong>Freelance Developer - Sushi Rock (2024)</strong>
+                  <p style={{ margin: '4px 0 0', fontSize: '12px', lineHeight: '1.5' }}>
+                    Built a production website for a real Toronto restaurant with online ordering, reservations, and multi-location support. Worked directly with the client to deliver on their business needs.
+                  </p>
+                </div>
+                <div className="focus-item">
+                  <strong>Microsoft Hackathon - Team Lead (2025)</strong>
+                  <p style={{ margin: '4px 0 0', fontSize: '12px', lineHeight: '1.5' }}>
+                    Led a team of 4 developers, placed top 10 out of 50 teams. Coordinated architecture decisions, task delegation, and final presentation.
+                  </p>
+                </div>
+                <div className="focus-item">
+                  <strong>Open Source Contributor - Next.js (vercel/next.js)</strong>
+                  <p style={{ margin: '4px 0 0', fontSize: '12px', lineHeight: '1.5' }}>
+                    Contributed bug fixes and documentation improvements to one of the most popular React frameworks.
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
+          </section>
+
+          {/* Education Card - Full Width */}
+          <section style={{ padding: '0 8px', marginBottom: '24px' }}>
+            <div
+              className="about-card"
+              style={{
+                backgroundColor: '#FF6B6B',
+                padding: '24px',
+                animationDelay: '0.4s',
+              }}
+            >
+              <h2 style={{
+                fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+                fontSize: 'clamp(18px, 4vw, 24px)',
+                fontWeight: 800,
+                color: '#000',
+                margin: 0,
+                marginBottom: '16px',
+                textShadow: '1px 1px 0px rgba(255,255,255,0.4)',
+                letterSpacing: '0.5px'
+              }}>
+                EDUCATION
+              </h2>
+              <p style={{
+                fontSize: '15px',
+                fontWeight: 700,
+                color: '#000',
+                margin: 0,
+                marginBottom: '4px'
+              }}>
+                George Brown College - Toronto, ON
+              </p>
+              <p style={{
+                fontSize: '13px',
+                fontWeight: 600,
+                color: '#000',
+                margin: 0,
+                marginBottom: '4px'
+              }}>
+                Advanced Diploma in Computer Programming and Analysis
+              </p>
+              <p style={{
+                fontSize: '13px',
+                color: '#000',
+                margin: 0,
+                marginBottom: '8px'
+              }}>
+                Dean&apos;s List Honors | GPA: 3.7 | Expected April 2026
+              </p>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
+                {['OOP', 'Data Structures & Algorithms', 'Applied ML', 'Full Stack Dev', 'Mobile App Dev', 'Software Testing & QA'].map((course) => (
+                  <span key={course} style={{
+                    border: '2px solid #000',
+                    background: 'white',
+                    padding: '6px 10px',
+                    fontSize: '11px',
+                    fontWeight: 700,
+                    borderRadius: '2px',
+                    boxShadow: '2px 2px 0px rgba(0,0,0,0.2)',
+                  }}>
+                    {course}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* Certifications & Activities Card */}
+          <section style={{ padding: '0 8px', marginBottom: '48px' }}>
+            <div
+              className="about-card"
+              style={{
+                backgroundColor: '#4ECDC4',
+                padding: '24px',
+                animationDelay: '0.5s',
+              }}
+            >
+              <h2 style={{
+                fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+                fontSize: 'clamp(18px, 4vw, 24px)',
+                fontWeight: 800,
+                color: '#000',
+                margin: 0,
+                marginBottom: '16px',
+                textShadow: '1px 1px 0px rgba(255,255,255,0.4)',
+                letterSpacing: '0.5px'
+              }}>
+                CERTIFICATIONS & ACTIVITIES
+              </h2>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                <span className="focus-item" style={{ animationDelay: '0.1s' }}>
+                  <strong>AWS Certified Cloud Practitioner</strong> - Amazon Web Services (2025)
+                </span>
+                <span className="focus-item" style={{ animationDelay: '0.13s' }}>
+                  <strong>IEEEXtreme 19.0</strong> - 24-hour international programming competition (2025)
+                </span>
+              </div>
+            </div>
+          </section>
 
           {/* Footer */}
           <div style={{
@@ -284,19 +284,13 @@ export default function About() {
             padding: '48px 16px',
             animation: 'float 1s ease-in-out infinite'
           }}>
-            <span style={{
-              fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-              fontSize: 'clamp(14px, 3vw, 18px)',
-              color: '#FFD700',
-              textShadow: '2px 2px 0px rgba(0,0,0,0.3)',
-              fontWeight: 800,
-              letterSpacing: '1px'
-            }}>
+            <span className="section-footer">
               READY TO COLLABORATE
             </span>
           </div>
+          </div>
         </div>
-        </div>
+        </main>
       </PageTransition>
     </MarioBackground>
   );

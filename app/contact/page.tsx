@@ -4,10 +4,11 @@ import { useState } from 'react';
 import Link from 'next/link';
 import MarioBackground from '@/components/MarioBackground';
 import Sidebar from '@/components/Sidebar';
+import HamburgerButton from '@/components/HamburgerButton';
 import PageTransition from '@/components/PageTransition';
 import ContactForm from '@/components/ContactForm';
 import AnimatedElement from '@/components/AnimatedElement';
-import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
 
 export default function Contact() {
@@ -29,13 +30,6 @@ export default function Contact() {
       description: "Connect with me professionally"
     },
     {
-      name: "Instagram",
-      url: "https://www.instagram.com/vyn.205/",
-      icon: FaInstagram,
-      bgColor: "#FFE66D",
-      description: "Follow my updates"
-    },
-    {
       name: "Email",
       url: "mailto:vyn13217@gmail.com",
       icon: MdEmail,
@@ -47,118 +41,17 @@ export default function Contact() {
   return (
     <MarioBackground>
       <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
-
-      {/* Hamburger Menu Button */}
-      <button
-        onClick={() => setSidebarOpen(!sidebarOpen)}
-        style={{
-          position: 'fixed',
-          top: '16px',
-          left: '16px',
-          zIndex: 45,
-          backgroundColor: '#FFD700',
-          border: '4px solid #000',
-          padding: '12px 16px',
-          borderRadius: '4px',
-          cursor: 'pointer',
-          fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-          fontSize: '24px',
-          fontWeight: 900,
-          boxShadow: '5px 5px 0px rgba(0,0,0,0.3)',
-          transition: 'all 0.2s ease'
-        }}
-        onMouseEnter={(e) => {
-          const elem = e.currentTarget;
-          elem.style.transform = 'translateY(-2px)';
-          elem.style.boxShadow = '6px 6px 0px rgba(0,0,0,0.4)';
-        }}
-        onMouseLeave={(e) => {
-          const elem = e.currentTarget;
-          elem.style.transform = 'translateY(0)';
-          elem.style.boxShadow = '5px 5px 0px rgba(0,0,0,0.3)';
-        }}
-      >
-        ☰
-      </button>
-
-      <style>{`
-        @keyframes float {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-4px); }
-        }
-        @keyframes slideUp {
-          from { opacity: 0; transform: translateY(20px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-
-        .social-card {
-          animation: float 2s ease-in-out infinite;
-          border: 6px solid #000;
-          cursor: pointer;
-          transition: all 0.2s ease;
-          box-shadow: 8px 8px 0px rgba(0,0,0,0.4);
-          position: relative;
-          text-decoration: none;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          min-height: 240px;
-          text-align: center;
-        }
-
-        .social-card:hover {
-          transform: translateY(-8px);
-          box-shadow: 12px 12px 0px rgba(0,0,0,0.5);
-          text-decoration: none;
-        }
-
-        .contact-info-card {
-          animation: slideUp 0.4s ease-out backwards;
-          border: 6px solid #000;
-          background: white;
-          cursor: pointer;
-          transition: all 0.2s ease;
-          box-shadow: 8px 8px 0px rgba(0,0,0,0.4);
-          padding: 24px;
-          margin-bottom: 24px;
-        }
-
-        .contact-info-card:hover {
-          transform: translateY(-4px);
-          box-shadow: 10px 10px 0px rgba(0,0,0,0.5);
-        }
-      `}</style>
+      <HamburgerButton onClick={() => setSidebarOpen(!sidebarOpen)} />
 
       <PageTransition>
-        <div style={{ minHeight: '100vh', padding: '16px', position: 'relative', zIndex: 10 }}>
-          <div style={{ maxWidth: '100%', margin: '0 auto', paddingTop: '32px' }}>
+        <main style={{ minHeight: '100vh', padding: '16px', position: 'relative', zIndex: 10 }}>
+          <div style={{ maxWidth: '1200px', margin: '0 auto', paddingTop: '32px' }}>
+          <div className="content-backdrop">
             {/* Title */}
-            <div style={{ textAlign: 'center', marginBottom: '48px' }}>
-              <h1 style={{
-                textShadow: '4px 4px 0px rgba(0,0,0,0.3)',
-                color: '#FFD700',
-                fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-                fontSize: 'clamp(32px, 6vw, 56px)',
-                fontWeight: 900,
-                margin: 0,
-                marginBottom: '8px',
-                letterSpacing: '2px'
-              }}>
-                GET IN TOUCH
-              </h1>
-              <p style={{
-                color: '#FFF',
-                textShadow: '2px 2px 0px rgba(0,0,0,0.3)',
-                fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-                fontSize: 'clamp(14px, 3vw, 18px)',
-                fontWeight: 600,
-                margin: 0,
-                letterSpacing: '1px'
-              }}>
-                LET'S CONNECT & COLLABORATE 
-              </p>
-            </div>
+            <header style={{ textAlign: 'center', marginBottom: '48px' }}>
+              <h1 className="page-title">GET IN TOUCH</h1>
+              <p className="page-subtitle">LET&apos;S CONNECT & COLLABORATE</p>
+            </header>
 
             {/* Social Links Grid */}
             <div style={{
@@ -177,6 +70,7 @@ export default function Contact() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="social-card"
+                      aria-label={`${social.name} - ${social.description}`}
                       style={{
                         backgroundColor: social.bgColor,
                         color: '#000'
@@ -216,11 +110,14 @@ export default function Contact() {
 
             {/* Contact Form Section */}
             <AnimatedElement variant="slideUp">
-              <div style={{
-                maxWidth: '100%',
-                margin: '0 auto',
-                paddingBottom: '48px'
-              }}>
+              <section
+                aria-label="Contact form"
+                style={{
+                  maxWidth: '100%',
+                  margin: '0 auto',
+                  paddingBottom: '48px'
+                }}
+              >
                 <h2 style={{
                   fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
                   fontSize: 'clamp(20px, 4vw, 28px)',
@@ -236,19 +133,19 @@ export default function Contact() {
 
                 <div style={{
                   backgroundColor: '#FFF',
-                  border: '6px solid #000',
-                  boxShadow: '8px 8px 0px rgba(0,0,0,0.4)',
-                  padding: '24px',
+                  border: 'clamp(3px, 0.8vw, 6px) solid #000',
+                  boxShadow: '5px 5px 0px rgba(0,0,0,0.3)',
+                  padding: 'clamp(16px, 3vw, 24px)',
                   borderRadius: '4px'
                 }}>
                   <ContactForm />
                 </div>
-              </div>
+              </section>
             </AnimatedElement>
 
             {/* Contact Information */}
             <AnimatedElement variant="slideUp">
-              <div style={{ maxWidth: '100%', margin: '0 auto', paddingBottom: '48px' }}>
+              <section aria-label="Contact details" style={{ maxWidth: '100%', margin: '0 auto', paddingBottom: '48px' }}>
                 <h2 style={{
                   fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
                   fontSize: 'clamp(20px, 4vw, 28px)',
@@ -286,14 +183,6 @@ export default function Contact() {
                       paddingBottom: '2px',
                       transition: 'all 0.2s ease'
                     }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.color = '#E55555';
-                      e.currentTarget.style.borderBottomColor = '#E55555';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.color = '#FF6B6B';
-                      e.currentTarget.style.borderBottomColor = '#FF6B6B';
-                    }}
                   >
                     vyn13217@gmail.com
                   </Link>
@@ -325,14 +214,6 @@ export default function Contact() {
                       paddingBottom: '2px',
                       transition: 'all 0.2s ease'
                     }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.color = '#3DB5AD';
-                      e.currentTarget.style.borderBottomColor = '#3DB5AD';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.color = '#4ECDC4';
-                      e.currentTarget.style.borderBottomColor = '#4ECDC4';
-                    }}
                   >
                     github.com/vynguyen175
                   </Link>
@@ -356,21 +237,13 @@ export default function Contact() {
                     target="_blank"
                     rel="noopener noreferrer"
                     style={{
-                      color: '#FFE66D',
+                      color: '#333',
                       fontWeight: 600,
                       fontSize: '14px',
                       textDecoration: 'none',
-                      borderBottom: '2px solid #FFE66D',
+                      borderBottom: '2px solid #333',
                       paddingBottom: '2px',
                       transition: 'all 0.2s ease'
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.color = '#FFD84D';
-                      e.currentTarget.style.borderBottomColor = '#FFD84D';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.color = '#FFE66D';
-                      e.currentTarget.style.borderBottomColor = '#FFE66D';
                     }}
                   >
                     linkedin.com/in/vy-nguyen
@@ -395,7 +268,7 @@ export default function Contact() {
                     marginBottom: '12px',
                     textShadow: '1px 1px 0px rgba(255,255,255,0.4)'
                   }}>
-                    LET'S COLLABORATE!
+                    LET&apos;S COLLABORATE!
                   </h3>
                   <p style={{
                     fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
@@ -405,31 +278,24 @@ export default function Contact() {
                     margin: 0,
                     fontWeight: 500
                   }}>
-                    I'm open to freelance projects, full-time opportunities, and collaborations. Whether you're looking for a developer to join your team or need help bringing your idea to life, I'd be happy to discuss how we can work together.
+                    I&apos;m seeking opportunities to build impactful products and grow with a great team. Whether you need a developer to contribute from day one or want to collaborate on a project, I&apos;d love to connect.
                   </p>
                 </div>
-              </div>
+              </section>
             </AnimatedElement>
 
             {/* Footer */}
             <div style={{
               textAlign: 'center',
               padding: '48px 16px',
-              animation: 'float 1s ease-in-out infinite'
             }}>
-              <span style={{
-                fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-                fontSize: 'clamp(14px, 3vw, 18px)',
-                color: '#FFD700',
-                textShadow: '2px 2px 0px rgba(0,0,0,0.3)',
-                fontWeight: 800,
-                letterSpacing: '1px'
-              }}>
+              <span className="section-footer">
                 LOOKING FORWARD TO HEARING FROM YOU
               </span>
             </div>
           </div>
-        </div>
+          </div>
+        </main>
       </PageTransition>
     </MarioBackground>
   );

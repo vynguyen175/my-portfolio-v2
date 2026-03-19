@@ -13,10 +13,13 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
 
   const navItems = [
     { href: '/', label: 'HOME' },
-    { href: '/skills', label: 'SKILLS' },
     { href: '/projects', label: 'PROJECTS' },
+    { href: '/capstone', label: 'CAPSTONE' },
+    { href: '/skills', label: 'SKILLS' },
     { href: '/about', label: 'ABOUT' },
-    { href: '/contact', label: 'CONTACT' }
+    { href: '/credentials', label: 'CREDENTIALS' },
+    { href: '/philosophy', label: 'PHILOSOPHY' },
+    { href: '/contact', label: 'CONTACT' },
   ];
 
   return (
@@ -25,6 +28,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
       {isOpen && (
         <div
           onClick={onClose}
+          aria-hidden="true"
           style={{
             position: 'fixed',
             top: 0,
@@ -38,34 +42,38 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
       )}
 
       {/* Sidebar */}
-      <div style={{
-        position: 'fixed',
-        left: 0,
-        top: 0,
-        width: '240px',
-        height: '100%',
-        backgroundColor: '#8B7355',
-        border: '6px solid #000',
-        zIndex: 50,
-        padding: '20px',
-        overflow: 'auto',
-        boxShadow: '6px 0px 0px rgba(0,0,0,0.3)',
-        transform: isOpen ? 'translateX(0)' : 'translateX(-100%)',
-        transition: 'transform 0.3s ease',
-        boxSizing: 'border-box'
-      }}>
+      <aside
+        role="navigation"
+        aria-label="Main menu"
+        style={{
+          position: 'fixed',
+          left: 0,
+          top: 0,
+          width: 'min(240px, 85vw)',
+          height: '100%',
+          backgroundColor: '#8B7355',
+          border: '6px solid #000',
+          zIndex: 50,
+          padding: 'clamp(12px, 3vw, 20px)',
+          overflow: 'auto',
+          boxShadow: '6px 0px 0px rgba(0,0,0,0.3)',
+          transform: isOpen ? 'translateX(0)' : 'translateX(-100%)',
+          transition: 'transform 0.3s ease',
+          boxSizing: 'border-box'
+        }}
+      >
         {/* Mario Sprite */}
         <div style={{
           textAlign: 'center',
-          marginBottom: '32px',
-          padding: '20px 0',
+          marginBottom: '24px',
+          padding: '16px 0',
           borderBottom: '4px solid #000'
         }}>
           <img
             src="/sprites/mario-idle.png"
             alt="Mario"
             style={{
-              height: '120px',
+              height: '80px',
               objectFit: 'contain',
               animation: 'float 2s ease-in-out infinite'
             }}
@@ -73,7 +81,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
         </div>
 
         {/* Navigation */}
-        <nav style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+        <nav aria-label="Site navigation" style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
           {navItems.map((item) => {
             const isActive = pathname === item.href;
             return (
@@ -84,11 +92,11 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                 style={{
                   textDecoration: 'none',
                   backgroundColor: isActive ? '#FFD700' : '#FFA500',
-                  border: '4px solid #000',
-                  padding: '16px 12px',
+                  border: '3px solid #000',
+                  padding: '12px 10px',
                   borderRadius: '4px',
                   fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-                  fontSize: '13px',
+                  fontSize: '12px',
                   fontWeight: 800,
                   color: '#000',
                   textAlign: 'center',
@@ -103,15 +111,82 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
               </Link>
             );
           })}
-        </nav>
 
-        <style>{`
-          @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
-          }
-        `}</style>
-      </div>
+          {/* Divider */}
+          <div style={{ borderTop: '3px solid #000', margin: '4px 0' }} />
+
+          {/* Resume & Cover Letter */}
+          <Link
+            href="/resume.pdf"
+            target="_blank"
+            onClick={onClose}
+            style={{
+              textDecoration: 'none',
+              backgroundColor: '#FFF',
+              border: '3px solid #000',
+              padding: '12px 10px',
+              borderRadius: '4px',
+              fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+              fontSize: '12px',
+              fontWeight: 800,
+              color: '#000',
+              textAlign: 'center',
+              cursor: 'pointer',
+              transition: 'all 0.2s ease',
+              boxShadow: '3px 3px 0px rgba(0,0,0,0.3)',
+              display: 'block'
+            }}
+          >
+            RESUME
+          </Link>
+
+          <Link
+            href="/cover-letter"
+            onClick={onClose}
+            style={{
+              textDecoration: 'none',
+              backgroundColor: pathname === '/cover-letter' ? '#FFD700' : '#FFF',
+              border: '3px solid #000',
+              padding: '12px 10px',
+              borderRadius: '4px',
+              fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+              fontSize: '12px',
+              fontWeight: 800,
+              color: '#000',
+              textAlign: 'center',
+              cursor: 'pointer',
+              transition: 'all 0.2s ease',
+              boxShadow: '3px 3px 0px rgba(0,0,0,0.3)',
+              display: 'block'
+            }}
+          >
+            COVER LETTER
+          </Link>
+
+          {/* Play Game */}
+          <Link
+            href="/play"
+            onClick={onClose}
+            style={{
+              textDecoration: 'none',
+              backgroundColor: 'transparent',
+              border: '3px solid #FFD700',
+              padding: '10px 10px',
+              borderRadius: '4px',
+              fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+              fontSize: '11px',
+              fontWeight: 700,
+              color: '#FFD700',
+              textAlign: 'center',
+              cursor: 'pointer',
+              transition: 'all 0.2s ease',
+              display: 'block'
+            }}
+          >
+            PLAY GAME
+          </Link>
+        </nav>
+      </aside>
     </>
   );
 }

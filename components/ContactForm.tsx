@@ -121,7 +121,7 @@ export default function ContactForm() {
             fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
             fontSize: '14px',
             fontWeight: 700,
-            color: '#FFD700'
+            color: '#000'
           }}
         >
           NAME
@@ -167,7 +167,7 @@ export default function ContactForm() {
             fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
             fontSize: '14px',
             fontWeight: 700,
-            color: '#FFD700'
+            color: '#000'
           }}
         >
           EMAIL
@@ -213,7 +213,7 @@ export default function ContactForm() {
             fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
             fontSize: '14px',
             fontWeight: 700,
-            color: '#FFD700'
+            color: '#000'
           }}
         >
           MESSAGE

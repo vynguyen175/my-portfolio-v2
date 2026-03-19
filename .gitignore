@@ -47,3 +47,8 @@ next-env.d.ts
 
 # Email service
 .env.production.local
+
+.claude/
+
+# Nested project (should live in its own repo)
+components/quiz-app/
