@@ -31,8 +31,8 @@ export default function CoverLetter() {
                   className="about-card"
                   style={{
                     backgroundColor: '#FFF',
+                    border: '1px solid var(--border)',
                     padding: 'clamp(20px, 4vw, 40px) clamp(16px, 3vw, 32px)',
-                    animation: 'none',
                     cursor: 'default',
                   }}
                 >
@@ -103,7 +103,7 @@ export default function CoverLetter() {
                 padding: '16px',
               }}>
                 <p style={{
-                  color: 'rgba(255,255,255,0.6)',
+                  color: 'var(--text-muted)',
                   fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
                   fontSize: '12px',
                   fontWeight: 500,
@@ -119,7 +119,7 @@ export default function CoverLetter() {
                 <Link href="/resume.pdf" target="_blank" className="nav-btn" style={{ backgroundColor: '#FFF' }}>
                   VIEW RESUME
                 </Link>
-                <Link href="/contact" className="nav-btn" style={{ backgroundColor: '#FFD700' }}>
+                <Link href="/contact" className="nav-btn" style={{}}>
                   CONTACT ME
                 </Link>
               </div>

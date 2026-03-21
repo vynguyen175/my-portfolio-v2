@@ -40,8 +40,8 @@ export default function Capstone() {
     {
       title: 'REQUIREMENTS ANALYSIS & DESIGN',
       status: 'Complete',
-      statusColor: '#4ECDC4',
-      color: '#FFE66D',
+      statusColor: 'var(--gold-dim)',
+      color: 'transparent',
       items: [
         'Business Requirements Document (BRD) - Social gaming platform for tracking and reviewing games',
         'Functional & Non-Functional Requirements - Defined user stories and acceptance criteria',
@@ -53,8 +53,8 @@ export default function Capstone() {
     {
       title: 'WIREFRAMES & MOCKUPS',
       status: 'Complete',
-      statusColor: '#4ECDC4',
-      color: '#A8E6CF',
+      statusColor: 'var(--gold-dim)',
+      color: 'transparent',
       items: [
         'Low-fidelity wireframes for all core screens (home, search, game detail, library, profile)',
         'High-fidelity UI mockups with dark theme gaming aesthetic',
@@ -66,8 +66,8 @@ export default function Capstone() {
     {
       title: 'PROJECT PLAN',
       status: 'Complete',
-      statusColor: '#4ECDC4',
-      color: '#B8A9C9',
+      statusColor: 'var(--gold-dim)',
+      color: 'transparent',
       items: [
         'Agile sprints: 2-week iterations across 4 development phases',
         'Sprint 1-2: Core backend (MongoDB schemas, API routes, auth)',
@@ -80,8 +80,8 @@ export default function Capstone() {
     {
       title: 'SYSTEM IMPLEMENTATION',
       status: 'Complete',
-      statusColor: '#4ECDC4',
-      color: '#FFD3B6',
+      statusColor: 'var(--gold-dim)',
+      color: 'transparent',
       items: [
         'Web frontend: Next.js 14, TypeScript, React, Tailwind CSS',
         'Mobile app: Native Android with Java, Gradle build system',
@@ -113,8 +113,8 @@ export default function Capstone() {
                 textAlign: 'center',
                 marginBottom: '40px',
                 padding: '16px 24px',
-                background: 'rgba(78, 205, 196, 0.15)',
-                border: '3px solid #4ECDC4',
+                background: 'var(--gold-dim)',
+                border: '1px solid var(--border)',
                 borderRadius: '8px',
                 display: 'flex',
                 justifyContent: 'center',
@@ -123,7 +123,7 @@ export default function Capstone() {
                 flexWrap: 'wrap',
               }}>
                 <p style={{
-                  color: '#4ECDC4',
+                  color: 'var(--gold-text)',
                   fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
                   fontSize: '14px',
                   fontWeight: 700,
@@ -137,8 +137,8 @@ export default function Capstone() {
                     href="https://gameboxd-web-app.vercel.app/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="nav-btn"
-                    style={{ backgroundColor: '#4ECDC4', padding: '8px 14px', fontSize: '11px' }}
+                    className="nav-btn-primary"
+                    style={{ padding: '8px 14px', fontSize: '11px' }}
                   >
                     LIVE DEMO
                   </Link>
@@ -147,7 +147,7 @@ export default function Capstone() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="nav-btn"
-                    style={{ backgroundColor: '#000', color: '#FFD700', padding: '8px 14px', fontSize: '11px' }}
+                    style={{ padding: '8px 14px', fontSize: '11px' }}
                   >
                     SOURCE CODE
                   </Link>
@@ -158,20 +158,12 @@ export default function Capstone() {
               <section style={{ marginBottom: '24px' }}>
                 <div
                   className="about-card"
-                  style={{ backgroundColor: '#FF6B6B', padding: '24px', animation: 'none', cursor: 'default' }}
+                  style={{ padding: '24px', cursor: 'default' }}
                 >
-                  <h2 style={{
-                    fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-                    fontSize: 'clamp(18px, 4vw, 24px)',
-                    fontWeight: 800,
-                    color: '#000',
-                    margin: '0 0 16px',
-                    textShadow: '1px 1px 0px rgba(255,255,255,0.4)',
-                    letterSpacing: '0.5px',
-                  }}>
+                  <h2 className="section-heading">
                     PROJECT SUMMARY
                   </h2>
-                  <p style={{ fontSize: '14px', color: '#000', lineHeight: '1.7', margin: 0, fontWeight: 500 }}>
+                  <p style={{ fontSize: '14px', color: 'var(--text-secondary)', lineHeight: '1.7', margin: 0, fontWeight: 500 }}>
                     Gameboxd is a social platform for gamers &mdash; a Letterboxd-inspired application where users can discover games, build their personal library, rate and review titles, and follow friends to see what they&apos;re playing. The project was built as both a Next.js web application and a native Android app, sharing a MongoDB backend. This dual-platform approach was the core technical challenge, requiring careful design of shared data models and consistent user experiences across web and mobile. The project demonstrates full-stack capabilities across two distinct technology stacks: React/TypeScript for web and Java for native Android.
                   </p>
                 </div>
@@ -181,23 +173,15 @@ export default function Capstone() {
               <section style={{ marginBottom: '24px' }}>
                 <div
                   className="about-card"
-                  style={{ backgroundColor: '#4ECDC4', padding: '24px', animation: 'none', cursor: 'default' }}
+                  style={{ padding: '24px', cursor: 'default' }}
                 >
-                  <h2 style={{
-                    fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-                    fontSize: 'clamp(18px, 4vw, 24px)',
-                    fontWeight: 800,
-                    color: '#000',
-                    margin: '0 0 16px',
-                    textShadow: '1px 1px 0px rgba(255,255,255,0.4)',
-                    letterSpacing: '0.5px',
-                  }}>
+                  <h2 className="section-heading">
                     PROJECT VISION
                   </h2>
-                  <p style={{ fontSize: '14px', color: '#000', lineHeight: '1.7', margin: '0 0 12px', fontWeight: 500 }}>
+                  <p style={{ fontSize: '14px', color: 'var(--text-secondary)', lineHeight: '1.7', margin: '0 0 12px', fontWeight: 500 }}>
                     The gaming community lacks a dedicated, social-first platform for tracking and discussing games &mdash; one that feels as polished as Letterboxd does for film. Gameboxd fills that gap by giving gamers a home to organize their gaming life, share opinions, and discover new titles through their social network.
                   </p>
-                  <p style={{ fontSize: '14px', color: '#000', lineHeight: '1.7', margin: 0, fontWeight: 500 }}>
+                  <p style={{ fontSize: '14px', color: 'var(--text-secondary)', lineHeight: '1.7', margin: 0, fontWeight: 500 }}>
                     The vision was to build something I&apos;d actually use daily, while pushing myself to deliver the same product on two platforms. This forced me to think about platform-agnostic data modeling, consistent UX across web and native, and the real tradeoffs between a React SPA and a native Android app.
                   </p>
                 </div>
@@ -205,28 +189,20 @@ export default function Capstone() {
 
               {/* Requirements */}
               <section style={{ marginBottom: '32px' }}>
-                <h2 style={{
-                  color: '#FFD700',
-                  fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-                  fontSize: 'clamp(20px, 4vw, 28px)',
-                  fontWeight: 800,
-                  marginBottom: '24px',
-                  textShadow: '2px 2px 0px rgba(0,0,0,0.2)',
-                  letterSpacing: '1px',
-                }}>
+                <h2 className="section-heading" style={{ marginBottom: '24px' }}>
                   PROJECT REQUIREMENTS
                 </h2>
                 {requirements.map((req) => (
                   <div key={req.category} style={{ marginBottom: '16px' }}>
                     <div
                       className="about-card"
-                      style={{ backgroundColor: '#FFE66D', padding: '24px', animation: 'none', cursor: 'default' }}
+                      style={{ padding: '24px', cursor: 'default' }}
                     >
                       <h3 style={{
                         fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
                         fontSize: '15px',
                         fontWeight: 800,
-                        color: '#000',
+                        color: 'var(--text-primary)',
                         margin: '0 0 12px',
                       }}>
                         {req.category}
@@ -236,7 +212,7 @@ export default function Capstone() {
                         padding: '0 0 0 18px',
                         fontSize: '13px',
                         fontWeight: 500,
-                        color: '#000',
+                        color: 'var(--text-secondary)',
                         lineHeight: '1.8',
                       }}>
                         {req.items.map((item) => (
@@ -250,15 +226,7 @@ export default function Capstone() {
 
               {/* Development Phases */}
               <section style={{ marginBottom: '32px' }}>
-                <h2 style={{
-                  color: '#FFD700',
-                  fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-                  fontSize: 'clamp(20px, 4vw, 28px)',
-                  fontWeight: 800,
-                  marginBottom: '24px',
-                  textShadow: '2px 2px 0px rgba(0,0,0,0.2)',
-                  letterSpacing: '1px',
-                }}>
+                <h2 className="section-heading" style={{ marginBottom: '24px' }}>
                   DEVELOPMENT PHASES
                 </h2>
 
@@ -271,31 +239,23 @@ export default function Capstone() {
                     <div
                       key={phase.title}
                       className="about-card"
-                      style={{ backgroundColor: phase.color, padding: '24px', animation: 'none', cursor: 'default' }}
+                      style={{ padding: '24px', cursor: 'default' }}
                     >
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '16px' }}>
                         <h3 style={{
                           fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
                           fontSize: '15px',
                           fontWeight: 800,
-                          color: '#000',
+                          color: 'var(--text-primary)',
                           margin: 0,
                           letterSpacing: '0.5px',
                           flex: 1,
                         }}>
                           {phase.title}
                         </h3>
-                        <span style={{
-                          fontSize: '10px',
-                          fontWeight: 700,
-                          color: '#000',
-                          background: phase.statusColor,
-                          padding: '4px 8px',
-                          borderRadius: '2px',
-                          letterSpacing: '1px',
+                        <span className="tech-badge" style={{
                           flexShrink: 0,
                           marginLeft: '8px',
-                          border: '2px solid #000',
                         }}>
                           {phase.status.toUpperCase()}
                         </span>
@@ -305,7 +265,7 @@ export default function Capstone() {
                         padding: '0 0 0 18px',
                         fontSize: '12px',
                         fontWeight: 500,
-                        color: '#000',
+                        color: 'var(--text-secondary)',
                         lineHeight: '1.8',
                       }}>
                         {phase.items.map((item) => (
@@ -319,43 +279,35 @@ export default function Capstone() {
 
               {/* Status Reports */}
               <section style={{ marginBottom: '32px' }}>
-                <h2 style={{
-                  color: '#FFD700',
-                  fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-                  fontSize: 'clamp(20px, 4vw, 28px)',
-                  fontWeight: 800,
-                  marginBottom: '24px',
-                  textShadow: '2px 2px 0px rgba(0,0,0,0.2)',
-                  letterSpacing: '1px',
-                }}>
+                <h2 className="section-heading" style={{ marginBottom: '24px' }}>
                   STATUS REPORTS
                 </h2>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                  <div className="focus-item" style={{ animation: 'none' }}>
+                  <div className="focus-item">
                     <strong>Sprint 1-2: Backend & Data Layer</strong>
                     <p style={{ margin: '4px 0 0', fontSize: '12px', lineHeight: '1.5' }}>
                       Designed MongoDB schemas for Users, Games, Reviews, and Libraries. Built REST API routes with Next.js API routes. Set up authentication flow with session management. Seeded database with game data.
                     </p>
                   </div>
-                  <div className="focus-item" style={{ animation: 'none' }}>
+                  <div className="focus-item">
                     <strong>Sprint 3-4: Web Frontend</strong>
                     <p style={{ margin: '4px 0 0', fontSize: '12px', lineHeight: '1.5' }}>
                       Built all core pages: home feed, game search/discovery, individual game detail pages, user library with filtering, and profile pages. Implemented responsive design with Tailwind CSS. Connected all frontend components to backend APIs.
                     </p>
                   </div>
-                  <div className="focus-item" style={{ animation: 'none' }}>
+                  <div className="focus-item">
                     <strong>Sprint 5-6: Social Features</strong>
                     <p style={{ margin: '4px 0 0', fontSize: '12px', lineHeight: '1.5' }}>
                       Added rating and review system, follow/unfollow functionality, and activity feed showing friends&apos; recent activity. This phase involved the most complex database queries (aggregation pipelines for feeds).
                     </p>
                   </div>
-                  <div className="focus-item" style={{ animation: 'none' }}>
+                  <div className="focus-item">
                     <strong>Sprint 7-8: Android Native App</strong>
                     <p style={{ margin: '4px 0 0', fontSize: '12px', lineHeight: '1.5' }}>
                       Rebuilt the core experience as a native Android app using Java and Gradle. Designed Android-native layouts mirroring the web UI. Connected to the same MongoDB backend to ensure data consistency across platforms.
                     </p>
                   </div>
-                  <div className="focus-item" style={{ animation: 'none' }}>
+                  <div className="focus-item">
                     <strong>Sprint 9: Testing & Deployment</strong>
                     <p style={{ margin: '4px 0 0', fontSize: '12px', lineHeight: '1.5' }}>
                       Performed cross-browser testing (Chrome, Firefox, Safari) and Android device testing. Fixed responsive layout issues. Deployed web app to Vercel. Final code review and documentation.
@@ -366,15 +318,7 @@ export default function Capstone() {
 
               {/* Tech Stack */}
               <section style={{ marginBottom: '32px' }}>
-                <h2 style={{
-                  color: '#FFD700',
-                  fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-                  fontSize: 'clamp(20px, 4vw, 28px)',
-                  fontWeight: 800,
-                  marginBottom: '24px',
-                  textShadow: '2px 2px 0px rgba(0,0,0,0.2)',
-                  letterSpacing: '1px',
-                }}>
+                <h2 className="section-heading" style={{ marginBottom: '24px' }}>
                   TECH STACK
                 </h2>
                 <div style={{
@@ -384,27 +328,27 @@ export default function Capstone() {
                 }}>
                   <div
                     className="about-card"
-                    style={{ backgroundColor: '#FF6B6B', padding: '20px', animation: 'none', cursor: 'default' }}
+                    style={{ padding: '20px', cursor: 'default' }}
                   >
-                    <h3 style={{ fontSize: '14px', fontWeight: 800, color: '#000', margin: '0 0 12px' }}>
+                    <h3 style={{ fontSize: '14px', fontWeight: 800, color: 'var(--text-primary)', margin: '0 0 12px' }}>
                       WEB APPLICATION
                     </h3>
                     <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px' }}>
                       {['Next.js', 'TypeScript', 'React', 'Tailwind CSS', 'MongoDB', 'Mongoose', 'Vercel'].map((tech) => (
-                        <span key={tech} className="tech-badge" style={{ animation: 'none' }}>{tech}</span>
+                        <span key={tech} className="tech-badge">{tech}</span>
                       ))}
                     </div>
                   </div>
                   <div
                     className="about-card"
-                    style={{ backgroundColor: '#4ECDC4', padding: '20px', animation: 'none', cursor: 'default' }}
+                    style={{ padding: '20px', cursor: 'default' }}
                   >
-                    <h3 style={{ fontSize: '14px', fontWeight: 800, color: '#000', margin: '0 0 12px' }}>
+                    <h3 style={{ fontSize: '14px', fontWeight: 800, color: 'var(--text-primary)', margin: '0 0 12px' }}>
                       ANDROID APPLICATION
                     </h3>
                     <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px' }}>
                       {['Java', 'Android SDK', 'Gradle', 'MongoDB', 'XML Layouts', 'Material Design'].map((tech) => (
-                        <span key={tech} className="tech-badge" style={{ animation: 'none' }}>{tech}</span>
+                        <span key={tech} className="tech-badge">{tech}</span>
                       ))}
                     </div>
                   </div>
@@ -413,28 +357,20 @@ export default function Capstone() {
 
               {/* Key Learnings */}
               <section style={{ marginBottom: '32px' }}>
-                <h2 style={{
-                  color: '#FFD700',
-                  fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-                  fontSize: 'clamp(20px, 4vw, 28px)',
-                  fontWeight: 800,
-                  marginBottom: '24px',
-                  textShadow: '2px 2px 0px rgba(0,0,0,0.2)',
-                  letterSpacing: '1px',
-                }}>
+                <h2 className="section-heading" style={{ marginBottom: '24px' }}>
                   KEY LEARNINGS
                 </h2>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                  <div className="focus-item" style={{ animation: 'none' }}>
+                  <div className="focus-item">
                     <strong>Cross-platform data modeling</strong> &mdash; Designing MongoDB schemas that work efficiently for both a Next.js API and a Java Android client required thinking about data access patterns upfront.
                   </div>
-                  <div className="focus-item" style={{ animation: 'none' }}>
+                  <div className="focus-item">
                     <strong>Web vs. native tradeoffs</strong> &mdash; Learned firsthand why some features are easier on web (routing, responsive layouts) and others on native (offline access, performance). Informed my understanding of when to choose which platform.
                   </div>
-                  <div className="focus-item" style={{ animation: 'none' }}>
+                  <div className="focus-item">
                     <strong>Social feature complexity</strong> &mdash; Activity feeds and follower graphs are deceptively hard. MongoDB aggregation pipelines were essential for building performant feed queries.
                   </div>
-                  <div className="focus-item" style={{ animation: 'none' }}>
+                  <div className="focus-item">
                     <strong>End-to-end ownership</strong> &mdash; From requirements gathering to deployment, this project gave me experience with the full software development lifecycle.
                   </div>
                 </div>
@@ -447,7 +383,7 @@ export default function Capstone() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="nav-btn"
-                  style={{ backgroundColor: '#4ECDC4' }}
+                  style={{}}
                 >
                   TRY GAMEBOXD
                 </Link>
@@ -456,11 +392,11 @@ export default function Capstone() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="nav-btn"
-                  style={{ backgroundColor: '#000', color: '#FFD700' }}
+                  style={{}}
                 >
                   VIEW SOURCE
                 </Link>
-                <Link href="/projects" className="nav-btn" style={{ backgroundColor: '#FFD700' }}>
+                <Link href="/projects" className="nav-btn" style={{}}>
                   ALL PROJECTS
                 </Link>
               </div>
@@ -469,7 +405,6 @@ export default function Capstone() {
               <div style={{
                 textAlign: 'center',
                 padding: '32px 16px 16px',
-                animation: 'float 1s ease-in-out infinite',
               }}>
                 <span className="section-footer">
                   LEVEL COMPLETE

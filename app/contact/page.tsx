@@ -19,21 +19,21 @@ export default function Contact() {
       name: "GitHub",
       url: "https://github.com/vynguyen175",
       icon: FaGithub,
-      bgColor: "#FF6B6B",
+      bgColor: "transparent",
       description: "Check out my projects and code"
     },
     {
       name: "LinkedIn",
       url: "https://www.linkedin.com/in/vy-nguyen-71629729b/",
       icon: FaLinkedin,
-      bgColor: "#4ECDC4",
+      bgColor: "transparent",
       description: "Connect with me professionally"
     },
     {
       name: "Email",
       url: "mailto:vyn13217@gmail.com",
       icon: MdEmail,
-      bgColor: "#A8E6CF",
+      bgColor: "transparent",
       description: "Send me a message"
     }
   ];
@@ -72,30 +72,28 @@ export default function Contact() {
                       className="social-card"
                       aria-label={`${social.name} - ${social.description}`}
                       style={{
-                        backgroundColor: social.bgColor,
-                        color: '#000'
+                        color: 'var(--text-primary)'
                       }}
                     >
                       <div style={{
                         fontSize: '48px',
                         marginBottom: '12px'
                       }}>
-                        <IconComponent size={48} color="#000" />
+                        <IconComponent size={48} color="var(--gold-text)" />
                       </div>
                       <h3 style={{
                         fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
                         fontSize: '18px',
                         fontWeight: 800,
-                        color: '#000',
+                        color: 'var(--text-primary)',
                         margin: 0,
                         marginBottom: '8px',
-                        textShadow: '1px 1px 0px rgba(255,255,255,0.4)'
                       }}>
                         {social.name}
                       </h3>
                       <p style={{
                         fontSize: '12px',
-                        color: '#000',
+                        color: 'var(--text-secondary)',
                         margin: 0,
                         fontWeight: 500,
                         lineHeight: '1.4'
@@ -118,25 +116,18 @@ export default function Contact() {
                   paddingBottom: '48px'
                 }}
               >
-                <h2 style={{
-                  fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-                  fontSize: 'clamp(20px, 4vw, 28px)',
-                  fontWeight: 800,
-                  color: '#FFD700',
+                <h2 className="section-heading" style={{
                   marginBottom: '32px',
                   marginLeft: '8px',
-                  textShadow: '2px 2px 0px rgba(0,0,0,0.2)',
-                  letterSpacing: '1px'
                 }}>
                   SEND ME A MESSAGE
                 </h2>
 
                 <div style={{
-                  backgroundColor: '#FFF',
-                  border: 'clamp(3px, 0.8vw, 6px) solid #000',
-                  boxShadow: '5px 5px 0px rgba(0,0,0,0.3)',
+                  backgroundColor: 'var(--surface)',
+                  border: '1px solid var(--border)',
                   padding: 'clamp(16px, 3vw, 24px)',
-                  borderRadius: '4px'
+                  borderRadius: 'var(--radius)'
                 }}>
                   <ContactForm />
                 </div>
@@ -146,15 +137,9 @@ export default function Contact() {
             {/* Contact Information */}
             <AnimatedElement variant="slideUp">
               <section aria-label="Contact details" style={{ maxWidth: '100%', margin: '0 auto', paddingBottom: '48px' }}>
-                <h2 style={{
-                  fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-                  fontSize: 'clamp(20px, 4vw, 28px)',
-                  fontWeight: 800,
-                  color: '#FFD700',
+                <h2 className="section-heading" style={{
                   marginBottom: '32px',
                   marginLeft: '8px',
-                  textShadow: '2px 2px 0px rgba(0,0,0,0.2)',
-                  letterSpacing: '1px'
                 }}>
                   CONTACT DETAILS
                 </h2>
@@ -165,7 +150,7 @@ export default function Contact() {
                     fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
                     fontSize: '16px',
                     fontWeight: 800,
-                    color: '#000',
+                    color: 'var(--text-primary)',
                     margin: 0,
                     marginBottom: '12px',
                     letterSpacing: '0.5px'
@@ -175,11 +160,11 @@ export default function Contact() {
                   <Link
                     href="mailto:vyn13217@gmail.com"
                     style={{
-                      color: '#FF6B6B',
+                      color: 'var(--gold-text)',
                       fontWeight: 600,
                       fontSize: '14px',
                       textDecoration: 'none',
-                      borderBottom: '2px solid #FF6B6B',
+                      borderBottom: '2px solid var(--gold-text)',
                       paddingBottom: '2px',
                       transition: 'all 0.2s ease'
                     }}
@@ -194,7 +179,7 @@ export default function Contact() {
                     fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
                     fontSize: '16px',
                     fontWeight: 800,
-                    color: '#000',
+                    color: 'var(--text-primary)',
                     margin: 0,
                     marginBottom: '12px',
                     letterSpacing: '0.5px'
@@ -206,11 +191,11 @@ export default function Contact() {
                     target="_blank"
                     rel="noopener noreferrer"
                     style={{
-                      color: '#4ECDC4',
+                      color: 'var(--gold-text)',
                       fontWeight: 600,
                       fontSize: '14px',
                       textDecoration: 'none',
-                      borderBottom: '2px solid #4ECDC4',
+                      borderBottom: '2px solid var(--gold-text)',
                       paddingBottom: '2px',
                       transition: 'all 0.2s ease'
                     }}
@@ -225,7 +210,7 @@ export default function Contact() {
                     fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
                     fontSize: '16px',
                     fontWeight: 800,
-                    color: '#000',
+                    color: 'var(--text-primary)',
                     margin: 0,
                     marginBottom: '12px',
                     letterSpacing: '0.5px'
@@ -237,11 +222,11 @@ export default function Contact() {
                     target="_blank"
                     rel="noopener noreferrer"
                     style={{
-                      color: '#333',
+                      color: 'var(--gold-text)',
                       fontWeight: 600,
                       fontSize: '14px',
                       textDecoration: 'none',
-                      borderBottom: '2px solid #333',
+                      borderBottom: '2px solid var(--gold-text)',
                       paddingBottom: '2px',
                       transition: 'all 0.2s ease'
                     }}
@@ -254,7 +239,6 @@ export default function Contact() {
                 <div
                   className="contact-info-card"
                   style={{
-                    backgroundColor: '#FFD3B6',
                     animationDelay: '0.7s',
                     minHeight: 'auto'
                   }}
@@ -263,17 +247,16 @@ export default function Contact() {
                     fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
                     fontSize: '18px',
                     fontWeight: 800,
-                    color: '#000',
+                    color: 'var(--gold-text)',
                     margin: 0,
                     marginBottom: '12px',
-                    textShadow: '1px 1px 0px rgba(255,255,255,0.4)'
                   }}>
                     LET&apos;S COLLABORATE!
                   </h3>
                   <p style={{
                     fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
                     fontSize: '13px',
-                    color: '#000',
+                    color: 'var(--text-secondary)',
                     lineHeight: '1.6',
                     margin: 0,
                     fontWeight: 500

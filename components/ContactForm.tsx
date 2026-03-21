@@ -121,7 +121,7 @@ export default function ContactForm() {
             fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
             fontSize: '14px',
             fontWeight: 700,
-            color: '#000'
+            color: 'var(--text-primary)'
           }}
         >
           NAME
@@ -136,19 +136,20 @@ export default function ContactForm() {
           style={{
             width: '100%',
             padding: '12px 16px',
-            border: '4px solid #000',
+            border: '1px solid rgba(255,255,255,0.1)',
             borderRadius: '4px',
             fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
             fontSize: '14px',
             boxSizing: 'border-box',
-            boxShadow: errors.name ? '0 0 0 2px #FF6B6B' : '4px 4px 0px rgba(0,0,0,0.2)',
-            backgroundColor: '#FFF',
+            boxShadow: errors.name ? '0 0 0 2px #EF4444' : 'none',
+            backgroundColor: '#1E293B',
+            color: 'var(--text-primary)',
             transition: 'all 0.2s ease'
           }}
         />
         {errors.name && (
           <p style={{
-            color: '#FF6B6B',
+            color: '#EF4444',
             fontSize: '12px',
             marginTop: '6px',
             fontWeight: 600
@@ -167,7 +168,7 @@ export default function ContactForm() {
             fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
             fontSize: '14px',
             fontWeight: 700,
-            color: '#000'
+            color: 'var(--text-primary)'
           }}
         >
           EMAIL
@@ -182,19 +183,20 @@ export default function ContactForm() {
           style={{
             width: '100%',
             padding: '12px 16px',
-            border: '4px solid #000',
+            border: '1px solid rgba(255,255,255,0.1)',
             borderRadius: '4px',
             fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
             fontSize: '14px',
             boxSizing: 'border-box',
-            boxShadow: errors.email ? '0 0 0 2px #FF6B6B' : '4px 4px 0px rgba(0,0,0,0.2)',
-            backgroundColor: '#FFF',
+            boxShadow: errors.email ? '0 0 0 2px #EF4444' : 'none',
+            backgroundColor: '#1E293B',
+            color: 'var(--text-primary)',
             transition: 'all 0.2s ease'
           }}
         />
         {errors.email && (
           <p style={{
-            color: '#FF6B6B',
+            color: '#EF4444',
             fontSize: '12px',
             marginTop: '6px',
             fontWeight: 600
@@ -213,7 +215,7 @@ export default function ContactForm() {
             fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
             fontSize: '14px',
             fontWeight: 700,
-            color: '#000'
+            color: 'var(--text-primary)'
           }}
         >
           MESSAGE
@@ -228,20 +230,21 @@ export default function ContactForm() {
           style={{
             width: '100%',
             padding: '12px 16px',
-            border: '4px solid #000',
+            border: '1px solid rgba(255,255,255,0.1)',
             borderRadius: '4px',
             fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
             fontSize: '14px',
             boxSizing: 'border-box',
-            boxShadow: errors.message ? '0 0 0 2px #FF6B6B' : '4px 4px 0px rgba(0,0,0,0.2)',
-            backgroundColor: '#FFF',
+            boxShadow: errors.message ? '0 0 0 2px #EF4444' : 'none',
+            backgroundColor: '#1E293B',
+            color: 'var(--text-primary)',
             transition: 'all 0.2s ease',
             resize: 'none'
           }}
         />
         {errors.message && (
           <p style={{
-            color: '#FF6B6B',
+            color: '#EF4444',
             fontSize: '12px',
             marginTop: '6px',
             fontWeight: 600
@@ -250,7 +253,7 @@ export default function ContactForm() {
           </p>
         )}
         <p style={{
-          color: '#999',
+          color: 'var(--text-muted)',
           fontSize: '11px',
           marginTop: '6px',
           textAlign: 'right'
@@ -262,11 +265,11 @@ export default function ContactForm() {
       {status === 'error' && (
         <div style={{
           padding: '16px',
-          backgroundColor: '#FF6B6B',
-          border: '4px solid #000',
+          backgroundColor: 'rgba(239, 68, 68, 0.15)',
+          border: '1px solid rgba(239, 68, 68, 0.3)',
           borderRadius: '4px',
           marginBottom: '24px',
-          color: '#000',
+          color: '#EF4444',
           fontWeight: 600,
           fontSize: '14px'
         }}>
@@ -277,11 +280,11 @@ export default function ContactForm() {
       {status === 'success' && (
         <div style={{
           padding: '16px',
-          backgroundColor: '#A8E6CF',
-          border: '4px solid #000',
+          backgroundColor: 'rgba(34, 197, 94, 0.15)',
+          border: '1px solid rgba(34, 197, 94, 0.3)',
           borderRadius: '4px',
           marginBottom: '24px',
-          color: '#000',
+          color: '#22C55E',
           fontWeight: 600,
           fontSize: '14px'
         }}>
@@ -295,17 +298,16 @@ export default function ContactForm() {
         style={{
           width: '100%',
           padding: '16px 24px',
-          backgroundColor: status === 'loading' ? '#CCC' : '#FFD700',
-          border: '4px solid #000',
+          backgroundColor: status === 'loading' ? '#64748B' : 'var(--gold)',
+          border: 'none',
           borderRadius: '4px',
           fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
           fontSize: '16px',
           fontWeight: 900,
-          color: '#000',
+          color: '#0B1120',
           cursor: status === 'loading' ? 'not-allowed' : 'pointer',
-          boxShadow: '6px 6px 0px rgba(0,0,0,0.3)',
+          boxShadow: 'none',
           transition: 'all 0.2s ease',
-          textShadow: '1px 1px 0px rgba(255,255,255,0.4)'
         }}
         onMouseEnter={(e) => {
           if (status !== 'loading') {

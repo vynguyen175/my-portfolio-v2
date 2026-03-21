@@ -13,32 +13,32 @@ export default function Skills() {
     {
       category: "Frontend",
       items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "HTML/CSS", "JavaScript", "Java", "JavaFX"],
-      bgColor: "#FF6B6B"
+      bgColor: "transparent"
     },
     {
       category: "Backend",
       items: ["Node.js", "Python", "C#", "PostgreSQL", "MongoDB", "Express", "REST APIs"],
-      bgColor: "#4ECDC4"
+      bgColor: "transparent"
     },
     {
       category: "Tools & Platforms",
       items: ["Git", "Docker", "AWS", "Vercel", "VS Code", "Figma"],
-      bgColor: "#FFE66D"
+      bgColor: "transparent"
     },
     {
       category: "AI / Machine Learning",
       items: ["Python", "Streamlit", "Pandas", "NumPy", "Scikit-learn", "TensorFlow"],
-      bgColor: "#A8E6CF"
+      bgColor: "transparent"
     },
     {
       category: "Mobile",
       items: ["Android", "Swift", "React Native", "Kotlin"],
-      bgColor: "#B8A9C9"
+      bgColor: "transparent"
     },
     {
       category: "Data Science",
       items: ["Data Analysis", "Statistics", "Visualization", "ML Models"],
-      bgColor: "#FFD3B6"
+      bgColor: "transparent"
     }
   ];
 
@@ -76,16 +76,9 @@ export default function Skills() {
                     }}
                   >
                     {/* Category Header */}
-                    <h2 style={{
-                      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+                    <h2 className="section-heading" style={{
                       fontSize: 'clamp(16px, 4vw, 22px)',
-                      fontWeight: 800,
-                      color: '#000',
-                      margin: 0,
                       marginBottom: '20px',
-                      textShadow: '1px 1px 0px rgba(255,255,255,0.4)',
-                      lineHeight: 1.2,
-                      letterSpacing: '0.5px'
                     }}>
                       {category.category}
                     </h2>
@@ -111,7 +104,6 @@ export default function Skills() {
                 textAlign: 'center',
                 padding: '32px 16px',
                 marginTop: '48px',
-                animation: 'float 1s ease-in-out infinite'
               }}>
                 <span className="section-footer">
                   ALL SKILLS UNLOCKED

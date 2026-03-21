@@ -42,14 +42,12 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     });
   };
 
-  // Prevent hydration mismatch
-  if (!isMounted) {
-    return <>{children}</>;
-  }
-
+  // Always render within the Provider so useTheme() never throws.
+  // Before mount, we hide content to avoid a flash of unstyled content,
+  // then reveal once the real theme is resolved from localStorage/system.
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      {children}
+      {isMounted ? children : null}
     </ThemeContext.Provider>
   );
 }

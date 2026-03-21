@@ -29,12 +29,12 @@ export default function Philosophy() {
                 textAlign: 'center',
                 marginBottom: '40px',
                 padding: '24px',
-                borderLeft: '6px solid #FFD700',
-                background: 'rgba(255, 215, 0, 0.08)',
+                borderLeft: '6px solid var(--gold)',
+                background: 'var(--gold-dim)',
                 borderRadius: '0 8px 8px 0',
               }}>
                 <p style={{
-                  color: '#FFD700',
+                  color: 'var(--gold-text)',
                   fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
                   fontSize: 'clamp(16px, 3vw, 22px)',
                   fontWeight: 700,
@@ -42,7 +42,6 @@ export default function Philosophy() {
                   margin: 0,
                   marginBottom: '12px',
                   lineHeight: '1.6',
-                  textShadow: '1px 1px 0px rgba(0,0,0,0.3)',
                 }}>
                   &ldquo;We are the facilitators of our own creative evolution.&rdquo;
                 </p>
@@ -63,15 +62,13 @@ export default function Philosophy() {
                 <div
                   className="about-card"
                   style={{
-                    backgroundColor: '#FFE66D',
                     padding: '32px',
-                    animation: 'none',
                     cursor: 'default',
                   }}
                 >
                   <p style={{
                     fontSize: '15px',
-                    color: '#000',
+                    color: 'var(--text-secondary)',
                     lineHeight: '1.8',
                     margin: 0,
                     marginBottom: '20px',
@@ -82,7 +79,7 @@ export default function Philosophy() {
                   </p>
                   <p style={{
                     fontSize: '15px',
-                    color: '#000',
+                    color: 'var(--text-secondary)',
                     lineHeight: '1.8',
                     margin: 0,
                     fontWeight: 500,
@@ -95,31 +92,23 @@ export default function Philosophy() {
 
               {/* Core Beliefs */}
               <section>
-                <h2 style={{
-                  color: '#FFD700',
-                  fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-                  fontSize: 'clamp(20px, 4vw, 28px)',
-                  fontWeight: 800,
-                  marginBottom: '24px',
-                  textShadow: '2px 2px 0px rgba(0,0,0,0.2)',
-                  letterSpacing: '1px',
-                }}>
+                <h2 className="section-heading" style={{ marginBottom: '24px' }}>
                   CORE BELIEFS
                 </h2>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                  <div className="focus-item" style={{ animation: 'none' }}>
+                  <div className="focus-item">
                     <strong>Build to solve, not to impress.</strong> The best code is the code that makes someone&apos;s life easier.
                   </div>
-                  <div className="focus-item" style={{ animation: 'none' }}>
+                  <div className="focus-item">
                     <strong>Own the outcome.</strong> Take responsibility for the full lifecycle &mdash; from understanding requirements to deploying and maintaining the product.
                   </div>
-                  <div className="focus-item" style={{ animation: 'none' }}>
+                  <div className="focus-item">
                     <strong>Learn by shipping.</strong> Theory matters, but deploying real projects to real users is where the deepest learning happens.
                   </div>
-                  <div className="focus-item" style={{ animation: 'none' }}>
+                  <div className="focus-item">
                     <strong>Communicate clearly.</strong> Writing clean code and writing clear documentation are equally important skills.
                   </div>
-                  <div className="focus-item" style={{ animation: 'none' }}>
+                  <div className="focus-item">
                     <strong>Stay hungry.</strong> The tech landscape changes fast. The only sustainable advantage is the willingness to keep learning.
                   </div>
                 </div>
@@ -129,7 +118,6 @@ export default function Philosophy() {
               <div style={{
                 textAlign: 'center',
                 padding: '48px 16px 16px',
-                animation: 'float 1s ease-in-out infinite',
               }}>
                 <span className="section-footer">
                   EVOLVING EVERY DAY

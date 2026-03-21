@@ -36,26 +36,16 @@ export default function About() {
             <section
               className="about-card"
               style={{
-                backgroundColor: '#FF6B6B',
                 padding: '24px',
                 animationDelay: '0s'
               }}
             >
-              <h2 style={{
-                fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-                fontSize: 'clamp(18px, 4vw, 24px)',
-                fontWeight: 800,
-                color: '#000',
-                margin: 0,
-                marginBottom: '16px',
-                textShadow: '1px 1px 0px rgba(255,255,255,0.4)',
-                letterSpacing: '0.5px'
-              }}>
+              <h2 className="section-heading">
                 WHO I AM
               </h2>
               <p style={{
                 fontSize: '14px',
-                color: '#000',
+                color: 'var(--text-secondary)',
                 lineHeight: '1.6',
                 margin: 0,
                 fontWeight: 500
@@ -68,21 +58,11 @@ export default function About() {
             <section
               className="about-card"
               style={{
-                backgroundColor: '#4ECDC4',
                 padding: '24px',
                 animationDelay: '0.1s'
               }}
             >
-              <h2 style={{
-                fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-                fontSize: 'clamp(18px, 4vw, 24px)',
-                fontWeight: 800,
-                color: '#000',
-                margin: 0,
-                marginBottom: '16px',
-                textShadow: '1px 1px 0px rgba(255,255,255,0.4)',
-                letterSpacing: '0.5px'
-              }}>
+              <h2 className="section-heading">
                 MY FOCUS
               </h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
@@ -105,26 +85,16 @@ export default function About() {
             <section
               className="about-card"
               style={{
-                backgroundColor: '#A8E6CF',
                 padding: '24px',
                 animationDelay: '0.2s'
               }}
             >
-              <h2 style={{
-                fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-                fontSize: 'clamp(18px, 4vw, 24px)',
-                fontWeight: 800,
-                color: '#000',
-                margin: 0,
-                marginBottom: '16px',
-                textShadow: '1px 1px 0px rgba(255,255,255,0.4)',
-                letterSpacing: '0.5px'
-              }}>
+              <h2 className="section-heading">
                 WHAT I VALUE
               </h2>
               <p style={{
                 fontSize: '14px',
-                color: '#000',
+                color: 'var(--text-secondary)',
                 lineHeight: '1.6',
                 margin: 0,
                 fontWeight: 500
@@ -139,21 +109,11 @@ export default function About() {
             <div
               className="about-card"
               style={{
-                backgroundColor: '#FFE66D',
                 padding: '24px',
                 animationDelay: '0.3s',
               }}
             >
-              <h2 style={{
-                fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-                fontSize: 'clamp(18px, 4vw, 24px)',
-                fontWeight: 800,
-                color: '#000',
-                margin: 0,
-                marginBottom: '16px',
-                textShadow: '1px 1px 0px rgba(255,255,255,0.4)',
-                letterSpacing: '0.5px'
-              }}>
+              <h2 className="section-heading">
                 EXPERIENCE
               </h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
@@ -184,27 +144,17 @@ export default function About() {
             <div
               className="about-card"
               style={{
-                backgroundColor: '#FF6B6B',
                 padding: '24px',
                 animationDelay: '0.4s',
               }}
             >
-              <h2 style={{
-                fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-                fontSize: 'clamp(18px, 4vw, 24px)',
-                fontWeight: 800,
-                color: '#000',
-                margin: 0,
-                marginBottom: '16px',
-                textShadow: '1px 1px 0px rgba(255,255,255,0.4)',
-                letterSpacing: '0.5px'
-              }}>
+              <h2 className="section-heading">
                 EDUCATION
               </h2>
               <p style={{
                 fontSize: '15px',
                 fontWeight: 700,
-                color: '#000',
+                color: 'var(--text-primary)',
                 margin: 0,
                 marginBottom: '4px'
               }}>
@@ -213,7 +163,7 @@ export default function About() {
               <p style={{
                 fontSize: '13px',
                 fontWeight: 600,
-                color: '#000',
+                color: 'var(--text-secondary)',
                 margin: 0,
                 marginBottom: '4px'
               }}>
@@ -221,7 +171,7 @@ export default function About() {
               </p>
               <p style={{
                 fontSize: '13px',
-                color: '#000',
+                color: 'var(--text-secondary)',
                 margin: 0,
                 marginBottom: '8px'
               }}>
@@ -229,15 +179,7 @@ export default function About() {
               </p>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
                 {['OOP', 'Data Structures & Algorithms', 'Applied ML', 'Full Stack Dev', 'Mobile App Dev', 'Software Testing & QA'].map((course) => (
-                  <span key={course} style={{
-                    border: '2px solid #000',
-                    background: 'white',
-                    padding: '6px 10px',
-                    fontSize: '11px',
-                    fontWeight: 700,
-                    borderRadius: '2px',
-                    boxShadow: '2px 2px 0px rgba(0,0,0,0.2)',
-                  }}>
+                  <span key={course} className="tech-badge">
                     {course}
                   </span>
                 ))}
@@ -250,21 +192,11 @@ export default function About() {
             <div
               className="about-card"
               style={{
-                backgroundColor: '#4ECDC4',
                 padding: '24px',
                 animationDelay: '0.5s',
               }}
             >
-              <h2 style={{
-                fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-                fontSize: 'clamp(18px, 4vw, 24px)',
-                fontWeight: 800,
-                color: '#000',
-                margin: 0,
-                marginBottom: '16px',
-                textShadow: '1px 1px 0px rgba(255,255,255,0.4)',
-                letterSpacing: '0.5px'
-              }}>
+              <h2 className="section-heading">
                 CERTIFICATIONS & ACTIVITIES
               </h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
@@ -282,7 +214,6 @@ export default function About() {
           <div style={{
             textAlign: 'center',
             padding: '48px 16px',
-            animation: 'float 1s ease-in-out infinite'
           }}>
             <span className="section-footer">
               READY TO COLLABORATE

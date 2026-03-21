@@ -145,7 +145,7 @@ export default function MarioGame() {
           // Brick top position (where Mario stands)
           const brickTop = h - groundHeight;
 
-          // Mario — standing ON TOP of the brick row
+          // Mario - standing ON TOP of the brick row
           const marioX = 120;
           const marioScale = 0.6;
           const marioHeight = 150 * marioScale; // Approximate sprite height
@@ -161,7 +161,7 @@ export default function MarioGame() {
 
           (mario as any).direction = 1; // 1 = right, -1 = left
 
-          // Lucky boxes — positioned in center/right area with responsive spacing
+          // Lucky boxes - positioned in center/right area with responsive spacing
           const boxes = this.physics.add.staticGroup();
           const boxY = 85;
 
@@ -585,7 +585,7 @@ export default function MarioGame() {
       }
 
       const config: any = {
-        type: Phaser.AUTO,
+        type: Phaser.CANVAS,
         parent: 'game-container',
         width: window.innerWidth,
         height: window.innerHeight,
@@ -674,11 +674,16 @@ export default function MarioGame() {
       }
       if (gameRef.current) {
         try {
-          gameRef.current.destroy(true);
+          gameRef.current.destroy(true, false);
         } catch (e) {
           console.log('Game cleanup error:', e);
         }
         gameRef.current = null;
+      }
+      // Ensure the container is fully cleared so no orphaned canvases remain
+      const container = document.getElementById('game-container');
+      if (container) {
+        container.innerHTML = '';
       }
       initializingRef.current = false;
     };

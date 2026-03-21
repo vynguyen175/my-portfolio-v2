@@ -1,5 +1,5 @@
 // ============================================================
-// Pixel Art Sprite Generator — Original Retro Platformer Style
+// Pixel Art Sprite Generator - Original Retro Platformer Style
 // Each sprite is drawn pixel-by-pixel on a canvas element
 // ============================================================
 

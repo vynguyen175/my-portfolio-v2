@@ -14,17 +14,17 @@ export default function Projects() {
   const [imageIndexes, setImageIndexes] = useState<{ [key: number]: number }>({});
 
   const categoryColors: { [key: string]: string } = {
-    'AI / Machine Learning': '#FFFF00',
-    'E-Commerce': '#FFFF00',
-    'Web Application': '#FFFF00',
-    'Data Visualization': '#FFFF00',
-    'Frontend': '#FFFF00',
-    'Backend': '#FFFF00',
-    'Full Stack': '#FFFF00',
-    'Game Development': '#FFFF00',
+    'AI / Machine Learning': 'transparent',
+    'E-Commerce': 'transparent',
+    'Web Application': 'transparent',
+    'Data Visualization': 'transparent',
+    'Frontend': 'transparent',
+    'Backend': 'transparent',
+    'Full Stack': 'transparent',
+    'Game Development': 'transparent',
   };
 
-  const getCategoryColor = (category: string) => categoryColors[category] || '#FFFF00';
+  const getCategoryColor = (category: string) => categoryColors[category] || 'transparent';
 
   return (
     <MarioBackground>
@@ -37,29 +37,10 @@ export default function Projects() {
           <div className="content-backdrop">
             {/* Title */}
           <header style={{ textAlign: 'center', marginBottom: '48px' }}>
-            <h1 style={{
-              textShadow: '0 0 20px rgba(255, 255, 0, 0.6), 6px 6px 0px rgba(0,0,0,0.4)',
-              color: '#FFFF00',
-              fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-              fontSize: 'clamp(32px, 6vw, 56px)',
-              fontWeight: 900,
-              margin: 0,
-              marginBottom: '8px',
-              letterSpacing: '3px',
-              textTransform: 'uppercase'
-            }}>
+            <h1 className="page-title">
               PROJECTS
             </h1>
-            <p style={{
-              color: '#FFFF00',
-              textShadow: '0 0 10px rgba(255, 255, 0, 0.5), 2px 2px 0px rgba(0,0,0,0.3)',
-              fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-              fontSize: 'clamp(14px, 3vw, 18px)',
-              fontWeight: 700,
-              margin: 0,
-              letterSpacing: '2px',
-              textTransform: 'uppercase'
-            }}>
+            <p className="page-subtitle">
               WHAT I&apos;VE BUILT
             </p>
           </header>
@@ -81,8 +62,8 @@ export default function Projects() {
                     minWidth: 0,
                     position: 'relative',
                     overflow: 'hidden',
-                    borderRight: !isImageRight ? '4px solid #000' : 'none',
-                    borderLeft: isImageRight ? '4px solid #000' : 'none',
+                    borderRight: !isImageRight ? '1px solid var(--border)' : 'none',
+                    borderLeft: isImageRight ? '1px solid var(--border)' : 'none',
                   }}>
                     <img
                       src={project.images[imageIndexes[project.id] || 0]}
@@ -119,8 +100,8 @@ export default function Projects() {
                           aria-label="Previous screenshot"
                           style={{
                             background: 'none',
-                            border: '2px solid #FFD700',
-                            color: '#FFD700',
+                            border: '2px solid var(--gold)',
+                            color: 'var(--gold)',
                             padding: '4px 10px',
                             cursor: 'pointer',
                             fontWeight: 900,
@@ -131,7 +112,7 @@ export default function Projects() {
                           &lt;
                         </button>
                         <span style={{
-                          color: '#FFD700',
+                          color: 'var(--gold)',
                           fontSize: '12px',
                           fontWeight: 700,
                         }}>
@@ -149,8 +130,8 @@ export default function Projects() {
                           aria-label="Next screenshot"
                           style={{
                             background: 'none',
-                            border: '2px solid #FFD700',
-                            color: '#FFD700',
+                            border: '2px solid var(--gold)',
+                            color: 'var(--gold)',
                             padding: '4px 10px',
                             cursor: 'pointer',
                             fontWeight: 900,
@@ -178,34 +159,25 @@ export default function Projects() {
                         fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
                         fontSize: '20px',
                         fontWeight: 900,
-                        color: '#000',
+                        color: 'var(--text-primary)',
                         margin: 0,
                         marginBottom: '8px',
-                        textShadow: '2px 2px 0px rgba(0,0,0,0.1)',
                         textTransform: 'uppercase',
                         letterSpacing: '1px'
                       }}>
                         {project.title}
                       </h3>
 
-                      <div style={{
+                      <div className="tech-badge" style={{
                         display: 'inline-block',
-                        backgroundColor: 'rgba(255,255,255,0.7)',
-                        border: '2px solid #000',
-                        padding: '4px 8px',
-                        borderRadius: '2px',
-                        fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-                        fontSize: '11px',
-                        fontWeight: 700,
                         marginBottom: '12px',
-                        boxShadow: '2px 2px 0px rgba(0,0,0,0.2)'
                       }}>
                         {project.category}
                       </div>
 
                       <p style={{
                         fontSize: '13px',
-                        color: '#000',
+                        color: 'var(--text-secondary)',
                         lineHeight: '1.6',
                         marginBottom: '8px',
                         fontWeight: 600
@@ -219,36 +191,77 @@ export default function Projects() {
                           setExpandedProject(expandedProject === project.id ? null : project.id);
                         }}
                         aria-expanded={expandedProject === project.id}
+                        className="nav-btn"
                         style={{
-                          background: 'rgba(0,0,0,0.1)',
-                          border: '2px solid #000',
-                          padding: '4px 10px',
                           fontSize: '11px',
-                          fontWeight: 700,
-                          cursor: 'pointer',
-                          borderRadius: '2px',
+                          padding: '5px 12px',
                           marginBottom: '12px',
-                          transition: 'all 0.2s ease',
-                          boxShadow: '2px 2px 0px rgba(0,0,0,0.15)',
                         }}
                       >
-                        {expandedProject === project.id ? 'SHOW LESS' : 'READ MORE'}
+                        {expandedProject === project.id ? 'Show Less' : 'Full Write-Up'}
                       </button>
 
                       {expandedProject === project.id && (
-                        <p style={{
-                          fontSize: '12px',
-                          color: '#000',
-                          lineHeight: '1.7',
+                        <div style={{
+                          padding: '16px',
+                          background: 'var(--surface)',
+                          border: '1px solid var(--border)',
+                          borderRadius: 'var(--radius-sm)',
                           marginBottom: '12px',
-                          fontWeight: 500,
-                          padding: '12px',
-                          background: 'rgba(255,255,255,0.5)',
-                          border: '2px solid #000',
-                          borderRadius: '2px',
+                          display: 'flex',
+                          flexDirection: 'column',
+                          gap: '16px',
                         }}>
-                          {project.longDescription}
-                        </p>
+                          {/* Course & Semester */}
+                          <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
+                            <span className="tech-badge" style={{ margin: 0 }}>{project.course}</span>
+                            <span className="tech-badge" style={{ margin: 0 }}>{project.semester}</span>
+                          </div>
+
+                          {/* Problem Statement */}
+                          <div>
+                            <h4 style={{ color: 'var(--text-primary)', fontSize: '12px', fontWeight: 700, marginBottom: '4px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                              Problem Statement
+                            </h4>
+                            <p style={{ color: 'var(--text-secondary)', fontSize: '13px', lineHeight: 1.7, margin: 0 }}>
+                              {project.longDescription}
+                            </p>
+                          </div>
+
+                          {/* Approach */}
+                          <div>
+                            <h4 style={{ color: 'var(--text-primary)', fontSize: '12px', fontWeight: 700, marginBottom: '4px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                              Approach
+                            </h4>
+                            <p style={{ color: 'var(--text-secondary)', fontSize: '13px', lineHeight: 1.7, margin: 0 }}>
+                              {project.approach}
+                            </p>
+                          </div>
+
+                          {/* Technical Decisions */}
+                          <div>
+                            <h4 style={{ color: 'var(--text-primary)', fontSize: '12px', fontWeight: 700, marginBottom: '4px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                              Technical Decisions
+                            </h4>
+                            <p style={{ color: 'var(--text-secondary)', fontSize: '13px', lineHeight: 1.7, margin: 0 }}>
+                              {project.technicalDecisions}
+                            </p>
+                          </div>
+
+                          {/* Key Learnings */}
+                          <div>
+                            <h4 style={{ color: 'var(--text-primary)', fontSize: '12px', fontWeight: 700, marginBottom: '6px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                              Key Learnings
+                            </h4>
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                              {project.keyLearnings.map((learning, li) => (
+                                <div key={li} className="focus-item" style={{ margin: 0, fontSize: '12px', padding: '10px 14px' }}>
+                                  {learning}
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
                       )}
 
                       <div style={{ marginBottom: '16px' }}>
