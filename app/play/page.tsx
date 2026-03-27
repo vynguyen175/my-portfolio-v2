@@ -151,18 +151,24 @@ export default function Play() {
   }
 
   return (
-    <div style={{ margin: 0, padding: 0, width: '100%', height: '100%', overflow: 'hidden' }}>
+    <div style={{ margin: 0, padding: 0, width: '100vw', height: '100vh', overflow: 'hidden', position: 'relative' }}>
       <Link
         href="/"
-        className="nav-btn"
         style={{
           position: 'fixed',
           top: '16px',
           left: '16px',
-          zIndex: 1000,
+          zIndex: 9999,
           backgroundColor: '#FFD700',
           border: '4px solid #000',
+          borderRadius: '8px',
+          padding: '10px 20px',
+          fontWeight: 700,
+          fontSize: '13px',
+          color: '#000',
+          textDecoration: 'none',
           letterSpacing: '1px',
+          cursor: 'pointer',
         }}
       >
         BACK TO HOME

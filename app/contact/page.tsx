@@ -8,6 +8,7 @@ import HamburgerButton from '@/components/HamburgerButton';
 import PageTransition from '@/components/PageTransition';
 import ContactForm from '@/components/ContactForm';
 import AnimatedElement from '@/components/AnimatedElement';
+import TiltCard from '@/components/TiltCard';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
 
@@ -65,42 +66,45 @@ export default function Contact() {
                 const IconComponent = social.icon;
                 return (
                   <AnimatedElement key={social.name} variant="slideUp" delay={idx * 100}>
-                    <Link
-                      href={social.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="social-card"
-                      aria-label={`${social.name} - ${social.description}`}
-                      style={{
-                        color: 'var(--text-primary)'
-                      }}
-                    >
-                      <div style={{
-                        fontSize: '48px',
-                        marginBottom: '12px'
-                      }}>
-                        <IconComponent size={48} color="var(--gold-text)" />
-                      </div>
-                      <h3 style={{
-                        fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-                        fontSize: '18px',
-                        fontWeight: 800,
-                        color: 'var(--text-primary)',
-                        margin: 0,
-                        marginBottom: '8px',
-                      }}>
-                        {social.name}
-                      </h3>
-                      <p style={{
-                        fontSize: '12px',
-                        color: 'var(--text-secondary)',
-                        margin: 0,
-                        fontWeight: 500,
-                        lineHeight: '1.4'
-                      }}>
-                        {social.description}
-                      </p>
-                    </Link>
+                    <TiltCard style={{ height: '100%' }}>
+                      <Link
+                        href={social.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="social-card"
+                        aria-label={`${social.name} - ${social.description}`}
+                        style={{
+                          color: 'var(--text-primary)',
+                          height: '100%',
+                        }}
+                      >
+                        <div style={{
+                          fontSize: '48px',
+                          marginBottom: '12px'
+                        }}>
+                          <IconComponent size={48} color="var(--gold-text)" />
+                        </div>
+                        <h3 style={{
+                          fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+                          fontSize: '18px',
+                          fontWeight: 800,
+                          color: 'var(--text-primary)',
+                          margin: 0,
+                          marginBottom: '8px',
+                        }}>
+                          {social.name}
+                        </h3>
+                        <p style={{
+                          fontSize: '12px',
+                          color: 'var(--text-secondary)',
+                          margin: 0,
+                          fontWeight: 500,
+                          lineHeight: '1.4'
+                        }}>
+                          {social.description}
+                        </p>
+                      </Link>
+                    </TiltCard>
                   </AnimatedElement>
                 );
               })}

@@ -5,6 +5,8 @@ import MarioBackground from '@/components/MarioBackground';
 import Sidebar from '@/components/Sidebar';
 import HamburgerButton from '@/components/HamburgerButton';
 import PageTransition from '@/components/PageTransition';
+import TiltCard from '@/components/TiltCard';
+import AnimatedElement from '@/components/AnimatedElement';
 
 export default function Skills() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -66,36 +68,30 @@ export default function Skills() {
                 padding: '0 8px'
               }}>
                 {skillCategories.map((category, idx) => (
-                  <section
-                    key={category.category}
-                    className="skill-box p-4 md:p-6"
-                    aria-label={`${category.category} skills`}
-                    style={{
-                      backgroundColor: category.bgColor,
-                      animationDelay: `${idx * 0.1}s`
-                    }}
-                  >
-                    {/* Category Header */}
-                    <h2 className="section-heading" style={{
-                      fontSize: 'clamp(16px, 4vw, 22px)',
-                      marginBottom: '20px',
-                    }}>
-                      {category.category}
-                    </h2>
+                  <AnimatedElement key={category.category} variant="slideUp" delay={idx * 100}>
+                    <TiltCard
+                      className="skill-box p-4 md:p-6"
+                      style={{ height: '100%' }}
+                    >
+                      <h2 className="section-heading" style={{
+                        fontSize: 'clamp(16px, 4vw, 22px)',
+                        marginBottom: '20px',
+                      }}>
+                        {category.category}
+                      </h2>
 
-                    {/* Skills */}
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '2px' }}>
-                      {category.items.map((skill, i) => (
-                        <span
-                          key={skill}
-                          className="skill-item"
-                          style={{ animationDelay: `${idx * 0.1 + i * 0.03}s` }}
-                        >
-                          {skill}
-                        </span>
-                      ))}
-                    </div>
-                  </section>
+                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '2px' }}>
+                        {category.items.map((skill) => (
+                          <span
+                            key={skill}
+                            className="skill-item"
+                          >
+                            {skill}
+                          </span>
+                        ))}
+                      </div>
+                    </TiltCard>
+                  </AnimatedElement>
                 ))}
               </div>
 

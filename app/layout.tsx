@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ThemeProviderWrapper from "@/components/ThemeProviderWrapper";
+import AppShell from "@/components/AppShell";
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://my-portfolio-vynguyen.vercel.app"),
@@ -44,7 +45,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ThemeProviderWrapper>
-          {children}
+          <AppShell>
+            {children}
+          </AppShell>
         </ThemeProviderWrapper>
       </body>
     </html>

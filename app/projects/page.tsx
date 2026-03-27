@@ -64,15 +64,18 @@ export default function Projects() {
                     overflow: 'hidden',
                     borderRight: !isImageRight ? '1px solid var(--border)' : 'none',
                     borderLeft: isImageRight ? '1px solid var(--border)' : 'none',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    background: 'rgba(0, 0, 0, 0.15)',
                   }}>
                     <img
                       src={project.images[imageIndexes[project.id] || 0]}
                       alt={`${project.title} screenshot ${(imageIndexes[project.id] || 0) + 1}`}
                       style={{
                         width: '100%',
-                        height: '100%',
-                        minHeight: 'clamp(200px, 40vw, 300px)',
-                        objectFit: 'cover',
+                        maxHeight: '400px',
+                        objectFit: 'contain',
                         display: 'block',
                       }}
                     />

@@ -66,9 +66,10 @@ function MarioBackgroundContent({ children }: { children: React.ReactNode }) {
 
       // Draw bushes (fewer, near ground edges only)
       const bushCanvas = generateBushSprite();
+      const bushY = canvas.height - 100 - 24; // sit on top of ground
       const bushes = [
-        { x: 30, y: canvas.height - 200 },
-        { x: canvas.width - 120, y: canvas.height - 210 },
+        { x: 30, y: bushY },
+        { x: canvas.width - 120, y: bushY },
       ];
       bushes.forEach(bush => {
         if (bush.x < canvas.width) ctx.drawImage(bushCanvas, bush.x, bush.y);
