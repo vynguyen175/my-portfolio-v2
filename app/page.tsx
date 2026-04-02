@@ -1,24 +1,25 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import dynamic from 'next/dynamic';
-
-const World3D = dynamic(() => import('@/components/3d/World3D'), { ssr: false });
-const MobileFallback = dynamic(() => import('@/components/3d/MobileFallback'), { ssr: false });
+import HeroSection from '@/components/sections/HeroSection';
+import AboutSection from '@/components/sections/AboutSection';
+import ProjectsSection from '@/components/sections/ProjectsSection';
+import SkillsSection from '@/components/sections/SkillsSection';
+import CredentialsSection from '@/components/sections/CredentialsSection';
+import ContactSection from '@/components/sections/ContactSection';
+import FloatingElements from '@/components/FloatingElements';
+import SectionNav from '@/components/SectionNav';
 
 export default function Home() {
-  const [isMobile, setIsMobile] = useState(false);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-    const check = () => setIsMobile(window.innerWidth < 768);
-    check();
-    window.addEventListener('resize', check);
-    return () => window.removeEventListener('resize', check);
-  }, []);
-
-  if (!mounted) return null;
-
-  return isMobile ? <MobileFallback /> : <World3D />;
+  return (
+    <main style={{ position: 'relative', overflowX: 'hidden' }}>
+      <FloatingElements />
+      <SectionNav />
+      <HeroSection />
+      <AboutSection />
+      <ProjectsSection />
+      <SkillsSection />
+      <CredentialsSection />
+      <ContactSection />
+    </main>
+  );
 }

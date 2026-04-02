@@ -16,7 +16,6 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   const [mounted, setMounted] = useState(false);
   const [isRoot, setIsRoot] = useState(false);
 
-  // Check sessionStorage after mount to avoid hydration mismatch
   useEffect(() => {
     setMounted(true);
     setIsRoot(window.location.pathname === '/');
@@ -26,13 +25,15 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   }, []);
 
   useEffect(() => {
-    if (loading && mounted) {
+    if (loading && mounted && !isRoot) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
     }
-    return () => { document.body.style.overflow = ''; };
-  }, [loading, mounted]);
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [loading, mounted, isRoot]);
 
   const handleComplete = useCallback(() => {
     window.scrollTo(0, 0);
@@ -40,23 +41,12 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     setLoading(false);
   }, []);
 
-  const showLoader = loading && mounted;
-
-  // On the root 3D route, only keep cursor and context menu — World3D handles the rest
-  if (isRoot) {
-    return (
-      <>
-        <CustomCursor />
-        <ContextMenu />
-        {children}
-      </>
-    );
-  }
+  const showLoader = loading && mounted && !isRoot;
 
   return (
     <>
       {showLoader && <LoadingScreen onComplete={handleComplete} />}
-      {!showLoader && mounted && (
+      {!isRoot && !showLoader && mounted && (
         <>
           <ScrollProgress />
           <StickyNav />
@@ -64,12 +54,14 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       )}
       <CustomCursor />
       <ContextMenu />
-      <ScrollToTop />
-      <GradientMesh />
-      <div style={{
-        opacity: (!mounted || showLoader) ? 0 : 1,
-        transition: mounted ? 'opacity 0.5s ease 0.2s' : 'none',
-      }}>
+      {!isRoot && <ScrollToTop />}
+      {!isRoot && <GradientMesh />}
+      <div
+        style={{
+          opacity: !mounted || showLoader ? 0 : 1,
+          transition: mounted ? 'opacity 0.5s ease 0.2s' : 'none',
+        }}
+      >
         {children}
       </div>
     </>

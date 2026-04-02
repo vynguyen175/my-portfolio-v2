@@ -1,0 +1,214 @@
+'use client';
+
+import { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import ScrollReveal from '@/components/ScrollReveal';
+
+const cards = [
+  {
+    title: 'Who I Am',
+    body: 'A curious developer who loves building things that matter. I thrive at the intersection of design and engineering, turning complex problems into elegant, user-friendly solutions.',
+    icon: '🎮',
+  },
+  {
+    title: 'My Focus',
+    body: 'Full-stack web development, AI/ML applications, and mobile experiences. I believe great software should feel effortless — every interaction thoughtful, every detail intentional.',
+    icon: '🎯',
+  },
+  {
+    title: 'What I Value',
+    body: 'Clean code, continuous learning, and collaboration. I approach every project with empathy for users and respect for the craft. Open-source contributor and lifelong student.',
+    icon: '⭐',
+  },
+];
+
+export default function AboutSection() {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start end', 'end start'],
+  });
+
+  const marioY = useTransform(scrollYProgress, [0, 1], [80, -80]);
+  const marioRotate = useTransform(scrollYProgress, [0, 1], [5, -5]);
+
+  return (
+    <section
+      ref={ref}
+      id="about"
+      style={{
+        minHeight: '100vh',
+        position: 'relative',
+        overflow: 'hidden',
+        background: 'linear-gradient(180deg, #FFE4F0 0%, #E8D5FF 50%, #D4C4FF 100%)',
+        padding: '120px 40px',
+        display: 'flex',
+        alignItems: 'center',
+      }}
+    >
+      {/* Decorative circles */}
+      <div
+        style={{
+          position: 'absolute',
+          top: '10%',
+          right: '5%',
+          width: 300,
+          height: 300,
+          borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(240,201,70,0.15) 0%, transparent 70%)',
+        }}
+      />
+      <div
+        style={{
+          position: 'absolute',
+          bottom: '15%',
+          left: '-5%',
+          width: 400,
+          height: 400,
+          borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(229,37,33,0.08) 0%, transparent 70%)',
+        }}
+      />
+
+      <div
+        style={{
+          maxWidth: 1200,
+          margin: '0 auto',
+          width: '100%',
+          display: 'grid',
+          gridTemplateColumns: '350px 1fr',
+          gap: 80,
+          alignItems: 'center',
+        }}
+      >
+        {/* Left: Mario */}
+        <motion.div
+          style={{
+            y: marioY,
+            rotate: marioRotate,
+            display: 'flex',
+            justifyContent: 'center',
+          }}
+        >
+          <img
+            src="/sprites/mario-present.png"
+            alt="Mario presenting"
+            style={{
+              width: 'clamp(240px, 28vw, 350px)',
+              height: 'auto',
+              filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.12))',
+            }}
+          />
+        </motion.div>
+
+        {/* Right: Content */}
+        <div>
+          <ScrollReveal>
+            <div
+              style={{
+                display: 'inline-block',
+                padding: '6px 16px',
+                background: 'rgba(229, 37, 33, 0.1)',
+                borderRadius: 20,
+                fontSize: 13,
+                fontWeight: 700,
+                color: '#E52521',
+                marginBottom: 12,
+                letterSpacing: 0.5,
+              }}
+            >
+              About Me
+            </div>
+          </ScrollReveal>
+
+          <ScrollReveal delay={0.1}>
+            <h2
+              style={{
+                fontSize: 'clamp(36px, 5vw, 52px)',
+                fontWeight: 900,
+                color: '#1a1a2e',
+                lineHeight: 1.1,
+                margin: '0 0 16px',
+                letterSpacing: -1,
+              }}
+            >
+              Building digital
+              <br />
+              experiences with{' '}
+              <span style={{ color: '#E52521' }}>passion</span>
+            </h2>
+          </ScrollReveal>
+
+          <ScrollReveal delay={0.2}>
+            <p
+              style={{
+                fontSize: 16,
+                color: '#555',
+                lineHeight: 1.7,
+                maxWidth: 520,
+                margin: '0 0 40px',
+              }}
+            >
+              I&apos;m a Computer Science student and full-stack developer from
+              Toronto. I love turning ideas into polished products — from AI
+              dashboards to mobile apps, restaurants websites to game engines.
+            </p>
+          </ScrollReveal>
+
+          {/* Cards */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+            {cards.map((card, i) => (
+              <ScrollReveal key={card.title} delay={0.15 * (i + 2)} direction="left">
+                <div
+                  style={{
+                    padding: '24px 28px',
+                    background: 'rgba(255,255,255,0.7)',
+                    backdropFilter: 'blur(12px)',
+                    borderRadius: 16,
+                    border: '1px solid rgba(255,255,255,0.8)',
+                    boxShadow: '0 4px 24px rgba(0,0,0,0.06)',
+                    transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                  }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 8 }}>
+                    <span style={{ fontSize: 24 }}>{card.icon}</span>
+                    <h3
+                      style={{
+                        fontSize: 18,
+                        fontWeight: 800,
+                        color: '#1a1a2e',
+                        margin: 0,
+                      }}
+                    >
+                      {card.title}
+                    </h3>
+                  </div>
+                  <p
+                    style={{
+                      fontSize: 14,
+                      color: '#666',
+                      lineHeight: 1.7,
+                      margin: 0,
+                    }}
+                  >
+                    {card.body}
+                  </p>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <style>{`
+        @media (max-width: 900px) {
+          #about > div:last-of-type {
+            grid-template-columns: 1fr !important;
+            gap: 40px !important;
+            text-align: center;
+          }
+        }
+      `}</style>
+    </section>
+  );
+}
