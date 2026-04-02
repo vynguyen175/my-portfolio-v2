@@ -1,12 +1,30 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
+import { useFrame } from '@react-three/fiber';
 import GroundPlane from '../objects/GroundPlane';
 import Torch from '../objects/Torch';
 import ContentPanel from '../ContentPanel';
 import { projects } from '@/lib/projects';
+import * as THREE from 'three';
 
 const SECTION_X = 60;
+
+function LavaPlane() {
+  const ref = useRef<THREE.Mesh>(null!);
+  useFrame(({ clock }) => {
+    if (ref.current) {
+      const mat = ref.current.material as THREE.MeshStandardMaterial;
+      mat.emissiveIntensity = 0.5 + Math.sin(clock.elapsedTime * 1.5) * 0.3;
+    }
+  });
+  return (
+    <mesh ref={ref} position={[0, -1.5, 5]} rotation={[-Math.PI / 2, 0, 0]}>
+      <planeGeometry args={[35, 10]} />
+      <meshStandardMaterial color="#FF4500" emissive="#FF2200" emissiveIntensity={0.5} transparent opacity={0.7} />
+    </mesh>
+  );
+}
 
 function ProjectCard({ project, isActive, onClick }: {
   project: typeof projects[0];
@@ -47,26 +65,44 @@ export default function ProjectsSection() {
     <group position={[SECTION_X, 0, 0]}>
       <GroundPlane position={[0, -1, 0]} color="#6B5B3D" />
 
-      <mesh position={[0, 4, -8]} castShadow><boxGeometry args={[30, 10, 1]} /><meshStandardMaterial color="#8B7355" roughness={0.9} /></mesh>
+      {/* Castle wall with more detail */}
+      <mesh position={[0, 4, -8]} castShadow>
+        <boxGeometry args={[30, 10, 1]} />
+        <meshToonMaterial color="#8B7355" />
+      </mesh>
 
+      {/* Brick pattern */}
       {Array.from({ length: 5 }).map((_, row) =>
         Array.from({ length: 10 }).map((_, col) => (
           <mesh key={`brick-${row}-${col}`} position={[-13.5 + col * 3 + (row % 2 ? 1.5 : 0), row * 2, -7.4]}>
             <boxGeometry args={[2.8, 1.8, 0.2]} />
-            <meshStandardMaterial color={row % 2 === col % 2 ? '#7A6845' : '#8B7355'} />
+            <meshToonMaterial color={row % 2 === col % 2 ? '#7A6845' : '#8B7355'} />
           </mesh>
         ))
       )}
 
-      <mesh position={[0, -1.5, 5]} rotation={[-Math.PI / 2, 0, 0]}>
-        <planeGeometry args={[35, 10]} />
-        <meshStandardMaterial color="#FF4500" emissive="#FF2200" emissiveIntensity={0.5} transparent opacity={0.6} />
+      {/* Brick border trim */}
+      <mesh position={[0, 9.2, -7.3]}>
+        <boxGeometry args={[30, 0.4, 0.3]} />
+        <meshToonMaterial color="#5A4A30" />
+      </mesh>
+      <mesh position={[0, -0.8, -7.3]}>
+        <boxGeometry args={[30, 0.4, 0.3]} />
+        <meshToonMaterial color="#5A4A30" />
       </mesh>
 
-      <Torch position={[-8, 1, -6]} />
-      <Torch position={[-3, 1, -6]} />
-      <Torch position={[3, 1, -6]} />
-      <Torch position={[8, 1, -6]} />
+      {/* Animated lava */}
+      <LavaPlane />
+
+      {/* More torches for dramatic lighting */}
+      <Torch position={[-10, 1, -6]} />
+      <Torch position={[-5, 1, -6]} />
+      <Torch position={[0, 1, -6]} />
+      <Torch position={[5, 1, -6]} />
+      <Torch position={[10, 1, -6]} />
+
+      {/* Ambient red glow from below */}
+      <pointLight position={[0, -2, 5]} color="#FF4500" intensity={1.5} distance={15} decay={2} />
 
       <ContentPanel position={[0, 3, 2]} width="460px">
         <div>

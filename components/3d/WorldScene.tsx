@@ -2,6 +2,7 @@
 
 import { useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
+import { Environment } from '@react-three/drei';
 import { useNavigation } from './NavigationContext';
 import MarioCharacter from './MarioCharacter';
 import HeroSection from './sections/HeroSection';
@@ -13,9 +14,9 @@ import ContactSection from './sections/ContactSection';
 import * as THREE from 'three';
 
 const SKY_COLORS = [
-  new THREE.Color('#5BA3E6'), // Hero - blue
+  new THREE.Color('#87CEEB'), // Hero - bright blue sky
   new THREE.Color('#FF9BE4'), // About - sunset pink
-  new THREE.Color('#2A1A0A'), // Projects - dark castle
+  new THREE.Color('#1A0A0A'), // Projects - dark castle
   new THREE.Color('#0D0520'), // Skills - deep underground
   new THREE.Color('#050515'), // Credentials - space
   new THREE.Color('#FF8C42'), // Contact - warm sunset
@@ -28,23 +29,21 @@ export default function WorldScene() {
   const fogRef = useRef<THREE.Fog>(null!);
 
   useFrame(({ camera, scene }) => {
-    // Smooth camera follow
-    cameraTargetRef.current.set(targetX, 3, 20);
+    cameraTargetRef.current.set(targetX, 3, 18);
     lookAtRef.current.set(targetX, 1, 0);
 
-    camera.position.lerp(cameraTargetRef.current, 0.03);
+    camera.position.lerp(cameraTargetRef.current, 0.035);
 
     const currentLookAt = new THREE.Vector3();
     camera.getWorldDirection(currentLookAt);
     const desiredLookAt = lookAtRef.current.clone().sub(camera.position).normalize();
-    currentLookAt.lerp(desiredLookAt, 0.05);
+    currentLookAt.lerp(desiredLookAt, 0.06);
     camera.lookAt(
       camera.position.x + currentLookAt.x * 10,
       camera.position.y + currentLookAt.y * 10,
       camera.position.z + currentLookAt.z * 10,
     );
 
-    // Detect arrival
     const dist = Math.abs(camera.position.x - cameraTargetRef.current.x);
     if (dist < 0.1) setIsMoving(false);
 
@@ -62,13 +61,23 @@ export default function WorldScene() {
 
   return (
     <>
-      <ambientLight intensity={0.4} />
+      {/* Better lighting */}
+      <ambientLight intensity={0.3} />
+      <hemisphereLight args={['#87CEEB', '#228B22', 0.6]} />
       <directionalLight
-        position={[50, 30, 20]}
-        intensity={0.8}
+        position={[50, 40, 30]}
+        intensity={1.2}
         castShadow
-        shadow-mapSize={[1024, 1024]}
+        shadow-mapSize={[2048, 2048]}
+        shadow-camera-far={200}
+        shadow-camera-left={-50}
+        shadow-camera-right={50}
+        shadow-camera-top={50}
+        shadow-camera-bottom={-50}
       />
+
+      {/* Subtle environment reflections */}
+      <Environment preset="sunset" environmentIntensity={0.15} />
 
       {/* All 6 sections */}
       <HeroSection />
@@ -81,7 +90,7 @@ export default function WorldScene() {
       {/* Mario */}
       <MarioCharacter />
 
-      <fog ref={fogRef} attach="fog" args={['#5BA3E6', 30, 80]} />
+      <fog ref={fogRef} attach="fog" args={['#87CEEB', 40, 100]} />
     </>
   );
 }

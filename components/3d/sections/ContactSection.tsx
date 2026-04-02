@@ -14,16 +14,63 @@ export default function ContactSection() {
     <group position={[SECTION_X, 0, 0]}>
       <GroundPlane position={[0, -1, 0]} color="#2D5A27" />
 
+      {/* Warm sunset sky */}
       <mesh position={[0, 8, -25]}><planeGeometry args={[60, 30]} /><meshBasicMaterial color="#FF8C42" /></mesh>
+      <mesh position={[0, -2, -25]}><planeGeometry args={[60, 10]} /><meshBasicMaterial color="#FFB347" /></mesh>
 
-      <mesh position={[10, 3, -6]} castShadow><boxGeometry args={[6, 6, 4]} /><meshStandardMaterial color="#C4A882" /></mesh>
-      <mesh position={[10, 6.5, -6]} castShadow><coneGeometry args={[4, 3, 4]} /><meshStandardMaterial color="#E52521" /></mesh>
-      <mesh position={[10, 1, -3.9]}><planeGeometry args={[2, 3]} /><meshStandardMaterial color="#2D1810" /></mesh>
+      {/* Castle - more detailed */}
+      <mesh position={[10, 3, -6]} castShadow>
+        <boxGeometry args={[6, 6, 4]} />
+        <meshToonMaterial color="#C4A882" />
+      </mesh>
+      {/* Castle roof */}
+      <mesh position={[10, 6.5, -6]} castShadow>
+        <coneGeometry args={[4, 3, 4]} />
+        <meshToonMaterial color="#E52521" />
+      </mesh>
+      {/* Castle door */}
+      <mesh position={[10, 1, -3.9]}>
+        <planeGeometry args={[2, 3]} />
+        <meshToonMaterial color="#2D1810" />
+      </mesh>
+      {/* Castle door arch */}
+      <mesh position={[10, 2.6, -3.85]}>
+        <sphereGeometry args={[1, 16, 8, 0, Math.PI * 2, 0, Math.PI / 2]} />
+        <meshToonMaterial color="#C4A882" />
+      </mesh>
+      {/* Castle windows */}
+      <mesh position={[8.5, 4.5, -3.9]}>
+        <planeGeometry args={[0.8, 1]} />
+        <meshStandardMaterial color="#FFE066" emissive="#FFE066" emissiveIntensity={0.5} />
+      </mesh>
+      <mesh position={[11.5, 4.5, -3.9]}>
+        <planeGeometry args={[0.8, 1]} />
+        <meshStandardMaterial color="#FFE066" emissive="#FFE066" emissiveIntensity={0.5} />
+      </mesh>
+      {/* Castle turrets */}
+      <mesh position={[7.5, 5, -6]} castShadow>
+        <cylinderGeometry args={[0.5, 0.5, 2, 8]} />
+        <meshToonMaterial color="#C4A882" />
+      </mesh>
+      <mesh position={[12.5, 5, -6]} castShadow>
+        <cylinderGeometry args={[0.5, 0.5, 2, 8]} />
+        <meshToonMaterial color="#C4A882" />
+      </mesh>
+      <mesh position={[7.5, 6.2, -6]} castShadow>
+        <coneGeometry args={[0.7, 1, 8]} />
+        <meshToonMaterial color="#E52521" />
+      </mesh>
+      <mesh position={[12.5, 6.2, -6]} castShadow>
+        <coneGeometry args={[0.7, 1, 8]} />
+        <meshToonMaterial color="#E52521" />
+      </mesh>
 
       <Flagpole position={[-6, 3, -2]} />
 
-      <pointLight position={[0, 5, 5]} color="#FFB347" intensity={2} distance={20} />
-      <pointLight position={[10, 5, -3]} color="#FF6347" intensity={1} distance={15} />
+      {/* Warmer, more inviting lighting */}
+      <pointLight position={[0, 5, 5]} color="#FFB347" intensity={2.5} distance={20} />
+      <pointLight position={[10, 5, -3]} color="#FF6347" intensity={1.5} distance={15} />
+      <pointLight position={[-5, 3, 3]} color="#FFD700" intensity={0.8} distance={12} />
 
       <ContentPanel position={[-1, 3, 2]} width="420px">
         <div>

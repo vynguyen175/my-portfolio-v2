@@ -20,18 +20,23 @@ export default function QuestionBlock({ position, scale = 1 }: QuestionBlockProp
 
   return (
     <group ref={ref} position={position} scale={scale}>
+      {/* Block body */}
       <mesh castShadow>
         <boxGeometry args={[1, 1, 1]} />
-        <meshStandardMaterial color="#F0C946" />
+        <meshToonMaterial color="#F0C946" />
       </mesh>
+      {/* Face detail */}
       <mesh position={[0, 0, 0.51]}>
         <planeGeometry args={[0.9, 0.9]} />
-        <meshStandardMaterial color="#D4A830" />
+        <meshToonMaterial color="#D4A830" />
       </mesh>
+      {/* Question mark */}
       <mesh position={[0, 0, 0.52]}>
         <planeGeometry args={[0.4, 0.5]} />
-        <meshStandardMaterial color="#8B6508" />
+        <meshStandardMaterial color="#8B6508" emissive="#8B6508" emissiveIntensity={0.4} />
       </mesh>
+      {/* Inner glow */}
+      <pointLight color="#F0C946" intensity={0.5} distance={3} />
     </group>
   );
 }

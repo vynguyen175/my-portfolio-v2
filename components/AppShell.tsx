@@ -42,9 +42,15 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
   const showLoader = loading && mounted;
 
-  // On the root 3D route, skip AppShell overlays — World3D handles its own UI
+  // On the root 3D route, only keep cursor and context menu — World3D handles the rest
   if (isRoot) {
-    return <>{children}</>;
+    return (
+      <>
+        <CustomCursor />
+        <ContextMenu />
+        {children}
+      </>
+    );
   }
 
   return (

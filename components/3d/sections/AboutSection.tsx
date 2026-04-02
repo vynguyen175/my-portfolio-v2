@@ -8,18 +8,28 @@ const SECTION_X = 30;
 export default function AboutSection() {
   return (
     <group position={[SECTION_X, 0, 0]}>
+      {/* Cloud platforms */}
       <FloatingCloud position={[-4, -0.5, 0]} scale={3} speed={0.05} />
       <FloatingCloud position={[4, -0.8, 1]} scale={2.5} speed={0.08} />
       <FloatingCloud position={[0, -0.3, -2]} scale={3.5} speed={0.03} />
+
+      {/* Layered background clouds */}
       <FloatingCloud position={[-10, 6, -8]} scale={2} speed={0.15} />
       <FloatingCloud position={[8, 8, -12]} scale={2.5} speed={0.1} />
       <FloatingCloud position={[-6, 10, -15]} scale={1.8} speed={0.2} />
       <FloatingCloud position={[12, 5, -6]} scale={1.5} speed={0.18} />
+      <FloatingCloud position={[-14, 7, -18]} scale={3} speed={0.08} />
+      <FloatingCloud position={[6, 12, -20]} scale={2.2} speed={0.06} />
+      <FloatingCloud position={[-2, 9, -14]} scale={1.6} speed={0.14} />
 
-      <mesh position={[0, 8, -25]}><planeGeometry args={[60, 30]} /><meshBasicMaterial color="#FF9BE4" /></mesh>
-      <mesh position={[0, -2, -24]}><planeGeometry args={[60, 15]} /><meshBasicMaterial color="#FF6B6B" /></mesh>
+      {/* Multi-layered sunset sky */}
+      <mesh position={[0, 12, -25]}><planeGeometry args={[60, 15]} /><meshBasicMaterial color="#FF9BE4" /></mesh>
+      <mesh position={[0, 2, -25]}><planeGeometry args={[60, 12]} /><meshBasicMaterial color="#FF6B6B" /></mesh>
+      <mesh position={[0, -5, -25]}><planeGeometry args={[60, 10]} /><meshBasicMaterial color="#FF8C42" /></mesh>
 
+      {/* Warm sunset light */}
       <directionalLight position={[SECTION_X, 8, -5]} color="#FFB347" intensity={0.6} />
+      <pointLight position={[0, 3, 5]} color="#FF9BE4" intensity={0.3} distance={15} />
 
       <ContentPanel position={[-2, 3, 0]} width="440px">
         <div>

@@ -29,12 +29,17 @@ export default function Star3D({ position, scale = 0.5 }: Star3DProps) {
     if (ref.current) {
       ref.current.rotation.y = clock.elapsedTime * 1.5;
       ref.current.position.y = position[1] + Math.sin(clock.elapsedTime * 2 + position[0]) * 0.2;
+      const mat = ref.current.material as THREE.MeshStandardMaterial;
+      mat.emissiveIntensity = 0.5 + Math.sin(clock.elapsedTime * 3) * 0.3;
     }
   });
 
   return (
-    <mesh ref={ref} geometry={geometry} position={position} scale={scale} castShadow>
-      <meshStandardMaterial color="#FFD700" emissive="#F0C946" emissiveIntensity={0.5} metalness={0.8} roughness={0.2} />
-    </mesh>
+    <group>
+      <mesh ref={ref} geometry={geometry} position={position} scale={scale} castShadow>
+        <meshStandardMaterial color="#FFD700" emissive="#F0C946" emissiveIntensity={0.5} metalness={0.8} roughness={0.2} />
+      </mesh>
+      <pointLight position={position} color="#FFD700" intensity={0.5} distance={4} decay={2} />
+    </group>
   );
 }

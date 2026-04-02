@@ -13,7 +13,7 @@ export default function GroundPlane({ position, width = 35, depth = 20, color, e
   return (
     <mesh position={position} rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
       <planeGeometry args={[width, depth]} />
-      <meshStandardMaterial color={color} emissive={emissive || color} emissiveIntensity={emissiveIntensity} roughness={0.8} />
+      <meshStandardMaterial color={color} emissive={emissive || color} emissiveIntensity={emissiveIntensity} roughness={0.7} metalness={0.05} />
     </mesh>
   );
 }
