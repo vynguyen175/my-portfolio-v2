@@ -3,6 +3,7 @@
 import { useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { useNavigation } from './NavigationContext';
+import MarioCharacter from './MarioCharacter';
 import * as THREE from 'three';
 
 export default function WorldScene() {
@@ -48,6 +49,8 @@ export default function WorldScene() {
           <meshStandardMaterial color={['#F0C946', '#FF9BE4', '#8B4513', '#4A0080', '#FFD700', '#FF6347'][i]} />
         </mesh>
       ))}
+
+      <MarioCharacter />
 
       <fog attach="fog" args={['#0B1120', 30, 80]} />
     </>
