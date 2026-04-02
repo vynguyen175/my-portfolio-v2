@@ -4,14 +4,31 @@ import { useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { useNavigation } from './NavigationContext';
 import MarioCharacter from './MarioCharacter';
+import HeroSection from './sections/HeroSection';
+import AboutSection from './sections/AboutSection';
+import ProjectsSection from './sections/ProjectsSection';
+import SkillsSection from './sections/SkillsSection';
+import CredentialsSection from './sections/CredentialsSection';
+import ContactSection from './sections/ContactSection';
 import * as THREE from 'three';
+
+const SKY_COLORS = [
+  new THREE.Color('#5BA3E6'), // Hero - blue
+  new THREE.Color('#FF9BE4'), // About - sunset pink
+  new THREE.Color('#2A1A0A'), // Projects - dark castle
+  new THREE.Color('#0D0520'), // Skills - deep underground
+  new THREE.Color('#050515'), // Credentials - space
+  new THREE.Color('#FF8C42'), // Contact - warm sunset
+];
 
 export default function WorldScene() {
   const { targetX, setIsMoving } = useNavigation();
   const cameraTargetRef = useRef(new THREE.Vector3(0, 3, 20));
   const lookAtRef = useRef(new THREE.Vector3(0, 1, 0));
+  const fogRef = useRef<THREE.Fog>(null!);
 
-  useFrame(({ camera }) => {
+  useFrame(({ camera, scene }) => {
+    // Smooth camera follow
     cameraTargetRef.current.set(targetX, 3, 20);
     lookAtRef.current.set(targetX, 1, 0);
 
@@ -27,32 +44,44 @@ export default function WorldScene() {
       camera.position.z + currentLookAt.z * 10,
     );
 
+    // Detect arrival
     const dist = Math.abs(camera.position.x - cameraTargetRef.current.x);
     if (dist < 0.1) setIsMoving(false);
+
+    // Dynamic sky/fog color blending
+    const sectionProgress = camera.position.x / 30;
+    const idx = Math.floor(Math.max(0, Math.min(sectionProgress, 4.99)));
+    const t = Math.max(0, Math.min(sectionProgress - idx, 1));
+    const currentColor = SKY_COLORS[idx].clone().lerp(SKY_COLORS[Math.min(idx + 1, 5)], t);
+
+    if (fogRef.current) {
+      fogRef.current.color.copy(currentColor);
+    }
+    scene.background = currentColor;
   });
 
   return (
     <>
       <ambientLight intensity={0.4} />
-      <directionalLight position={[50, 30, 20]} intensity={0.8} castShadow shadow-mapSize={[1024, 1024]} />
+      <directionalLight
+        position={[50, 30, 20]}
+        intensity={0.8}
+        castShadow
+        shadow-mapSize={[1024, 1024]}
+      />
 
-      {/* Placeholder ground */}
-      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[75, -1, 0]} receiveShadow>
-        <planeGeometry args={[200, 40]} />
-        <meshStandardMaterial color="#228B22" />
-      </mesh>
+      {/* All 6 sections */}
+      <HeroSection />
+      <AboutSection />
+      <ProjectsSection />
+      <SkillsSection />
+      <CredentialsSection />
+      <ContactSection />
 
-      {/* Section position markers (temporary) */}
-      {[0, 30, 60, 90, 120, 150].map((x, i) => (
-        <mesh key={i} position={[x, 1, 0]}>
-          <boxGeometry args={[3, 3, 3]} />
-          <meshStandardMaterial color={['#F0C946', '#FF9BE4', '#8B4513', '#4A0080', '#FFD700', '#FF6347'][i]} />
-        </mesh>
-      ))}
-
+      {/* Mario */}
       <MarioCharacter />
 
-      <fog attach="fog" args={['#0B1120', 30, 80]} />
+      <fog ref={fogRef} attach="fog" args={['#5BA3E6', 30, 80]} />
     </>
   );
 }

@@ -1,18 +1,57 @@
 'use client';
 
+import { Suspense, useState, useCallback } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { NavigationProvider } from './NavigationContext';
 import WorldScene from './WorldScene';
 import SectionNav from './SectionNav';
+import LoadingScreen from '../LoadingScreen';
+import KonamiCode from '../KonamiCode';
+import DarkModeToggle from '../DarkModeToggle';
+
+function World3DInner() {
+  return (
+    <Canvas
+      camera={{ position: [0, 3, 20], fov: 60 }}
+      shadows
+      gl={{ antialias: true, alpha: false }}
+      dpr={[1, 2]}
+    >
+      <Suspense fallback={null}>
+        <WorldScene />
+      </Suspense>
+    </Canvas>
+  );
+}
 
 export default function World3D() {
+  const [loading, setLoading] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return !sessionStorage.getItem('loaded');
+    }
+    return true;
+  });
+
+  const handleComplete = useCallback(() => {
+    sessionStorage.setItem('loaded', '1');
+    setLoading(false);
+  }, []);
+
   return (
     <NavigationProvider>
       <div style={{ width: '100vw', height: '100vh', position: 'relative', background: '#0B1120' }}>
-        <Canvas camera={{ position: [0, 3, 20], fov: 60 }} shadows gl={{ antialias: true, alpha: false }} dpr={[1, 2]}>
-          <WorldScene />
-        </Canvas>
-        <SectionNav />
+        {loading ? (
+          <LoadingScreen onComplete={handleComplete} />
+        ) : (
+          <>
+            <World3DInner />
+            <SectionNav />
+            <KonamiCode />
+            <div style={{ position: 'absolute', top: '24px', right: '24px', zIndex: 100 }}>
+              <DarkModeToggle />
+            </div>
+          </>
+        )}
       </div>
     </NavigationProvider>
   );

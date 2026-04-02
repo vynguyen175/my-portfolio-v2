@@ -6,16 +6,20 @@ import GradientMesh from './GradientMesh';
 import ScrollProgress from './ScrollProgress';
 import StickyNav from './StickyNav';
 import ScrollToTop from './ScrollToTop';
+import CustomCursor from './CustomCursor';
+import ContextMenu from './ContextMenu';
 
 const LoadingScreen = dynamic(() => import('./LoadingScreen'), { ssr: false });
 
 export default function AppShell({ children }: { children: React.ReactNode }) {
   const [loading, setLoading] = useState(true);
   const [mounted, setMounted] = useState(false);
+  const [isRoot, setIsRoot] = useState(false);
 
   // Check sessionStorage after mount to avoid hydration mismatch
   useEffect(() => {
     setMounted(true);
+    setIsRoot(window.location.pathname === '/');
     if (sessionStorage.getItem('loaded')) {
       setLoading(false);
     }
@@ -38,6 +42,11 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
   const showLoader = loading && mounted;
 
+  // On the root 3D route, skip AppShell overlays — World3D handles its own UI
+  if (isRoot) {
+    return <>{children}</>;
+  }
+
   return (
     <>
       {showLoader && <LoadingScreen onComplete={handleComplete} />}
@@ -47,6 +56,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           <StickyNav />
         </>
       )}
+      <CustomCursor />
+      <ContextMenu />
       <ScrollToTop />
       <GradientMesh />
       <div style={{
