@@ -51,4 +51,4 @@ next-env.d.ts
 .claude/
 
 # Nested project (should live in its own repo)
-components/quiz-app/
+components/quiz-app

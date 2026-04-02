@@ -160,7 +160,7 @@ export default function KonamiCode() {
             textAlign: 'center',
             maxWidth: '500px',
             padding: '48px 32px',
-            background: 'rgba(15, 23, 42, 0.9)',
+            background: 'var(--bg-panel-solid)',
             border: '1px solid rgba(240, 201, 70, 0.3)',
             borderRadius: '16px',
             boxShadow: '0 0 60px rgba(240, 201, 70, 0.15)',
@@ -178,7 +178,7 @@ export default function KonamiCode() {
               You Found the Secret!
             </h2>
             <p style={{
-              color: '#94A3B8',
+              color: 'var(--text-secondary)',
               fontSize: '14px',
               lineHeight: 1.7,
               marginBottom: '8px',
@@ -186,7 +186,7 @@ export default function KonamiCode() {
               You just entered the Konami Code. That tells me you&apos;re curious, detail-oriented, and probably a lot of fun to work with.
             </p>
             <p style={{
-              color: '#64748B',
+              color: 'var(--text-muted)',
               fontSize: '13px',
               lineHeight: 1.6,
               marginBottom: '24px',

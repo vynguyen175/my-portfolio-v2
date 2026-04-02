@@ -222,15 +222,15 @@ export default function Terminal() {
         alignItems: 'center',
         gap: '8px',
         padding: '10px 14px',
-        background: 'rgba(15, 23, 42, 0.8)',
-        borderBottom: '1px solid rgba(255, 255, 255, 0.06)',
+        background: 'var(--bg-panel-solid)',
+        borderBottom: '1px solid var(--border)',
       }}>
         <div style={{ display: 'flex', gap: '6px' }}>
           <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#EF4444' }} />
           <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#F59E0B' }} />
           <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#22C55E' }} />
         </div>
-        <span style={{ color: '#64748B', fontSize: '12px', marginLeft: '8px' }}>
+        <span style={{ color: 'var(--text-muted)', fontSize: '12px', marginLeft: '8px' }}>
           vy@portfolio ~ $
         </span>
       </div>
@@ -256,10 +256,10 @@ export default function Terminal() {
             {line.type === 'input' ? (
               <span>
                 <span style={{ color: '#F0C946' }}>$ </span>
-                <span style={{ color: '#F1F5F9' }}>{line.text}</span>
+                <span style={{ color: 'var(--text-primary)' }}>{line.text}</span>
               </span>
             ) : (
-              <span style={{ color: '#94A3B8' }}>{line.text}</span>
+              <span style={{ color: 'var(--text-secondary)' }}>{line.text}</span>
             )}
           </div>
         ))}
@@ -281,7 +281,7 @@ export default function Terminal() {
               background: 'none',
               border: 'none',
               outline: 'none',
-              color: '#F1F5F9',
+              color: 'var(--text-primary)',
               fontFamily: 'inherit',
               fontSize: 'inherit',
               padding: 0,

@@ -136,13 +136,13 @@ export default function ContactForm() {
           style={{
             width: '100%',
             padding: '12px 16px',
-            border: '1px solid rgba(255,255,255,0.1)',
+            border: '1px solid var(--border)',
             borderRadius: '4px',
             fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
             fontSize: '14px',
             boxSizing: 'border-box',
             boxShadow: errors.name ? '0 0 0 2px #EF4444' : 'none',
-            backgroundColor: '#1E293B',
+            backgroundColor: 'var(--surface)',
             color: 'var(--text-primary)',
             transition: 'all 0.2s ease'
           }}
@@ -183,13 +183,13 @@ export default function ContactForm() {
           style={{
             width: '100%',
             padding: '12px 16px',
-            border: '1px solid rgba(255,255,255,0.1)',
+            border: '1px solid var(--border)',
             borderRadius: '4px',
             fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
             fontSize: '14px',
             boxSizing: 'border-box',
             boxShadow: errors.email ? '0 0 0 2px #EF4444' : 'none',
-            backgroundColor: '#1E293B',
+            backgroundColor: 'var(--surface)',
             color: 'var(--text-primary)',
             transition: 'all 0.2s ease'
           }}
@@ -230,13 +230,13 @@ export default function ContactForm() {
           style={{
             width: '100%',
             padding: '12px 16px',
-            border: '1px solid rgba(255,255,255,0.1)',
+            border: '1px solid var(--border)',
             borderRadius: '4px',
             fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
             fontSize: '14px',
             boxSizing: 'border-box',
             boxShadow: errors.message ? '0 0 0 2px #EF4444' : 'none',
-            backgroundColor: '#1E293B',
+            backgroundColor: 'var(--surface)',
             color: 'var(--text-primary)',
             transition: 'all 0.2s ease',
             resize: 'none'
@@ -298,13 +298,13 @@ export default function ContactForm() {
         style={{
           width: '100%',
           padding: '16px 24px',
-          backgroundColor: status === 'loading' ? '#64748B' : 'var(--gold)',
+          backgroundColor: status === 'loading' ? 'var(--text-muted)' : 'var(--gold)',
           border: 'none',
           borderRadius: '4px',
           fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
           fontSize: '16px',
           fontWeight: 900,
-          color: '#0B1120',
+          color: 'var(--btn-primary-text)',
           cursor: status === 'loading' ? 'not-allowed' : 'pointer',
           boxShadow: 'none',
           transition: 'all 0.2s ease',

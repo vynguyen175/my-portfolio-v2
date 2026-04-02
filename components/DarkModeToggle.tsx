@@ -18,15 +18,15 @@ export default function DarkModeToggle() {
         width: '44px',
         height: '44px',
         backdropFilter: 'blur(12px)',
-        background: 'rgba(15, 23, 42, 0.8)',
+        background: 'var(--bg-panel-solid)',
       }}
       title={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
       aria-label={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
     >
       {theme === 'light' ? (
-        <FaMoon color="#94A3B8" size={18} />
+        <FaMoon style={{ color: 'var(--text-secondary)' }} size={18} />
       ) : (
-        <FaSun color="#F0C946" size={18} />
+        <FaSun style={{ color: 'var(--gold)' }} size={18} />
       )}
     </button>
   );

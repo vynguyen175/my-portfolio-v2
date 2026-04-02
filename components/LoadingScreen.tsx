@@ -48,7 +48,7 @@ export default function LoadingScreen({ onComplete }: { onComplete: () => void }
       position: 'fixed',
       inset: 0,
       zIndex: 9999,
-      background: '#0B1120',
+      background: 'var(--bg-body)',
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
@@ -70,7 +70,7 @@ export default function LoadingScreen({ onComplete }: { onComplete: () => void }
           width: '400px',
           height: '400px',
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(240, 201, 70, 0.3), transparent 70%)',
+          background: 'radial-gradient(circle, var(--glow-gold), transparent 70%)',
           top: '30%',
           left: '50%',
           transform: 'translate(-50%, -50%)',
@@ -81,7 +81,7 @@ export default function LoadingScreen({ onComplete }: { onComplete: () => void }
           width: '300px',
           height: '300px',
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(96, 165, 250, 0.2), transparent 70%)',
+          background: 'radial-gradient(circle, var(--mesh-blue), transparent 70%)',
           top: '60%',
           left: '30%',
           transform: 'translate(-50%, -50%)',
@@ -104,61 +104,58 @@ export default function LoadingScreen({ onComplete }: { onComplete: () => void }
           transform: 'translate(-50%, -50%)',
           width: '64px',
           height: '64px',
-          background: 'linear-gradient(135deg, #F0C946, #D4A830)',
+          background: 'linear-gradient(135deg, var(--gold), #D4A830)',
           borderRadius: '12px',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          boxShadow: '0 0 40px rgba(240, 201, 70, 0.4), inset 0 2px 0 rgba(255, 255, 255, 0.3), inset 0 -2px 0 rgba(0, 0, 0, 0.2)',
+          boxShadow: '0 0 40px var(--glow-gold), inset 0 2px 0 rgba(255, 255, 255, 0.3), inset 0 -2px 0 rgba(0, 0, 0, 0.2)',
           border: '3px solid #B8922A',
           animation: 'questionBlockBounce 1.5s ease-in-out infinite',
         }}>
           <span style={{
             fontSize: '28px',
             fontWeight: 900,
-            color: '#0B1120',
+            color: 'var(--btn-primary-text)',
             textShadow: '0 1px 0 rgba(255,255,255,0.3)',
             fontFamily: 'var(--font-geist-sans)',
           }}>?</span>
         </div>
 
         {/* Orbiting items */}
-        {CHARACTERS.map((char, i) => {
-          const angle = (360 / CHARACTERS.length) * i;
-          return (
-            <div
-              key={char.label}
+        {CHARACTERS.map((char, i) => (
+          <div
+            key={char.label}
+            style={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              width: '36px',
+              height: '36px',
+              marginLeft: '-18px',
+              marginTop: '-18px',
+              animation: `orbit 4s linear infinite`,
+              animationDelay: `${-(i * 4) / CHARACTERS.length}s`,
+            }}
+          >
+            <span
               style={{
-                position: 'absolute',
-                top: '50%',
-                left: '50%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
                 width: '36px',
                 height: '36px',
-                marginLeft: '-18px',
-                marginTop: '-18px',
-                animation: `orbit 4s linear infinite`,
+                fontSize: '22px',
+                animation: `counterOrbit 4s linear infinite`,
                 animationDelay: `${-(i * 4) / CHARACTERS.length}s`,
+                filter: 'drop-shadow(0 2px 8px rgba(0,0,0,0.5))',
               }}
+              aria-label={char.label}
             >
-              <span
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  width: '36px',
-                  height: '36px',
-                  fontSize: '22px',
-                  animation: `counterOrbit 4s linear infinite`,
-                  animationDelay: `${-(i * 4) / CHARACTERS.length}s`,
-                  filter: 'drop-shadow(0 2px 8px rgba(0,0,0,0.5))',
-                }}
-                aria-label={char.label}
-              >
-                {char.emoji}
-              </span>
-            </div>
-          );
-        })}
+              {char.emoji}
+            </span>
+          </div>
+        ))}
       </div>
 
       {/* Mario running sprite */}
@@ -179,7 +176,7 @@ export default function LoadingScreen({ onComplete }: { onComplete: () => void }
       <div style={{
         width: '220px',
         height: '6px',
-        background: 'rgba(255, 255, 255, 0.08)',
+        background: 'var(--surface)',
         borderRadius: '3px',
         overflow: 'hidden',
         marginBottom: '16px',
@@ -187,10 +184,10 @@ export default function LoadingScreen({ onComplete }: { onComplete: () => void }
         <div style={{
           height: '100%',
           width: `${progress}%`,
-          background: 'linear-gradient(90deg, #F0C946, #FFD700)',
+          background: 'linear-gradient(90deg, var(--gold), #FFD700)',
           borderRadius: '3px',
           transition: 'width 0.1s linear',
-          boxShadow: '0 0 10px rgba(240, 201, 70, 0.4)',
+          boxShadow: `0 0 10px var(--progress-shadow)`,
         }} />
       </div>
 

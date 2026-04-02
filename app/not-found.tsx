@@ -18,7 +18,7 @@ export default function NotFound() {
   return (
     <div style={{
       minHeight: '100vh',
-      background: '#0B1120',
+      background: 'var(--bg-body)',
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
@@ -87,7 +87,7 @@ export default function NotFound() {
         </h1>
 
         <p style={{
-          color: '#F1F5F9',
+          color: 'var(--text-primary)',
           fontSize: 'clamp(18px, 4vw, 24px)',
           fontWeight: 700,
           margin: '0 0 12px',
@@ -96,7 +96,7 @@ export default function NotFound() {
         </p>
 
         <p style={{
-          color: '#94A3B8',
+          color: 'var(--text-secondary)',
           fontSize: '14px',
           margin: '0 0 32px',
           lineHeight: 1.6,
