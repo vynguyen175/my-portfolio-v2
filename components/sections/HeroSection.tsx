@@ -56,23 +56,48 @@ export default function HeroSection() {
             pointerEvents: 'none',
           }}
         >
-          {/* Multi-layered cloud shape */}
-          <div style={{ position: 'relative', width: '180px', height: '70px' }}>
+          {/* 3D cloud shape */}
+          <div style={{ position: 'relative', width: '180px', height: '80px', filter: 'drop-shadow(0 8px 20px rgba(0,0,0,0.08))' }}>
+            {/* Base */}
             <div style={{
-              position: 'absolute', bottom: 0, left: '10%', width: '80%', height: '55%',
-              background: 'rgba(255,255,255,0.9)', borderRadius: '50px',
+              position: 'absolute', bottom: 0, left: '8%', width: '84%', height: '50%',
+              background: 'linear-gradient(180deg, #FFFFFF 0%, #E8F0FE 100%)',
+              borderRadius: '50px',
+              boxShadow: 'inset 0 4px 8px rgba(255,255,255,0.9), inset 0 -4px 8px rgba(180,200,230,0.3)',
             }} />
+            {/* Left puff */}
             <div style={{
-              position: 'absolute', bottom: '30%', left: '20%', width: '35%', height: '70%',
-              background: 'rgba(255,255,255,0.95)', borderRadius: '50%',
+              position: 'absolute', bottom: '25%', left: '5%', width: '35%', height: '65%',
+              background: 'radial-gradient(circle at 40% 35%, #FFFFFF 0%, #EDF2FC 60%, #DCE6F5 100%)',
+              borderRadius: '50%',
+              boxShadow: 'inset 0 4px 10px rgba(255,255,255,0.8), inset 0 -3px 6px rgba(180,200,230,0.2)',
             }} />
+            {/* Center puff (tallest) */}
             <div style={{
-              position: 'absolute', bottom: '25%', left: '45%', width: '40%', height: '80%',
-              background: 'rgba(255,255,255,0.92)', borderRadius: '50%',
+              position: 'absolute', bottom: '20%', left: '25%', width: '40%', height: '90%',
+              background: 'radial-gradient(circle at 45% 30%, #FFFFFF 0%, #F0F5FF 50%, #DCE6F5 100%)',
+              borderRadius: '50%',
+              boxShadow: 'inset 0 6px 12px rgba(255,255,255,0.9), inset 0 -4px 8px rgba(170,190,220,0.25)',
             }} />
+            {/* Right puff */}
             <div style={{
-              position: 'absolute', bottom: '15%', left: '5%', width: '30%', height: '55%',
-              background: 'rgba(255,255,255,0.85)', borderRadius: '50%',
+              position: 'absolute', bottom: '22%', left: '50%', width: '38%', height: '75%',
+              background: 'radial-gradient(circle at 50% 35%, #FFFFFF 0%, #EDF2FC 55%, #D8E4F3 100%)',
+              borderRadius: '50%',
+              boxShadow: 'inset 0 5px 10px rgba(255,255,255,0.85), inset 0 -3px 6px rgba(180,200,230,0.2)',
+            }} />
+            {/* Small top puff */}
+            <div style={{
+              position: 'absolute', bottom: '55%', left: '35%', width: '25%', height: '45%',
+              background: 'radial-gradient(circle at 50% 30%, #FFFFFF 0%, #F0F5FF 100%)',
+              borderRadius: '50%',
+              boxShadow: 'inset 0 3px 6px rgba(255,255,255,0.9)',
+            }} />
+            {/* Bottom shadow */}
+            <div style={{
+              position: 'absolute', bottom: '-8%', left: '15%', width: '70%', height: '20%',
+              background: 'radial-gradient(ellipse, rgba(150,180,220,0.15) 0%, transparent 70%)',
+              borderRadius: '50%',
             }} />
           </div>
         </div>
@@ -291,6 +316,25 @@ export default function HeroSection() {
             >
               Resume
             </a>
+            <a
+              href="/play"
+              style={{
+                padding: '14px 28px',
+                borderRadius: 12,
+                background: '#E52521',
+                color: '#fff',
+                fontSize: 14,
+                fontWeight: 700,
+                textDecoration: 'none',
+                boxShadow: '0 4px 15px rgba(229, 37, 33, 0.35)',
+                transition: 'all 0.3s ease',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 8,
+              }}
+            >
+              🎮 Play Mario Game
+            </a>
           </motion.div>
         </motion.div>
 
@@ -345,7 +389,7 @@ export default function HeroSection() {
             {/* Small Mario floating next to photo */}
             <motion.img
               src="/sprites/mario-jump.png"
-              alt=""
+              alt="Mario jumping in celebration"
               animate={{ y: [0, -10, 0] }}
               transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
               style={{

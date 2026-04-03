@@ -88,7 +88,7 @@ export default function CredentialsSection() {
       >
         <img
           src="/sprites/mario-standing.png"
-          alt=""
+          alt="Mario standing confidently"
           style={{
             width: 160,
             height: 'auto',

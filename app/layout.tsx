@@ -3,16 +3,22 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ThemeProviderWrapper from "@/components/ThemeProviderWrapper";
 import AppShell from "@/components/AppShell";
+import StructuredData from "@/components/StructuredData";
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://my-portfolio-vynguyen.vercel.app"),
   title: "Vy Nguyen | Full-Stack Developer",
   description: "Full-stack developer with 3 years of hands-on experience in Next.js, React, TypeScript, Python, and AI/ML. Based in Toronto, open to opportunities.",
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
     title: "Vy Nguyen | Full-Stack Developer",
     description: "Full-stack developer with 3 years of hands-on experience in Next.js, React, TypeScript, Python, and AI/ML. Based in Toronto, open to opportunities.",
     type: "website",
     locale: "en_CA",
+    siteName: "Vy Nguyen Portfolio",
+    url: "https://my-portfolio-vynguyen.vercel.app",
   },
   twitter: {
     card: "summary_large_image",
@@ -44,6 +50,8 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <a href="#main-content" className="skip-to-content">Skip to main content</a>
+        <StructuredData />
         <ThemeProviderWrapper>
           <AppShell>
             {children}

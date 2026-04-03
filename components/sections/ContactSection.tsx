@@ -67,7 +67,7 @@ export default function ContactSection() {
       >
         <img
           src="/sprites/mario-confused.png"
-          alt=""
+          alt="Mario with a thinking expression"
           style={{
             width: 160,
             height: 'auto',

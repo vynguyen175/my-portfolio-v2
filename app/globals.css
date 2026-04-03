@@ -1172,3 +1172,48 @@ body {
     scroll-snap-align: start;
   }
 }
+
+/* =============================================
+   Skip to content link
+   ============================================= */
+
+.skip-to-content {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  z-index: 9999;
+  padding: 12px 24px;
+  background: var(--gold);
+  color: #1a1a2e;
+  font-weight: 700;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.skip-to-content:focus {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  width: auto;
+  height: auto;
+  overflow: visible;
+}
+
+/* =============================================
+   Accessibility - Focus indicators
+   ============================================= */
+
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+  border-radius: 4px;
+}

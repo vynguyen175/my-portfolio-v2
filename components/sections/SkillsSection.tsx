@@ -92,7 +92,7 @@ export default function SkillsSection() {
       >
         <img
           src="/sprites/mario-jump2.png"
-          alt=""
+          alt="Mario jumping with fist raised"
           style={{
             width: 180,
             height: 'auto',

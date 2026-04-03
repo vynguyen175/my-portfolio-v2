@@ -226,7 +226,7 @@ export default function ProjectsSection() {
       >
         <img
           src="/sprites/mario-star.png"
-          alt=""
+          alt="Mario holding a power star"
           style={{
             width: 200,
             height: 'auto',
