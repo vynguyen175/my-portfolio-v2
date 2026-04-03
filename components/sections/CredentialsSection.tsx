@@ -17,17 +17,6 @@ const credentials = [
     ],
   },
   {
-    type: 'Certifications',
-    items: [
-      {
-        title: 'AWS Certified Cloud Practitioner',
-        subtitle: 'Amazon Web Services',
-        detail: 'Cloud computing fundamentals, architecture, security',
-        year: '2025',
-      },
-    ],
-  },
-  {
     type: 'Awards & Achievements',
     items: [
       {
@@ -63,7 +52,7 @@ export default function CredentialsSection() {
         minHeight: '100vh',
         position: 'relative',
         overflow: 'hidden',
-        background: 'linear-gradient(180deg, #050515 0%, #0A0A2E 50%, #0F0F35 100%)',
+        background: 'var(--credentials-bg)',
         padding: '120px 40px',
       }}
     >
@@ -132,7 +121,7 @@ export default function CredentialsSection() {
             style={{
               fontSize: 'clamp(36px, 5vw, 52px)',
               fontWeight: 900,
-              color: '#fff',
+              color: 'var(--section-text)',
               lineHeight: 1.1,
               margin: '0 0 16px',
               letterSpacing: -1,
@@ -147,7 +136,7 @@ export default function CredentialsSection() {
           <p
             style={{
               fontSize: 16,
-              color: 'rgba(255,255,255,0.5)',
+              color: 'var(--section-text-muted)',
               lineHeight: 1.7,
               maxWidth: 520,
               margin: '0 0 60px',
@@ -198,7 +187,7 @@ export default function CredentialsSection() {
                             style={{
                               fontSize: 18,
                               fontWeight: 800,
-                              color: '#fff',
+                              color: 'var(--section-text)',
                               margin: '0 0 6px',
                             }}
                           >
@@ -208,7 +197,7 @@ export default function CredentialsSection() {
                             style={{
                               fontSize: 14,
                               fontWeight: 600,
-                              color: 'rgba(255,255,255,0.6)',
+                              color: 'var(--section-text-sub)',
                               margin: '0 0 4px',
                             }}
                           >
@@ -217,7 +206,7 @@ export default function CredentialsSection() {
                           <p
                             style={{
                               fontSize: 13,
-                              color: 'rgba(255,255,255,0.4)',
+                              color: 'var(--section-text-muted)',
                               margin: 0,
                             }}
                           >

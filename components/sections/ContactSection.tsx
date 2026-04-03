@@ -24,7 +24,7 @@ export default function ContactSection() {
         minHeight: '100vh',
         position: 'relative',
         overflow: 'hidden',
-        background: 'linear-gradient(180deg, #FF8C42 0%, #FF6B6B 50%, #E55B5B 100%)',
+        background: 'var(--contact-bg)',
         padding: '120px 40px',
         display: 'flex',
         alignItems: 'center',
@@ -95,7 +95,7 @@ export default function ContactSection() {
                 borderRadius: 20,
                 fontSize: 13,
                 fontWeight: 700,
-                color: '#fff',
+                color: 'var(--section-text)',
                 marginBottom: 12,
                 letterSpacing: 0.5,
               }}
@@ -109,7 +109,7 @@ export default function ContactSection() {
               style={{
                 fontSize: 'clamp(36px, 5vw, 52px)',
                 fontWeight: 900,
-                color: '#fff',
+                color: 'var(--section-text)',
                 lineHeight: 1.1,
                 margin: '0 0 16px',
                 letterSpacing: -1,
@@ -132,7 +132,7 @@ export default function ContactSection() {
             <p
               style={{
                 fontSize: 16,
-                color: 'rgba(255,255,255,0.8)',
+                color: 'var(--section-text-sub)',
                 lineHeight: 1.7,
                 maxWidth: 480,
                 margin: '0 auto 20px',
@@ -171,7 +171,7 @@ export default function ContactSection() {
                     background: 'rgba(255,255,255,0.15)',
                     backdropFilter: 'blur(8px)',
                     borderRadius: 12,
-                    color: '#fff',
+                    color: 'var(--section-text)',
                     fontSize: 14,
                     fontWeight: 600,
                     textDecoration: 'none',
@@ -216,7 +216,7 @@ export default function ContactSection() {
             <p
               style={{
                 fontSize: 13,
-                color: 'rgba(255,255,255,0.5)',
+                color: 'var(--section-text-muted)',
                 fontWeight: 500,
               }}
             >

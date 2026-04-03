@@ -20,10 +20,10 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
         }}
         transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
         style={{
-          background: 'linear-gradient(145deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.03) 100%)',
+          background: 'var(--surface)',
           backdropFilter: 'blur(12px)',
           borderRadius: 20,
-          border: '1px solid rgba(255,255,255,0.1)',
+          border: '1px solid var(--border)',
           overflow: 'hidden',
           boxShadow: hovered
             ? '0 20px 60px rgba(240, 201, 70, 0.15), 0 0 0 1px rgba(240, 201, 70, 0.2)'
@@ -85,7 +85,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
             style={{
               fontSize: 22,
               fontWeight: 800,
-              color: '#fff',
+              color: 'var(--section-text)',
               margin: '0 0 8px',
               lineHeight: 1.2,
             }}
@@ -96,7 +96,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
           <p
             style={{
               fontSize: 14,
-              color: 'rgba(255,255,255,0.6)',
+              color: 'var(--section-text-muted)',
               lineHeight: 1.6,
               margin: '0 0 16px',
             }}
@@ -118,10 +118,10 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
                 key={tech}
                 style={{
                   padding: '4px 10px',
-                  background: 'rgba(255,255,255,0.08)',
+                  background: 'var(--surface)',
                   borderRadius: 8,
                   fontSize: 11,
-                  color: 'rgba(255,255,255,0.5)',
+                  color: 'var(--section-text-muted)',
                   fontWeight: 600,
                 }}
               >
@@ -143,7 +143,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
                   gap: 6,
                   fontSize: 13,
                   fontWeight: 600,
-                  color: 'rgba(255,255,255,0.7)',
+                  color: 'var(--section-text-sub)',
                   textDecoration: 'none',
                   transition: 'color 0.2s',
                 }}
@@ -196,7 +196,7 @@ export default function ProjectsSection() {
         minHeight: '100vh',
         position: 'relative',
         overflow: 'hidden',
-        background: 'linear-gradient(180deg, #1a1a2e 0%, #0B1120 50%, #0D0D1F 100%)',
+        background: 'var(--projects-bg)',
         padding: '120px 40px',
       }}
     >
@@ -259,7 +259,7 @@ export default function ProjectsSection() {
             style={{
               fontSize: 'clamp(36px, 5vw, 52px)',
               fontWeight: 900,
-              color: '#fff',
+              color: 'var(--section-text)',
               lineHeight: 1.1,
               margin: '0 0 16px',
               letterSpacing: -1,
@@ -274,7 +274,7 @@ export default function ProjectsSection() {
           <p
             style={{
               fontSize: 16,
-              color: 'rgba(255,255,255,0.5)',
+              color: 'var(--section-text-muted)',
               lineHeight: 1.7,
               maxWidth: 520,
               margin: '0 0 60px',
@@ -297,6 +297,26 @@ export default function ProjectsSection() {
             <ProjectCard key={project.id} project={project} index={i} />
           ))}
         </div>
+
+        {/* Peach victory GIF */}
+        <ScrollReveal delay={0.3}>
+          <div style={{
+            display: 'flex',
+            justifyContent: 'center',
+            marginTop: '80px',
+          }}>
+            <img
+              src="/sprites/peach-victory.gif"
+              alt="Princess Peach victory pose"
+              style={{
+                width: 'clamp(200px, 25vw, 350px)',
+                height: 'auto',
+                imageRendering: 'pixelated',
+                filter: 'drop-shadow(0 10px 30px rgba(240, 201, 70, 0.3))',
+              }}
+            />
+          </div>
+        </ScrollReveal>
       </div>
 
       <style>{`

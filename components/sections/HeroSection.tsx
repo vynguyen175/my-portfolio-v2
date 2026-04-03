@@ -33,39 +33,49 @@ export default function HeroSection() {
         display: 'flex',
         alignItems: 'center',
         overflow: 'hidden',
-        background: 'linear-gradient(180deg, #87CEEB 0%, #5BA3E6 60%, #4A90D9 100%)',
+        background: 'var(--hero-bg)',
       }}
     >
-      {/* Floating clouds */}
+      {/* Realistic floating clouds — horizontal drift */}
       {[
-        { top: '10%', left: '5%', w: 200, h: 80, opacity: 0.7, blur: 2 },
-        { top: '20%', right: '8%', w: 160, h: 65, opacity: 0.5, blur: 3 },
-        { top: '55%', left: '12%', w: 180, h: 70, opacity: 0.4, blur: 2 },
-        { top: '15%', left: '40%', w: 120, h: 50, opacity: 0.35, blur: 4 },
-        { top: '40%', right: '20%', w: 140, h: 55, opacity: 0.3, blur: 3 },
+        { top: '8%', startX: -5, speed: 40, scale: 1.2, opacity: 0.9 },
+        { top: '22%', startX: 60, speed: 55, scale: 0.8, opacity: 0.7 },
+        { top: '50%', startX: 10, speed: 48, scale: 1, opacity: 0.5 },
+        { top: '15%', startX: 35, speed: 60, scale: 0.6, opacity: 0.6 },
+        { top: '38%', startX: 75, speed: 45, scale: 0.9, opacity: 0.4 },
       ].map((cloud, i) => (
-        <motion.div
+        <div
           key={i}
           style={{
-            y: cloudY,
             position: 'absolute',
             top: cloud.top,
-            left: cloud.left,
-            right: (cloud as Record<string, unknown>).right as string | undefined,
+            left: `${cloud.startX}%`,
             opacity: cloud.opacity,
+            transform: `scale(${cloud.scale})`,
+            animation: `cloudDrift${i} ${cloud.speed}s linear infinite`,
+            pointerEvents: 'none',
           }}
         >
-          <div
-            style={{
-              width: cloud.w,
-              height: cloud.h,
-              background: 'white',
-              borderRadius: cloud.w / 2,
-              filter: `blur(${cloud.blur}px)`,
-              boxShadow: '0 10px 40px rgba(255,255,255,0.3)',
-            }}
-          />
-        </motion.div>
+          {/* Multi-layered cloud shape */}
+          <div style={{ position: 'relative', width: '180px', height: '70px' }}>
+            <div style={{
+              position: 'absolute', bottom: 0, left: '10%', width: '80%', height: '55%',
+              background: 'rgba(255,255,255,0.9)', borderRadius: '50px',
+            }} />
+            <div style={{
+              position: 'absolute', bottom: '30%', left: '20%', width: '35%', height: '70%',
+              background: 'rgba(255,255,255,0.95)', borderRadius: '50%',
+            }} />
+            <div style={{
+              position: 'absolute', bottom: '25%', left: '45%', width: '40%', height: '80%',
+              background: 'rgba(255,255,255,0.92)', borderRadius: '50%',
+            }} />
+            <div style={{
+              position: 'absolute', bottom: '15%', left: '5%', width: '30%', height: '55%',
+              background: 'rgba(255,255,255,0.85)', borderRadius: '50%',
+            }} />
+          </div>
+        </div>
       ))}
 
       {/* Question blocks decoration */}
@@ -105,7 +115,7 @@ export default function HeroSection() {
           left: 0,
           right: 0,
           height: '25vh',
-          background: 'linear-gradient(180deg, #2EA82E 0%, #228B22 100%)',
+          background: `linear-gradient(180deg, var(--hero-hill3) 0%, var(--hero-hill1) 100%)`,
           borderRadius: '50% 50% 0 0 / 30% 30% 0 0',
         }}
       />
@@ -116,7 +126,7 @@ export default function HeroSection() {
           left: '-10%',
           width: '60%',
           height: '20vh',
-          background: '#1E8C1E',
+          background: 'var(--hero-hill2)',
           borderRadius: '50% 50% 0 0',
         }}
       />
@@ -127,7 +137,7 @@ export default function HeroSection() {
           right: '-5%',
           width: '50%',
           height: '18vh',
-          background: '#34B534',
+          background: 'var(--hero-hill3)',
           borderRadius: '50% 50% 0 0',
         }}
       />
@@ -178,7 +188,7 @@ export default function HeroSection() {
             style={{
               fontSize: 'clamp(48px, 8vw, 80px)',
               fontWeight: 900,
-              color: '#FFFFFF',
+              color: 'var(--section-text)',
               lineHeight: 1.05,
               margin: '0 0 16px',
               textShadow: '0 4px 20px rgba(0,0,0,0.15)',
@@ -196,7 +206,7 @@ export default function HeroSection() {
             transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
             style={{
               fontSize: 16,
-              color: 'rgba(255,255,255,0.85)',
+              color: 'var(--section-text-sub)',
               lineHeight: 1.7,
               maxWidth: 420,
               margin: '0 0 28px',
@@ -204,7 +214,7 @@ export default function HeroSection() {
             }}
           >
             3 years building web apps, AI tools, and cross-platform products.
-            AWS Certified, hackathon winner, open-source contributor. Based in
+            Hackathon winner, open-source contributor. Based in
             Toronto.
           </motion.p>
 
@@ -284,28 +294,85 @@ export default function HeroSection() {
           </motion.div>
         </motion.div>
 
-        {/* Right: Mario */}
+        {/* Right: Your photo */}
         <motion.div
           style={{
             y: marioY,
-            rotate: marioRotate,
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
           }}
         >
-          <motion.img
-            src="/sprites/mario-jump.png"
-            alt="Mario jumping"
+          <motion.div
             initial={{ opacity: 0, scale: 0.7, y: 60 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
             style={{
-              width: 'clamp(280px, 35vw, 450px)',
-              height: 'auto',
-              filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.2))',
+              position: 'relative',
+              width: 'clamp(260px, 30vw, 380px)',
+              height: 'clamp(260px, 30vw, 380px)',
             }}
-          />
+          >
+            {/* Gold ring border */}
+            <div style={{
+              position: 'absolute',
+              inset: '-6px',
+              borderRadius: '50%',
+              background: 'linear-gradient(135deg, #F0C946, #FFD700, #E5A800, #F0C946)',
+              boxShadow: '0 8px 30px rgba(240, 201, 70, 0.4), 0 0 60px rgba(240, 201, 70, 0.15)',
+            }} />
+            {/* White inner ring */}
+            <div style={{
+              position: 'absolute',
+              inset: '0px',
+              borderRadius: '50%',
+              background: 'white',
+            }} />
+            {/* Photo */}
+            <img
+              src="/me-1.jpg"
+              alt="Vy Nguyen"
+              style={{
+                position: 'absolute',
+                inset: '4px',
+                width: 'calc(100% - 8px)',
+                height: 'calc(100% - 8px)',
+                borderRadius: '50%',
+                objectFit: 'cover',
+                objectPosition: 'center 30%',
+              }}
+            />
+            {/* Small Mario floating next to photo */}
+            <motion.img
+              src="/sprites/mario-jump.png"
+              alt=""
+              animate={{ y: [0, -10, 0] }}
+              transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+              style={{
+                position: 'absolute',
+                bottom: '-10px',
+                right: '-30px',
+                width: '100px',
+                height: 'auto',
+                filter: 'drop-shadow(0 8px 20px rgba(0,0,0,0.25))',
+                zIndex: 2,
+              }}
+            />
+            {/* Star decoration */}
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
+              style={{
+                position: 'absolute',
+                top: '-15px',
+                right: '10px',
+                fontSize: '28px',
+                filter: 'drop-shadow(0 2px 8px rgba(240, 201, 70, 0.5))',
+              }}
+            >
+              ⭐
+            </motion.div>
+          </motion.div>
         </motion.div>
       </div>
 
@@ -362,6 +429,26 @@ export default function HeroSection() {
       </motion.div>
 
       <style>{`
+        @keyframes cloudDrift0 {
+          0% { transform: scale(1.2) translateX(0); }
+          100% { transform: scale(1.2) translateX(110vw); }
+        }
+        @keyframes cloudDrift1 {
+          0% { transform: scale(0.8) translateX(0); }
+          100% { transform: scale(0.8) translateX(-110vw); }
+        }
+        @keyframes cloudDrift2 {
+          0% { transform: scale(1) translateX(0); }
+          100% { transform: scale(1) translateX(110vw); }
+        }
+        @keyframes cloudDrift3 {
+          0% { transform: scale(0.6) translateX(0); }
+          100% { transform: scale(0.6) translateX(-110vw); }
+        }
+        @keyframes cloudDrift4 {
+          0% { transform: scale(0.9) translateX(0); }
+          100% { transform: scale(0.9) translateX(110vw); }
+        }
         @media (max-width: 768px) {
           #hero > div:last-of-type {
             grid-template-columns: 1fr !important;

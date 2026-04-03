@@ -55,6 +55,22 @@
   --glass-inset: rgba(255, 255, 255, 0.05);
   --badge-bg: rgba(255, 255, 255, 0.08);
   --badge-border: rgba(255, 255, 255, 0.1);
+
+  /* Section backgrounds - dark */
+  --hero-bg: linear-gradient(180deg, #1a1a3e 0%, #0B1120 60%, #0a0f1e 100%);
+  --hero-hill1: #1B5E20;
+  --hero-hill2: #145218;
+  --hero-hill3: #2E7D32;
+  --about-bg: linear-gradient(180deg, #1A0A2E 0%, #2D1B4E 50%, #1A0A2E 100%);
+  --about-card-bg: rgba(255, 255, 255, 0.06);
+  --about-card-border: rgba(255, 255, 255, 0.1);
+  --projects-bg: linear-gradient(180deg, #1a1a2e 0%, #0B1120 50%, #0D0D1F 100%);
+  --skills-bg: linear-gradient(180deg, #1A0A2E 0%, #2D1B4E 50%, #1A0A2E 100%);
+  --credentials-bg: linear-gradient(180deg, #050515 0%, #0A0A2E 50%, #050515 100%);
+  --contact-bg: linear-gradient(180deg, #2D1810 0%, #1a1a2e 100%);
+  --section-text: #FFFFFF;
+  --section-text-sub: rgba(255, 255, 255, 0.7);
+  --section-text-muted: rgba(255, 255, 255, 0.5);
 }
 
 /* ---- Light theme ---- */
@@ -98,6 +114,22 @@
   --glass-inset: rgba(255, 255, 255, 0.6);
   --badge-bg: rgba(15, 23, 42, 0.05);
   --badge-border: rgba(15, 23, 42, 0.08);
+
+  /* Section backgrounds - light */
+  --hero-bg: linear-gradient(180deg, #87CEEB 0%, #5BA3E6 60%, #4A90D9 100%);
+  --hero-hill1: #228B22;
+  --hero-hill2: #1E8C1E;
+  --hero-hill3: #34B534;
+  --about-bg: linear-gradient(180deg, #FFE4F0 0%, #E8D5FF 50%, #FFE4F0 100%);
+  --about-card-bg: rgba(255, 255, 255, 0.7);
+  --about-card-border: rgba(0, 0, 0, 0.08);
+  --projects-bg: linear-gradient(180deg, #F0F4FF 0%, #E8ECFF 50%, #F0F4FF 100%);
+  --skills-bg: linear-gradient(180deg, #F3E8FF 0%, #E8D5FF 50%, #F3E8FF 100%);
+  --credentials-bg: linear-gradient(180deg, #FFF8E1 0%, #FFF3CD 50%, #FFF8E1 100%);
+  --contact-bg: linear-gradient(180deg, #FFF0E6 0%, #FFE4D4 100%);
+  --section-text: #1E293B;
+  --section-text-sub: rgba(30, 41, 59, 0.8);
+  --section-text-muted: rgba(30, 41, 59, 0.6);
 }
 
 @theme inline {

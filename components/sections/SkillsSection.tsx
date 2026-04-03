@@ -23,7 +23,7 @@ const skillCategories = [
   {
     name: 'Databases & Cloud',
     color: '#2EA82E',
-    skills: ['MongoDB', 'SQL Server', 'Entity Framework', 'AWS', 'Vercel', 'Railway', 'Git/GitHub'],
+    skills: ['MongoDB', 'SQL Server', 'Entity Framework', 'Vercel', 'Railway', 'Git/GitHub'],
   },
   {
     name: 'Mobile & Tools',
@@ -49,7 +49,7 @@ export default function SkillsSection() {
         minHeight: '100vh',
         position: 'relative',
         overflow: 'hidden',
-        background: 'linear-gradient(180deg, #1A0A2E 0%, #2D1B4E 50%, #1A0A2E 100%)',
+        background: 'var(--skills-bg)',
         padding: '120px 40px',
       }}
     >
@@ -125,7 +125,7 @@ export default function SkillsSection() {
             style={{
               fontSize: 'clamp(36px, 5vw, 52px)',
               fontWeight: 900,
-              color: '#fff',
+              color: 'var(--section-text)',
               lineHeight: 1.1,
               margin: '0 0 16px',
               letterSpacing: -1,
@@ -139,7 +139,7 @@ export default function SkillsSection() {
           <p
             style={{
               fontSize: 16,
-              color: 'rgba(255,255,255,0.5)',
+              color: 'var(--section-text-muted)',
               lineHeight: 1.7,
               maxWidth: 520,
               margin: '0 0 60px',
@@ -200,7 +200,7 @@ export default function SkillsSection() {
                           borderRadius: 12,
                           fontSize: 14,
                           fontWeight: 600,
-                          color: 'rgba(255,255,255,0.8)',
+                          color: 'var(--section-text-sub)',
                           transition: 'all 0.3s ease',
                         }}
                       >

@@ -40,7 +40,7 @@ export default function AboutSection() {
         minHeight: '100vh',
         position: 'relative',
         overflow: 'hidden',
-        background: 'linear-gradient(180deg, #FFE4F0 0%, #E8D5FF 50%, #D4C4FF 100%)',
+        background: 'var(--about-bg)',
         padding: '120px 40px',
         display: 'flex',
         alignItems: 'center',
@@ -126,7 +126,7 @@ export default function AboutSection() {
               style={{
                 fontSize: 'clamp(36px, 5vw, 52px)',
                 fontWeight: 900,
-                color: '#1a1a2e',
+                color: 'var(--section-text)',
                 lineHeight: 1.1,
                 margin: '0 0 16px',
                 letterSpacing: -1,
@@ -143,7 +143,7 @@ export default function AboutSection() {
             <p
               style={{
                 fontSize: 16,
-                color: '#555',
+                color: 'var(--section-text-sub)',
                 lineHeight: 1.7,
                 maxWidth: 520,
                 margin: '0 0 40px',
@@ -162,10 +162,10 @@ export default function AboutSection() {
                 <div
                   style={{
                     padding: '24px 28px',
-                    background: 'rgba(255,255,255,0.7)',
+                    background: 'var(--about-card-bg)',
                     backdropFilter: 'blur(12px)',
                     borderRadius: 16,
-                    border: '1px solid rgba(255,255,255,0.8)',
+                    border: '1px solid var(--about-card-border)',
                     boxShadow: '0 4px 24px rgba(0,0,0,0.06)',
                     transition: 'transform 0.3s ease, box-shadow 0.3s ease',
                   }}
@@ -176,7 +176,7 @@ export default function AboutSection() {
                       style={{
                         fontSize: 18,
                         fontWeight: 800,
-                        color: '#1a1a2e',
+                        color: 'var(--section-text)',
                         margin: 0,
                       }}
                     >
@@ -186,7 +186,7 @@ export default function AboutSection() {
                   <p
                     style={{
                       fontSize: 14,
-                      color: '#666',
+                      color: 'var(--section-text-muted)',
                       lineHeight: 1.7,
                       margin: 0,
                     }}
