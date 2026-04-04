@@ -97,8 +97,15 @@ export default function AboutSection() {
               width: 'clamp(240px, 28vw, 350px)',
               height: 'auto',
               filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.12))',
+              animation: 'marioFloat 4s ease-in-out infinite',
             }}
           />
+          <style>{`
+            @keyframes marioFloat {
+              0%, 100% { transform: translateY(0px); }
+              50% { transform: translateY(-18px); }
+            }
+          `}</style>
         </motion.div>
 
         {/* Right: Content */}

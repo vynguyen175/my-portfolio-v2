@@ -128,7 +128,12 @@ export default function CredentialsSection() {
             }}
           >
             Education &{' '}
-            <span style={{ color: '#F0C946' }}>achievements</span>
+            <span style={{
+              background: 'linear-gradient(135deg, #F0C946, #FFD700, #FF6B6B)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+            }}>achievements</span>
           </h2>
         </ScrollReveal>
 
@@ -180,6 +185,18 @@ export default function CredentialsSection() {
                           alignItems: 'flex-start',
                           gap: 20,
                           flexWrap: 'wrap',
+                          transition: 'all 0.3s ease',
+                          cursor: 'default',
+                        }}
+                        onMouseEnter={(e) => {
+                          (e.currentTarget as HTMLElement).style.borderColor = 'rgba(240, 201, 70, 0.4)';
+                          (e.currentTarget as HTMLElement).style.boxShadow = '0 8px 32px rgba(240, 201, 70, 0.1), inset 0 1px 0 rgba(255,255,255,0.05)';
+                          (e.currentTarget as HTMLElement).style.transform = 'translateY(-4px)';
+                        }}
+                        onMouseLeave={(e) => {
+                          (e.currentTarget as HTMLElement).style.borderColor = '';
+                          (e.currentTarget as HTMLElement).style.boxShadow = '';
+                          (e.currentTarget as HTMLElement).style.transform = '';
                         }}
                       >
                         <div style={{ flex: 1 }}>

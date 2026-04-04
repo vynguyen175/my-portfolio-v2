@@ -41,17 +41,13 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     setLoading(false);
   }, []);
 
-  const showLoader = loading && mounted && !isRoot;
+  const showLoader = loading && mounted;
 
   return (
     <>
       {showLoader && <LoadingScreen onComplete={handleComplete} />}
-      {!isRoot && !showLoader && mounted && (
-        <>
-          <ScrollProgress />
-          <StickyNav />
-        </>
-      )}
+      {!showLoader && mounted && <StickyNav />}
+      {!isRoot && !showLoader && mounted && <ScrollProgress />}
       <CustomCursor />
       <ContextMenu />
       {!isRoot && <ScrollToTop />}

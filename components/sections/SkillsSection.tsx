@@ -131,7 +131,12 @@ export default function SkillsSection() {
               letterSpacing: -1,
             }}
           >
-            My <span style={{ color: '#BB8FCE' }}>toolkit</span>
+            My <span style={{
+              background: 'linear-gradient(135deg, #BB8FCE, #9B59B6, #FF6B6B)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+            }}>toolkit</span>
           </h2>
         </ScrollReveal>
 
@@ -191,7 +196,13 @@ export default function SkillsSection() {
                         ease: [0.22, 1, 0.36, 1],
                       }}
                     >
-                      <span
+                      <motion.span
+                        whileHover={{
+                          scale: 1.1,
+                          y: -4,
+                          boxShadow: `0 8px 20px ${cat.color}30`,
+                        }}
+                        transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
                         style={{
                           display: 'inline-block',
                           padding: '8px 18px',
@@ -201,11 +212,12 @@ export default function SkillsSection() {
                           fontSize: 14,
                           fontWeight: 600,
                           color: 'var(--section-text-sub)',
-                          transition: 'all 0.3s ease',
+                          cursor: 'default',
+                          transition: 'all 0.2s ease',
                         }}
                       >
                         {skill}
-                      </span>
+                      </motion.span>
                     </motion.div>
                   ))}
                 </div>

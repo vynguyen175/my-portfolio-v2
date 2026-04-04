@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
@@ -16,6 +16,17 @@ export default function HeroSection() {
   const marioRotate = useTransform(scrollYProgress, [0, 1], [0, -10]);
   const cloudY = useTransform(scrollYProgress, [0, 1], [0, -80]);
   const textY = useTransform(scrollYProgress, [0, 1], [0, 100]);
+
+  const [photoTilt, setPhotoTilt] = useState({ x: 0, y: 0 });
+  const photoRef = useRef<HTMLDivElement>(null);
+
+  const handlePhotoMove = (e: React.MouseEvent) => {
+    if (!photoRef.current) return;
+    const rect = photoRef.current.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    setPhotoTilt({ x: y * -15, y: x * 15 });
+  };
 
   const socials = [
     { icon: FaGithub, href: 'https://github.com/vynguyen175' },
@@ -207,9 +218,6 @@ export default function HeroSection() {
           </motion.div>
 
           <motion.h1
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
             style={{
               fontSize: 'clamp(48px, 8vw, 80px)',
               fontWeight: 900,
@@ -220,9 +228,29 @@ export default function HeroSection() {
               letterSpacing: -2,
             }}
           >
-            Vy
-            <br />
-            Nguyen
+            {['Vy', 'Nguyen'].map((word, i) => (
+              <span key={word} style={{ display: i === 0 ? 'inline' : 'block' }}>
+                {word.split('').map((char, j) => (
+                  <motion.span
+                    key={`${word}-${j}`}
+                    initial={{ opacity: 0, y: 80, rotateX: -90 }}
+                    animate={{ opacity: 1, y: 0, rotateX: 0 }}
+                    transition={{
+                      duration: 0.6,
+                      delay: 0.15 + (i * word.length + j) * 0.04,
+                      ease: [0.22, 1, 0.36, 1],
+                    }}
+                    style={{
+                      display: 'inline-block',
+                      transformOrigin: 'bottom',
+                    }}
+                  >
+                    {char}
+                  </motion.span>
+                ))}
+                {i === 0 && <span>&nbsp;</span>}
+              </span>
+            ))}
           </motion.h1>
 
           <motion.p
@@ -299,7 +327,7 @@ export default function HeroSection() {
               View Projects
             </a>
             <a
-              href="/Vy Nguyen - Resume.pdf"
+              href="/resume.pdf"
               target="_blank"
               style={{
                 padding: '14px 28px',
@@ -328,9 +356,10 @@ export default function HeroSection() {
                 textDecoration: 'none',
                 boxShadow: '0 4px 15px rgba(229, 37, 33, 0.35)',
                 transition: 'all 0.3s ease',
-                display: 'flex',
+                display: 'inline-flex',
                 alignItems: 'center',
                 gap: 8,
+                whiteSpace: 'nowrap',
               }}
             >
               🎮 Play Mario Game
@@ -357,10 +386,24 @@ export default function HeroSection() {
               height: 'clamp(260px, 30vw, 380px)',
             }}
           >
+            {/* 3D tilt photo container */}
+            <div
+              ref={photoRef}
+              onMouseMove={handlePhotoMove}
+              onMouseLeave={() => setPhotoTilt({ x: 0, y: 0 })}
+              style={{
+                position: 'absolute',
+                inset: '-6px',
+                borderRadius: '50%',
+                transform: `perspective(600px) rotateX(${photoTilt.x}deg) rotateY(${photoTilt.y}deg)`,
+                transformStyle: 'preserve-3d',
+                transition: 'transform 0.15s ease-out',
+              }}
+            >
             {/* Gold ring border */}
             <div style={{
               position: 'absolute',
-              inset: '-6px',
+              inset: '0px',
               borderRadius: '50%',
               background: 'linear-gradient(135deg, #F0C946, #FFD700, #E5A800, #F0C946)',
               boxShadow: '0 8px 30px rgba(240, 201, 70, 0.4), 0 0 60px rgba(240, 201, 70, 0.15)',
@@ -368,7 +411,7 @@ export default function HeroSection() {
             {/* White inner ring */}
             <div style={{
               position: 'absolute',
-              inset: '0px',
+              inset: '6px',
               borderRadius: '50%',
               background: 'white',
             }} />
@@ -378,14 +421,15 @@ export default function HeroSection() {
               alt="Vy Nguyen"
               style={{
                 position: 'absolute',
-                inset: '4px',
-                width: 'calc(100% - 8px)',
-                height: 'calc(100% - 8px)',
+                inset: '10px',
+                width: 'calc(100% - 20px)',
+                height: 'calc(100% - 20px)',
                 borderRadius: '50%',
                 objectFit: 'cover',
                 objectPosition: 'center 30%',
               }}
             />
+            </div>
             {/* Small Mario floating next to photo */}
             <motion.img
               src="/sprites/mario-jump.png"

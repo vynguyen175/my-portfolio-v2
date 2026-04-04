@@ -1,19 +1,37 @@
 'use client';
 
 import { useRef, useState } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { FaGithub, FaExternalLinkAlt, FaChevronDown } from 'react-icons/fa';
 import { projects } from '@/lib/projects';
 import ScrollReveal from '@/components/ScrollReveal';
 
 function ProjectCard({ project, index }: { project: typeof projects[0]; index: number }) {
   const [hovered, setHovered] = useState(false);
+  const [expanded, setExpanded] = useState(false);
+  const [tilt, setTilt] = useState({ x: 0, y: 0 });
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    setTilt({ x: y * -12, y: x * 12 });
+  };
+
+  const handleMouseLeave = () => {
+    setHovered(false);
+    setTilt({ x: 0, y: 0 });
+  };
 
   return (
     <ScrollReveal delay={0.1 * index} direction={index % 2 === 0 ? 'left' : 'right'}>
       <motion.div
+        ref={cardRef}
         onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
         animate={{
           y: hovered ? -8 : 0,
           scale: hovered ? 1.02 : 1,
@@ -23,12 +41,14 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
           background: 'var(--surface)',
           backdropFilter: 'blur(12px)',
           borderRadius: 20,
-          border: '1px solid var(--border)',
+          border: `1px solid ${expanded ? 'rgba(240, 201, 70, 0.3)' : 'var(--border)'}`,
           overflow: 'hidden',
           boxShadow: hovered
             ? '0 20px 60px rgba(240, 201, 70, 0.15), 0 0 0 1px rgba(240, 201, 70, 0.2)'
             : '0 4px 24px rgba(0,0,0,0.2)',
-          transition: 'box-shadow 0.3s ease',
+          transition: 'box-shadow 0.3s ease, border 0.3s ease, transform 0.15s ease-out',
+          transform: `perspective(800px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,
+          transformStyle: 'preserve-3d' as const,
         }}
       >
         {/* Image preview */}
@@ -64,21 +84,32 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
 
         <div style={{ padding: '24px 28px' }}>
           {/* Category badge */}
-          <div
-            style={{
-              display: 'inline-block',
+          <div style={{ display: 'flex', gap: 6, marginBottom: 12, flexWrap: 'wrap' }}>
+            <span
+              style={{
+                display: 'inline-block',
+                padding: '4px 12px',
+                background: 'rgba(240, 201, 70, 0.15)',
+                borderRadius: 20,
+                fontSize: 11,
+                fontWeight: 700,
+                color: '#F0C946',
+                letterSpacing: 0.5,
+                textTransform: 'uppercase',
+              }}
+            >
+              {project.category}
+            </span>
+            <span style={{
               padding: '4px 12px',
-              background: 'rgba(240, 201, 70, 0.15)',
+              background: 'var(--surface)',
               borderRadius: 20,
               fontSize: 11,
-              fontWeight: 700,
-              color: '#F0C946',
-              marginBottom: 12,
-              letterSpacing: 0.5,
-              textTransform: 'uppercase',
-            }}
-          >
-            {project.category}
+              fontWeight: 600,
+              color: 'var(--section-text-muted)',
+            }}>
+              {project.semester}
+            </span>
           </div>
 
           <h3
@@ -104,6 +135,110 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
             {project.description}
           </p>
 
+          {/* Expand/collapse button */}
+          <button
+            onClick={() => setExpanded(!expanded)}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 6,
+              padding: '6px 14px',
+              background: expanded ? 'rgba(240, 201, 70, 0.15)' : 'var(--surface)',
+              border: `1px solid ${expanded ? 'rgba(240, 201, 70, 0.3)' : 'var(--border)'}`,
+              borderRadius: 10,
+              fontSize: 12,
+              fontWeight: 600,
+              color: expanded ? '#F0C946' : 'var(--section-text-sub)',
+              cursor: 'pointer',
+              marginBottom: 16,
+              transition: 'all 0.2s ease',
+            }}
+          >
+            {expanded ? 'Show Less' : 'Full Write-Up'}
+            <motion.span
+              animate={{ rotate: expanded ? 180 : 0 }}
+              transition={{ duration: 0.3 }}
+              style={{ display: 'flex' }}
+            >
+              <FaChevronDown size={10} />
+            </motion.span>
+          </button>
+
+          {/* Expandable details */}
+          <AnimatePresence>
+            {expanded && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: 'auto', opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                style={{ overflow: 'hidden', marginBottom: 16 }}
+              >
+                <div style={{
+                  padding: '16px',
+                  background: 'var(--surface)',
+                  border: '1px solid var(--border)',
+                  borderRadius: 12,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: 14,
+                }}>
+                  {/* Problem Statement */}
+                  <div>
+                    <h4 style={{ fontSize: 11, fontWeight: 700, color: '#F0C946', margin: '0 0 4px', textTransform: 'uppercase', letterSpacing: 0.5 }}>
+                      Problem Statement
+                    </h4>
+                    <p style={{ fontSize: 13, color: 'var(--section-text-sub)', lineHeight: 1.6, margin: 0 }}>
+                      {project.longDescription}
+                    </p>
+                  </div>
+
+                  {/* Approach */}
+                  <div>
+                    <h4 style={{ fontSize: 11, fontWeight: 700, color: '#F0C946', margin: '0 0 4px', textTransform: 'uppercase', letterSpacing: 0.5 }}>
+                      Approach
+                    </h4>
+                    <p style={{ fontSize: 13, color: 'var(--section-text-sub)', lineHeight: 1.6, margin: 0 }}>
+                      {project.approach}
+                    </p>
+                  </div>
+
+                  {/* Technical Decisions */}
+                  <div>
+                    <h4 style={{ fontSize: 11, fontWeight: 700, color: '#F0C946', margin: '0 0 4px', textTransform: 'uppercase', letterSpacing: 0.5 }}>
+                      Technical Decisions
+                    </h4>
+                    <p style={{ fontSize: 13, color: 'var(--section-text-sub)', lineHeight: 1.6, margin: 0 }}>
+                      {project.technicalDecisions}
+                    </p>
+                  </div>
+
+                  {/* Key Learnings */}
+                  <div>
+                    <h4 style={{ fontSize: 11, fontWeight: 700, color: '#F0C946', margin: '0 0 4px', textTransform: 'uppercase', letterSpacing: 0.5 }}>
+                      Key Learnings
+                    </h4>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+                      {project.keyLearnings.map((learning, i) => (
+                        <div key={i} style={{
+                          padding: '8px 12px',
+                          background: 'rgba(240, 201, 70, 0.06)',
+                          border: '1px solid rgba(240, 201, 70, 0.1)',
+                          borderRadius: 8,
+                          fontSize: 12,
+                          color: 'var(--section-text-sub)',
+                          lineHeight: 1.5,
+                        }}>
+                          {learning}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
           {/* Tech tags */}
           <div
             style={{
@@ -113,7 +248,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
               marginBottom: 20,
             }}
           >
-            {project.techStack.slice(0, 5).map((tech) => (
+            {project.techStack.map((tech) => (
               <span
                 key={tech}
                 style={{
@@ -266,7 +401,12 @@ export default function ProjectsSection() {
             }}
           >
             Things I&apos;ve{' '}
-            <span style={{ color: '#F0C946' }}>built</span>
+            <span style={{
+              background: 'linear-gradient(135deg, #F0C946, #FFD700, #FF6B6B)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+            }}>built</span>
           </h2>
         </ScrollReveal>
 

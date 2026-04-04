@@ -119,8 +119,10 @@ export default function ContactSection() {
               Let&apos;s work{' '}
               <span
                 style={{
-                  color: '#F0C946',
-                  textShadow: '0 4px 20px rgba(240,201,70,0.3)',
+                  background: 'linear-gradient(135deg, #F0C946, #FFD700, #FF6B6B)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
                 }}
               >
                 together

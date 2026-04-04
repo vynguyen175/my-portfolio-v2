@@ -96,33 +96,41 @@ export default function LoadingScreen({ onComplete }: { onComplete: () => void }
         height: '200px',
         marginBottom: '40px',
       }}>
-        {/* Center ? block */}
+        {/* Center ? block — 3D */}
         <div style={{
           position: 'absolute',
           top: '50%',
           left: '50%',
           transform: 'translate(-50%, -50%)',
-          width: '64px',
-          height: '64px',
-          background: 'linear-gradient(135deg, var(--gold), #D4A830)',
-          borderRadius: '12px',
+          width: '68px',
+          height: '68px',
+          background: 'linear-gradient(145deg, #FFE066 0%, #F0C946 35%, #C49B1A 100%)',
+          borderRadius: '14px',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          boxShadow: '0 0 40px var(--glow-gold), inset 0 2px 0 rgba(255, 255, 255, 0.3), inset 0 -2px 0 rgba(0, 0, 0, 0.2)',
-          border: '3px solid #B8922A',
+          boxShadow: `
+            0 0 50px var(--glow-gold),
+            0 8px 24px rgba(180,130,20,0.5),
+            0 2px 8px rgba(0,0,0,0.3),
+            inset 0 3px 0 rgba(255,255,255,0.4),
+            inset 0 -3px 0 rgba(0,0,0,0.2),
+            inset 3px 0 0 rgba(255,255,255,0.15),
+            inset -3px 0 0 rgba(0,0,0,0.1)
+          `,
+          border: '2px solid rgba(180,130,20,0.6)',
           animation: 'questionBlockBounce 1.5s ease-in-out infinite',
         }}>
           <span style={{
-            fontSize: '28px',
+            fontSize: '30px',
             fontWeight: 900,
-            color: 'var(--btn-primary-text)',
-            textShadow: '0 1px 0 rgba(255,255,255,0.3)',
+            color: '#7A5A00',
+            textShadow: '0 2px 0 rgba(255,255,255,0.35), 0 -1px 0 rgba(0,0,0,0.15)',
             fontFamily: 'var(--font-geist-sans)',
           }}>?</span>
         </div>
 
-        {/* Orbiting items */}
+        {/* Orbiting items — 3D glassmorphic bubbles */}
         {CHARACTERS.map((char, i) => (
           <div
             key={char.label}
@@ -130,10 +138,10 @@ export default function LoadingScreen({ onComplete }: { onComplete: () => void }
               position: 'absolute',
               top: '50%',
               left: '50%',
-              width: '36px',
-              height: '36px',
-              marginLeft: '-18px',
-              marginTop: '-18px',
+              width: '44px',
+              height: '44px',
+              marginLeft: '-22px',
+              marginTop: '-22px',
               animation: `orbit 4s linear infinite`,
               animationDelay: `${-(i * 4) / CHARACTERS.length}s`,
             }}
@@ -143,12 +151,22 @@ export default function LoadingScreen({ onComplete }: { onComplete: () => void }
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                width: '36px',
-                height: '36px',
-                fontSize: '22px',
+                width: '44px',
+                height: '44px',
+                fontSize: '24px',
                 animation: `counterOrbit 4s linear infinite`,
                 animationDelay: `${-(i * 4) / CHARACTERS.length}s`,
-                filter: 'drop-shadow(0 2px 8px rgba(0,0,0,0.5))',
+                background: 'radial-gradient(circle at 35% 30%, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.05) 50%, rgba(0,0,0,0.1) 100%)',
+                borderRadius: '50%',
+                border: '1px solid rgba(255,255,255,0.15)',
+                boxShadow: `
+                  0 4px 12px rgba(0,0,0,0.3),
+                  0 8px 24px rgba(0,0,0,0.15),
+                  inset 0 2px 4px rgba(255,255,255,0.2),
+                  inset 0 -2px 4px rgba(0,0,0,0.15)
+                `,
+                backdropFilter: 'blur(4px)',
+                filter: 'drop-shadow(0 2px 6px rgba(240,201,70,0.2))',
               }}
               aria-label={char.label}
             >

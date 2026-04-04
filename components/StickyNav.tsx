@@ -1,32 +1,51 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 export default function StickyNav() {
   const [visible, setVisible] = useState(false);
+  const [activeSection, setActiveSection] = useState('hero');
   const pathname = usePathname();
 
   useEffect(() => {
     const onScroll = () => {
-      setVisible(window.scrollY > window.innerHeight * 0.7);
+      setVisible(window.scrollY > window.innerHeight * 0.5);
+
+      // Track active section
+      const sections = ['hero', 'about', 'projects', 'skills', 'credentials', 'contact'];
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const el = document.getElementById(sections[i]);
+        if (el && el.getBoundingClientRect().top <= 200) {
+          setActiveSection(sections[i]);
+          break;
+        }
+      }
     };
 
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Only show on pages with enough scroll content
   if (pathname === '/play') return null;
 
   const links = [
-    { href: '/', label: 'Home' },
-    { href: '/projects', label: 'Projects' },
-    { href: '/skills', label: 'Skills' },
-    { href: '/about', label: 'About' },
-    { href: '/contact', label: 'Contact' },
+    { href: '#hero', label: 'Home' },
+    { href: '#projects', label: 'Projects' },
+    { href: '#skills', label: 'Skills' },
+    { href: '#about', label: 'About' },
+    { href: '#credentials', label: 'Credentials' },
+    { href: '#contact', label: 'Contact' },
   ];
+
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const id = href.replace('#', '');
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <nav
@@ -72,11 +91,13 @@ export default function StickyNav() {
       }} />
 
       {links.map(link => {
-        const isActive = pathname === link.href;
+        const sectionId = link.href.replace('#', '');
+        const isActive = activeSection === sectionId;
         return (
-          <Link
+          <a
             key={link.href}
             href={link.href}
+            onClick={(e) => handleClick(e, link.href)}
             style={{
               color: isActive ? 'var(--gold)' : 'var(--text-secondary)',
               fontSize: '12px',
@@ -90,7 +111,7 @@ export default function StickyNav() {
             }}
           >
             {link.label}
-          </Link>
+          </a>
         );
       })}
     </nav>
