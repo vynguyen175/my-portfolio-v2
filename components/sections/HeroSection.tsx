@@ -507,6 +507,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, scale: 0.7, y: 60 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            className="hero-photo-wrapper"
             style={{
               position: 'relative',
               width: 'clamp(260px, 30vw, 380px)',
@@ -563,11 +564,12 @@ export default function HeroSection() {
               alt="Mario jumping in celebration"
               animate={{ y: [0, -10, 0] }}
               transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+              className="hero-mario-sprite"
               style={{
                 position: 'absolute',
                 bottom: '-10px',
-                right: '-30px',
-                width: '100px',
+                right: '-20px',
+                width: '80px',
                 height: 'auto',
                 filter: 'drop-shadow(0 8px 20px rgba(0,0,0,0.25))',
                 zIndex: 2,
@@ -654,7 +656,7 @@ export default function HeroSection() {
           0% { transform: scale(0.9) translateX(0); }
           100% { transform: scale(0.9) translateX(110vw); }
         }
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
           #hero > div:last-of-type {
             grid-template-columns: 1fr !important;
             text-align: center;
@@ -671,10 +673,18 @@ export default function HeroSection() {
           #hero > div:last-of-type > div:first-child > div:nth-last-child(2) {
             justify-content: center !important;
           }
+          #hero .hero-photo-wrapper {
+            width: clamp(200px, 50vw, 300px) !important;
+            height: clamp(200px, 50vw, 300px) !important;
+          }
         }
         @media (max-width: 480px) {
           #hero > div:last-of-type {
             padding: 0 16px !important;
+          }
+          #hero .hero-photo-wrapper {
+            width: 220px !important;
+            height: 220px !important;
           }
         }
       `}</style>
