@@ -9,9 +9,9 @@ const credentials = [
     type: 'Education',
     items: [
       {
-        title: 'Computer Science',
+        title: 'Computer Programming & Analysis',
         subtitle: 'George Brown College',
-        detail: 'Toronto, ON',
+        detail: 'Advanced Diploma — Dean\'s List Honors | GPA: 3.7',
         year: '2023 - 2026',
       },
     ],
@@ -20,6 +20,14 @@ const credentials = [
     type: 'Awards & Achievements',
     items: [
       {
+        title: 'IEEEXtreme 19.0 — #1 Team in Canada',
+        subtitle: 'Team GitPushForce | Ranked 72 globally out of 19,000+ participants',
+        detail: '24-hour international programming competition hosted by IEEE. Ranked #1 among all Canadian teams and IEEE Region 7.',
+        year: '2025',
+        image: '/certificates/ieee-certificate.png',
+        link: '/certificates/ieee-certificate.pdf',
+      },
+      {
         title: 'Hackathon Winner',
         subtitle: 'George Brown College Hackathon',
         detail: 'Built a winning project under time constraints',
@@ -27,9 +35,21 @@ const credentials = [
       },
       {
         title: 'Open Source Contributor',
-        subtitle: 'Active GitHub Presence',
-        detail: 'Contributing to community projects and maintaining own repos',
+        subtitle: 'Next.js (vercel/next.js)',
+        detail: 'Contributed bug fixes and documentation improvements',
         year: 'Ongoing',
+      },
+    ],
+  },
+  {
+    type: 'Certifications',
+    items: [
+      {
+        title: 'Scrum Fundamentals Certified (SFC)',
+        subtitle: 'SCRUMstudy',
+        detail: 'Certificate ID: 1133190',
+        year: '2025',
+        image: '/certificates/scrum-certificate.png',
       },
     ],
   },
@@ -172,7 +192,7 @@ export default function CredentialsSection() {
                 </h3>
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-                  {section.items.map((item, itemIdx) => (
+                  {section.items.map((item: Record<string, string | undefined>, itemIdx: number) => (
                     <ScrollReveal key={item.title} delay={0.1 * (sectionIdx + itemIdx + 1)} direction="left">
                       <div
                         style={{
@@ -180,11 +200,6 @@ export default function CredentialsSection() {
                           background: 'linear-gradient(145deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%)',
                           borderRadius: 16,
                           border: '1px solid rgba(240, 201, 70, 0.1)',
-                          display: 'flex',
-                          justifyContent: 'space-between',
-                          alignItems: 'flex-start',
-                          gap: 20,
-                          flexWrap: 'wrap',
                           transition: 'all 0.3s ease',
                           cursor: 'default',
                         }}
@@ -199,39 +214,48 @@ export default function CredentialsSection() {
                           (e.currentTarget as HTMLElement).style.transform = '';
                         }}
                       >
-                        <div style={{ flex: 1 }}>
-                          <h4
-                            style={{
-                              fontSize: 18,
-                              fontWeight: 800,
-                              color: 'var(--section-text)',
-                              margin: '0 0 6px',
-                            }}
-                          >
-                            {item.title}
-                          </h4>
-                          <p
-                            style={{
-                              fontSize: 14,
-                              fontWeight: 600,
-                              color: 'var(--section-text-sub)',
-                              margin: '0 0 4px',
-                            }}
-                          >
-                            {item.subtitle}
-                          </p>
-                          <p
-                            style={{
-                              fontSize: 13,
-                              color: 'var(--section-text-muted)',
-                              margin: 0,
-                            }}
-                          >
-                            {item.detail}
-                          </p>
-                        </div>
-                        <span
-                          style={{
+                        <div style={{
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          alignItems: 'flex-start',
+                          gap: 20,
+                          flexWrap: 'wrap',
+                        }}>
+                          <div style={{ flex: 1 }}>
+                            <h4 style={{ fontSize: 18, fontWeight: 800, color: 'var(--section-text)', margin: '0 0 6px' }}>
+                              {item.title}
+                            </h4>
+                            <p style={{ fontSize: 14, fontWeight: 600, color: 'var(--section-text-sub)', margin: '0 0 4px' }}>
+                              {item.subtitle}
+                            </p>
+                            <p style={{ fontSize: 13, color: 'var(--section-text-muted)', margin: 0 }}>
+                              {item.detail}
+                            </p>
+                            {/* View certificate link */}
+                            {(item.image || item.link) && (
+                              <a
+                                href={item.image || item.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                style={{
+                                  display: 'inline-block',
+                                  marginTop: 10,
+                                  padding: '5px 14px',
+                                  background: 'rgba(240, 201, 70, 0.12)',
+                                  border: '1px solid rgba(240, 201, 70, 0.25)',
+                                  borderRadius: 8,
+                                  fontSize: 12,
+                                  fontWeight: 600,
+                                  color: '#F0C946',
+                                  textDecoration: 'none',
+                                  transition: 'all 0.2s ease',
+                                }}
+                              >
+                                View Certificate
+                              </a>
+                            )}
+                          </div>
+                          <span style={{
                             padding: '6px 14px',
                             background: 'rgba(240, 201, 70, 0.1)',
                             borderRadius: 10,
@@ -239,10 +263,28 @@ export default function CredentialsSection() {
                             fontWeight: 700,
                             color: '#F0C946',
                             whiteSpace: 'nowrap',
-                          }}
-                        >
-                          {item.year}
-                        </span>
+                          }}>
+                            {item.year}
+                          </span>
+                        </div>
+
+                        {/* Certificate image preview */}
+                        {item.image && (
+                          <a href={item.image} target="_blank" rel="noopener noreferrer" style={{ display: 'block', marginTop: 16 }}>
+                            <img
+                              src={item.image}
+                              alt={`${item.title} certificate`}
+                              style={{
+                                width: '100%',
+                                maxHeight: '280px',
+                                objectFit: 'contain',
+                                borderRadius: 10,
+                                border: '1px solid rgba(240, 201, 70, 0.15)',
+                                transition: 'all 0.3s ease',
+                              }}
+                            />
+                          </a>
+                        )}
                       </div>
                     </ScrollReveal>
                   ))}

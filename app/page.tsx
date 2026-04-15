@@ -9,11 +9,13 @@ import ContactSection from '@/components/sections/ContactSection';
 import FloatingElements from '@/components/FloatingElements';
 import SectionNav from '@/components/SectionNav';
 import DarkModeToggle from '@/components/DarkModeToggle';
+import KonamiCode from '@/components/KonamiCode';
 
 export default function Home() {
   return (
     <main id="main-content" style={{ position: 'relative', overflowX: 'hidden' }}>
       <DarkModeToggle />
+      <KonamiCode />
       <FloatingElements />
       <SectionNav />
       <HeroSection />

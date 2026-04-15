@@ -158,76 +158,94 @@ html, body {
 body {
   background: var(--bg-body);
   color: var(--text-primary);
-  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  cursor: none;
   transition: background 0.4s ease, color 0.4s ease;
 }
 
-*, *::before, *::after {
-  cursor: none !important;
+/* Glassmorphic text badges and buttons */
+.glass {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="light"] .glass {
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  transition: all 0.3s ease;
+}
+
+[data-theme="light"] .glass-card {
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(240, 201, 70, 0.25);
+  box-shadow: 0 12px 40px rgba(240, 201, 70, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transform: translateY(-4px);
+}
+
+[data-theme="light"] .glass-card:hover {
+  background: rgba(255, 255, 255, 0.7);
+  border-color: rgba(240, 201, 70, 0.35);
+  box-shadow: 0 12px 40px rgba(240, 201, 70, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.glass-btn {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 14px;
+  padding: 14px 28px;
+  font-weight: 700;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+[data-theme="light"] .glass-btn {
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.glass-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(240, 201, 70, 0.3);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+[data-theme="light"] .glass-btn:hover {
+  background: rgba(255, 255, 255, 0.7);
 }
 
 /* =============================================
    Custom Cursor
    ============================================= */
 
-.custom-cursor-dot {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 8px;
-  height: 8px;
-  margin: -4px 0 0 -4px;
-  background: var(--gold);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 99999;
-  will-change: transform;
-  transition: width 0.2s ease, height 0.2s ease, margin 0.2s ease, background 0.2s ease;
-}
-
-.custom-cursor-dot.is-hovering {
-  width: 12px;
-  height: 12px;
-  margin: -6px 0 0 -6px;
-  background: var(--cursor-hover);
-}
-
-.custom-cursor-ring {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 36px;
-  height: 36px;
-  margin: -18px 0 0 -18px;
-  border: 1.5px solid var(--gold);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 99998;
-  opacity: 0.5;
-  will-change: transform;
-  transition: width 0.3s ease, height 0.3s ease, margin 0.3s ease, opacity 0.3s ease, border-color 0.3s ease;
-}
-
-.custom-cursor-ring.is-hovering {
-  width: 50px;
-  height: 50px;
-  margin: -25px 0 0 -25px;
-  opacity: 0.8;
-  border-color: var(--cursor-hover);
-}
-
-@media (hover: none), (pointer: coarse) {
-  body, *, *::before, *::after {
-    cursor: auto !important;
-  }
-  .custom-cursor-dot,
-  .custom-cursor-ring {
-    display: none;
-  }
-}
+/* Custom cursor handled in CustomCursor.tsx — default Windows cursor with gold glow on hover */
 
 /* =============================================
    Custom Context Menu
@@ -266,7 +284,6 @@ body {
   font-weight: 500;
   text-align: left;
   transition: background 0.12s ease, color 0.12s ease;
-  cursor: none !important;
 }
 
 .ctx-item:hover:not(:disabled) {

@@ -53,3 +53,5 @@ next-env.d.ts
 # Nested project (should live in its own repo)
 components/quiz-app
 docs/ 
+MEMORY.md
+

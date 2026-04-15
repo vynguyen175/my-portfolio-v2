@@ -8,17 +8,17 @@ const cards = [
   {
     title: 'Who I Am',
     body: 'A curious developer who loves building things that matter. I thrive at the intersection of design and engineering, turning complex problems into elegant, user-friendly solutions.',
-    icon: '🎮',
+    icon: '',
   },
   {
     title: 'My Focus',
     body: 'Full-stack web development, AI/ML applications, and mobile experiences. I believe great software should feel effortless — every interaction thoughtful, every detail intentional.',
-    icon: '🎯',
+    icon: '',
   },
   {
     title: 'What I Value',
     body: 'Clean code, continuous learning, and collaboration. I approach every project with empathy for users and respect for the craft. Open-source contributor and lifelong student.',
-    icon: '⭐',
+    icon: '',
   },
 ];
 
@@ -76,32 +76,60 @@ export default function AboutSection() {
           margin: '0 auto',
           width: '100%',
           display: 'grid',
-          gridTemplateColumns: '350px 1fr',
-          gap: 80,
+          gridTemplateColumns: '1fr 1fr',
+          gap: 40,
           alignItems: 'center',
         }}
       >
-        {/* Left: Mario */}
+        {/* Left: Photo — transparent background, blends naturally */}
         <motion.div
           style={{
             y: marioY,
-            rotate: marioRotate,
             display: 'flex',
             justifyContent: 'center',
           }}
         >
           <img
-            src="/sprites/mario-present.png"
-            alt="Mario presenting"
+            src="/sprites/me-sprites.png"
+            alt="Vy Nguyen with Mario game sprites"
             style={{
-              width: 'clamp(240px, 28vw, 350px)',
+              width: '100%',
+              maxWidth: '520px',
               height: 'auto',
-              filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.12))',
-              animation: 'marioFloat 4s ease-in-out infinite',
+              objectFit: 'contain',
+              animation: 'aboutFloat 4s ease-in-out infinite',
             }}
           />
+          {/* Secret code hint */}
+          <div style={{
+            display: 'flex',
+            gap: '6px',
+            justifyContent: 'center',
+            flexWrap: 'wrap',
+            marginTop: '24px',
+            opacity: 0.35,
+          }}>
+            {['↑', '↑', '↓', '↓', '←', '→', '←', '→', 'B', 'A'].map((key, i) => (
+              <span key={i} style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                width: '30px',
+                height: '30px',
+                background: 'var(--surface)',
+                border: '1px solid var(--border)',
+                borderRadius: '6px',
+                color: 'var(--section-text)',
+                fontSize: '13px',
+                fontWeight: 700,
+                boxShadow: '0 2px 0 var(--border)',
+              }}>
+                {key}
+              </span>
+            ))}
+          </div>
           <style>{`
-            @keyframes marioFloat {
+            @keyframes aboutFloat {
               0%, 100% { transform: translateY(0px); }
               50% { transform: translateY(-18px); }
             }
