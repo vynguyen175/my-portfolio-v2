@@ -661,7 +661,14 @@ export default function HeroSection() {
             grid-template-columns: 1fr !important;
             text-align: center;
             padding: 0 20px !important;
-            gap: 24px !important;
+            gap: 32px !important;
+          }
+          /* Reorder: photo first, text second */
+          #hero > div:last-of-type > div:first-child {
+            order: 2 !important;
+          }
+          #hero > div:last-of-type > div:last-child {
+            order: 1 !important;
           }
           #hero > div:last-of-type > div:first-child p {
             margin-left: auto !important;
@@ -674,8 +681,12 @@ export default function HeroSection() {
             justify-content: center !important;
           }
           #hero .hero-photo-wrapper {
-            width: clamp(200px, 50vw, 300px) !important;
-            height: clamp(200px, 50vw, 300px) !important;
+            width: 240px !important;
+            height: 240px !important;
+          }
+          #hero .hero-mario-sprite {
+            width: 60px !important;
+            right: -10px !important;
           }
         }
         @media (max-width: 480px) {
@@ -683,8 +694,12 @@ export default function HeroSection() {
             padding: 0 16px !important;
           }
           #hero .hero-photo-wrapper {
-            width: 220px !important;
-            height: 220px !important;
+            width: 200px !important;
+            height: 200px !important;
+          }
+          #hero .hero-mario-sprite {
+            width: 50px !important;
+            right: -5px !important;
           }
         }
       `}</style>
