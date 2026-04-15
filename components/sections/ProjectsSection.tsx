@@ -302,7 +302,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
 
         {/* Image gallery */}
         {project.images.length > 0 && (
-          <div style={{ position: 'relative', width: '100%', background: '#000' }}>
+          <div style={{ position: 'relative', width: '100%' }}>
             <img
               src={project.images[imgIdx]}
               alt={`${project.title} screenshot ${imgIdx + 1}`}
