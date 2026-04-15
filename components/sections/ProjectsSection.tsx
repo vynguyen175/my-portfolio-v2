@@ -429,7 +429,7 @@ export default function ProjectsSection() {
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(min(340px, 100%), 1fr))',
             gap: 28,
           }}
         >
@@ -466,6 +466,11 @@ export default function ProjectsSection() {
           }
           #projects > div > div:last-child {
             grid-template-columns: 1fr !important;
+          }
+        }
+        @media (max-width: 480px) {
+          #projects {
+            padding: 60px 16px !important;
           }
         }
       `}</style>

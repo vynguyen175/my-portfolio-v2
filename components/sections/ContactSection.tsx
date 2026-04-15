@@ -148,11 +148,13 @@ export default function ContactSection() {
           {/* Social links */}
           <ScrollReveal delay={0.3}>
             <div
+              className="contact-social-links"
               style={{
                 display: 'flex',
                 justifyContent: 'center',
                 gap: 16,
                 marginBottom: 40,
+                flexWrap: 'wrap',
               }}
             >
               {[
@@ -192,6 +194,7 @@ export default function ContactSection() {
         {/* Contact Form Card */}
         <ScrollReveal delay={0.3}>
           <div
+            className="contact-form-card"
             style={{
               background: 'rgba(255,255,255,0.12)',
               backdropFilter: 'blur(20px)',
@@ -232,6 +235,18 @@ export default function ContactSection() {
         @media (max-width: 768px) {
           #contact {
             padding: 80px 20px !important;
+          }
+          #contact .contact-form-card {
+            padding: 24px 20px !important;
+          }
+        }
+        @media (max-width: 480px) {
+          #contact {
+            padding: 60px 16px !important;
+          }
+          #contact .contact-social-links {
+            flex-direction: column !important;
+            align-items: center !important;
           }
         }
       `}</style>

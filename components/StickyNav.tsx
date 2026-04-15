@@ -114,6 +114,24 @@ export default function StickyNav() {
           </a>
         );
       })}
+      <style>{`
+        @media (max-width: 600px) {
+          nav[aria-label="Sticky navigation"] {
+            padding: 4px 6px !important;
+            gap: 1px !important;
+          }
+          nav[aria-label="Sticky navigation"] a {
+            font-size: 11px !important;
+            padding: 5px 8px !important;
+          }
+        }
+        @media (max-width: 400px) {
+          nav[aria-label="Sticky navigation"] a {
+            font-size: 10px !important;
+            padding: 4px 6px !important;
+          }
+        }
+      `}</style>
     </nav>
   );
 }

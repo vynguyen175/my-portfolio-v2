@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
-Sitemap: https://my-portfolio-vynguyen.vercel.app/sitemap.xml
+Sitemap: https://www.vynguyen.dev/sitemap.xml

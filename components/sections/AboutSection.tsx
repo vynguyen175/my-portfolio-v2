@@ -243,6 +243,16 @@ export default function AboutSection() {
             text-align: center;
           }
         }
+        @media (max-width: 768px) {
+          #about {
+            padding: 80px 20px !important;
+          }
+        }
+        @media (max-width: 480px) {
+          #about {
+            padding: 60px 16px !important;
+          }
+        }
       `}</style>
     </section>
   );

@@ -233,6 +233,11 @@ export default function SkillsSection() {
             padding: 80px 20px !important;
           }
         }
+        @media (max-width: 480px) {
+          #skills {
+            padding: 60px 16px !important;
+          }
+        }
       `}</style>
     </section>
   );

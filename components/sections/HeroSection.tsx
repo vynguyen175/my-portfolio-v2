@@ -659,6 +659,22 @@ export default function HeroSection() {
             grid-template-columns: 1fr !important;
             text-align: center;
             padding: 0 20px !important;
+            gap: 24px !important;
+          }
+          #hero > div:last-of-type > div:first-child p {
+            margin-left: auto !important;
+            margin-right: auto !important;
+          }
+          #hero > div:last-of-type > div:first-child > div:last-child {
+            justify-content: center !important;
+          }
+          #hero > div:last-of-type > div:first-child > div:nth-last-child(2) {
+            justify-content: center !important;
+          }
+        }
+        @media (max-width: 480px) {
+          #hero > div:last-of-type {
+            padding: 0 16px !important;
           }
         }
       `}</style>

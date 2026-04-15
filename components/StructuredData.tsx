@@ -3,8 +3,8 @@ export default function StructuredData() {
     '@context': 'https://schema.org',
     '@type': 'Person',
     name: 'Vy Nguyen',
-    url: 'https://my-portfolio-vynguyen.vercel.app',
-    image: 'https://my-portfolio-vynguyen.vercel.app/me-1.jpg',
+    url: 'https://www.vynguyen.dev',
+    image: 'https://www.vynguyen.dev/me-1.jpg',
     description: 'Full-stack developer with 3 years of hands-on experience in Next.js, React, TypeScript, Python, and AI/ML. Based in Toronto.',
     sameAs: [
       'https://github.com/vynguyen175',
@@ -28,7 +28,7 @@ export default function StructuredData() {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: 'Vy Nguyen Portfolio',
-    url: 'https://my-portfolio-vynguyen.vercel.app',
+    url: 'https://www.vynguyen.dev',
     description: 'Portfolio of Vy Nguyen, a full-stack developer based in Toronto.',
   };
 
