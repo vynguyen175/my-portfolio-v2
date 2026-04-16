@@ -47,6 +47,8 @@ export async function POST(request: NextRequest) {
     const origin = request.headers.get('origin');
     const allowedOrigins = [
       process.env.NEXT_PUBLIC_SITE_URL,
+      'https://www.vynguyen.dev',
+      'https://vynguyen.dev',
       'http://localhost:3000',
       'http://localhost:3001',
     ].filter(Boolean);
