@@ -487,7 +487,7 @@ export default function HeroSection() {
             <a href="#projects" className="glass-btn hero-cta" style={{ background: 'rgba(240,201,70,0.85)', color: '#1a1a2e', border: '1px solid rgba(240,201,70,0.9)', boxShadow: '0 4px 20px rgba(240,201,70,0.3)' }}>
               View Projects
             </a>
-            <a href="/resume.pdf" target="_blank" className="glass-btn hero-cta" style={{ color: 'var(--section-text)' }}>
+            <a href="/resume.html" target="_blank" className="glass-btn hero-cta" style={{ color: 'var(--section-text)' }}>
               Resume
             </a>
             <a href="/play" className="glass-btn hero-cta" style={{ background: 'rgba(229,37,33,0.8)', color: '#fff', border: '1px solid rgba(229,37,33,0.9)', boxShadow: '0 4px 20px rgba(229,37,33,0.25)', whiteSpace: 'nowrap' }}>

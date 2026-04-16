@@ -109,7 +109,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
           <div style={{ borderTop: '1px solid var(--border)', margin: '12px 0' }} />
 
           <Link
-            href="/resume.pdf"
+            href="/resume.html"
             target="_blank"
             onClick={onClose}
             style={{

@@ -114,7 +114,7 @@ export default function ContextMenu() {
     {
       label: "View Resume",
       icon: "📄",
-      action: () => { close(); window.open("/resume.pdf", "_blank"); },
+      action: () => { close(); window.open("/resume.html", "_blank"); },
     },
   ];
 

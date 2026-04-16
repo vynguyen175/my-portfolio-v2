@@ -78,7 +78,7 @@ Or use the contact form →`,
   },
   resume: {
     output: 'Opening resume...',
-    action: '/resume.pdf',
+    action: '/resume.html',
   },
   game: {
     output: 'Loading Mario game...',
