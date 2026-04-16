@@ -355,6 +355,7 @@ export default function HeroSection() {
 
       {/* Content grid */}
       <div
+        className="hero-grid"
         style={{
           maxWidth: 1200,
           margin: '0 auto',
@@ -369,7 +370,7 @@ export default function HeroSection() {
         }}
       >
         {/* Left: text */}
-        <motion.div style={{ y: textY }}>
+        <motion.div className="hero-text" style={{ y: textY }}>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
@@ -497,6 +498,7 @@ export default function HeroSection() {
 
         {/* Right: Your photo */}
         <motion.div
+          className="hero-photo"
           style={{
             y: marioY,
             display: 'flex',
@@ -663,62 +665,61 @@ export default function HeroSection() {
             align-items: flex-start !important;
             padding-top: 80px !important;
           }
-          #hero > div:last-of-type {
+          .hero-grid {
             display: flex !important;
             flex-direction: column !important;
             align-items: center !important;
             text-align: center;
             padding: 0 24px !important;
-            gap: 28px !important;
+            gap: 24px !important;
           }
-          /* Reorder: photo first, text second */
-          #hero > div:last-of-type > div:first-child {
+          .hero-text {
             order: 2 !important;
           }
-          #hero > div:last-of-type > div:last-child {
+          .hero-photo {
             order: 1 !important;
           }
-          #hero > div:last-of-type > div:first-child p {
+          .hero-text p {
             margin-left: auto !important;
             margin-right: auto !important;
           }
-          #hero > div:last-of-type > div:first-child > div {
+          .hero-text > div {
             justify-content: center !important;
           }
-          #hero .hero-photo-wrapper {
-            width: 180px !important;
-            height: 180px !important;
+          .hero-photo-wrapper {
+            width: 160px !important;
+            height: 160px !important;
           }
-          #hero .hero-mario-sprite {
-            width: 50px !important;
-            right: -8px !important;
+          .hero-mario-sprite {
+            width: 45px !important;
+            right: -6px !important;
             bottom: -5px !important;
           }
-          #hero .hero-scroll-indicator {
+          .hero-scroll-indicator {
             display: none !important;
           }
         }
         @media (max-width: 480px) {
           #hero {
-            padding-top: 60px !important;
+            padding-top: 50px !important;
           }
-          #hero > div:last-of-type {
+          .hero-grid {
             padding: 0 16px !important;
-            gap: 20px !important;
+            gap: 16px !important;
           }
-          #hero .hero-photo-wrapper {
-            width: 150px !important;
-            height: 150px !important;
+          .hero-photo-wrapper {
+            width: 130px !important;
+            height: 130px !important;
           }
-          #hero .hero-mario-sprite {
-            width: 40px !important;
-            right: -5px !important;
+          .hero-mario-sprite {
+            width: 36px !important;
+            right: -4px !important;
           }
-          #hero .hero-cta-row {
+          .hero-cta-row {
             flex-direction: column !important;
             width: 100% !important;
           }
-          #hero .hero-cta {
+          .hero-cta {
             width: 100% !important;
             text-align: center !important;
             justify-content: center !important;
