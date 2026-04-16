@@ -5,100 +5,55 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Vy Nguyen - Resume</title>
 <style>
-  @page { margin: 0.5in 0.6in; size: letter; }
+  @page { margin: 0.35in 0.45in; size: letter; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     font-family: 'Calibri', 'Segoe UI', Arial, sans-serif;
-    font-size: 10.5pt;
-    line-height: 1.45;
+    font-size: 9.5pt;
+    line-height: 1.35;
     color: #1a1a1a;
     max-width: 8.5in;
     margin: 0 auto;
-    padding: 0.5in 0.6in;
+    padding: 0.35in 0.45in;
   }
 
-  /* Header */
-  .header { text-align: center; margin-bottom: 14px; }
-  .header h1 { font-size: 22pt; font-weight: 700; letter-spacing: 2px; margin-bottom: 4px; color: #000; }
-  .header .contact { font-size: 10pt; color: #333; }
+  .header { text-align: center; margin-bottom: 8px; }
+  .header h1 { font-size: 20pt; font-weight: 700; letter-spacing: 2px; margin-bottom: 2px; color: #000; }
+  .header .contact { font-size: 9pt; color: #333; }
   .header .contact a { color: #333; text-decoration: none; }
-  .header .contact .sep { margin: 0 6px; color: #999; }
-  .header .summary {
-    font-size: 10pt;
-    color: #444;
-    margin-top: 8px;
-    line-height: 1.5;
-    max-width: 620px;
-    margin-left: auto;
-    margin-right: auto;
-  }
+  .header .contact .sep { margin: 0 4px; color: #999; }
+  .header .summary { font-size: 9pt; color: #444; margin-top: 5px; line-height: 1.4; }
 
-  /* Section */
-  .section { margin-top: 14px; }
+  .section { margin-top: 8px; }
   .section-title {
-    font-size: 11pt;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: #0066cc;
+    font-size: 9.5pt; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 1.5px; color: #0066cc;
     border-bottom: 1.5px solid #0066cc;
-    padding-bottom: 2px;
-    margin-bottom: 8px;
+    padding-bottom: 1px; margin-bottom: 4px;
   }
 
-  /* Entry */
-  .entry { margin-bottom: 10px; }
-  .entry-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-  }
-  .entry-title { font-weight: 700; font-size: 10.5pt; }
-  .entry-right { font-size: 10pt; color: #444; text-align: right; white-space: nowrap; }
-  .entry-subtitle {
-    display: flex;
-    justify-content: space-between;
-    font-style: italic;
-    font-size: 10pt;
-    color: #555;
-    margin-bottom: 2px;
-  }
-  .entry-tech {
-    font-size: 9.5pt;
-    color: #555;
-    font-style: italic;
-    margin-bottom: 2px;
-  }
+  .entry { margin-bottom: 5px; }
+  .entry-header { display: flex; justify-content: space-between; align-items: baseline; }
+  .entry-title { font-weight: 700; font-size: 9.5pt; }
+  .entry-right { font-size: 9pt; color: #444; text-align: right; white-space: nowrap; }
+  .entry-subtitle { display: flex; justify-content: space-between; font-style: italic; font-size: 9pt; color: #555; }
+  .entry-tech { font-size: 8.5pt; color: #555; font-style: italic; margin-bottom: 1px; }
 
-  /* Bullet list */
-  ul { padding-left: 18px; margin-top: 2px; }
-  li { margin-bottom: 2px; font-size: 10.5pt; }
+  ul { padding-left: 16px; margin-top: 1px; }
+  li { margin-bottom: 1px; font-size: 9.5pt; }
   li strong { font-weight: 600; }
 
-  /* Skills table */
   .skills-grid { width: 100%; border-collapse: collapse; }
-  .skills-grid td { padding: 2px 0; font-size: 10.5pt; vertical-align: top; }
-  .skills-grid td:first-child { font-weight: 700; width: 120px; color: #333; }
+  .skills-grid td { padding: 1px 0; font-size: 9.5pt; vertical-align: top; }
+  .skills-grid td:first-child { font-weight: 700; width: 105px; color: #333; }
 
-  /* Certs */
-  .cert-row {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 2px;
-    font-size: 10.5pt;
-  }
+  .cert-row { display: flex; justify-content: space-between; font-size: 9.5pt; }
 
-  /* Activities */
-  .activity { margin-bottom: 3px; font-size: 10.5pt; }
-
-  @media print {
-    body { padding: 0; }
-  }
+  @media print { body { padding: 0; } }
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
 <div class="header">
   <h1>VY NGUYEN</h1>
   <div class="contact">
@@ -113,11 +68,10 @@
     <a href="https://www.linkedin.com/in/vy-nguyen-71629729b/">LinkedIn</a>
   </div>
   <div class="summary">
-    Full-stack developer with 3 years of experience building scalable web applications, AI/ML tools, and cross-platform products. Ranked #1 in Canada at IEEEXtreme 19.0 (72nd globally out of 19,000+ participants). Proficient in Next.js, React, TypeScript, Python, ASP.NET Core, and cloud deployment.
+    Full-stack developer with 3 years of experience building scalable web applications, AI/ML tools, and cross-platform products. Ranked <strong>#1 in Canada</strong> at IEEEXtreme 19.0 (72nd globally / 19,000+ participants). Proficient in Next.js, React, TypeScript, Python, and ASP.NET Core.
   </div>
 </div>
 
-<!-- EDUCATION -->
 <div class="section">
   <div class="section-title">Education</div>
   <div class="entry">
@@ -129,13 +83,12 @@
       <span>Advanced Diploma in Computer Programming and Analysis</span>
       <span>Dean's List Honors | GPA: 3.8</span>
     </div>
-    <div style="font-size: 10pt; color: #555;">
-      <strong style="color: #333;">Coursework:</strong> Object-Oriented Programming, Data Structures & Algorithms, Applied Machine Learning, Full-Stack Development, Mobile App Development, Software Testing & QA, Agile/Scrum
+    <div style="font-size: 8.5pt; color: #555;">
+      <strong style="color: #333;">Coursework:</strong> OOP, Data Structures & Algorithms, Applied ML, Full-Stack Dev, Mobile App Dev, Software Testing & QA
     </div>
   </div>
 </div>
 
-<!-- EXPERIENCE -->
 <div class="section">
   <div class="section-title">Experience</div>
   <div class="entry">
@@ -148,17 +101,15 @@
       <span>sushirock.ca</span>
     </div>
     <ul>
-      <li>Built and deployed a <strong>production web application</strong> for a Toronto sushi restaurant with 2 locations, handling <strong>500+ online orders per month</strong> with 99.9% uptime</li>
-      <li>Developed a real-time online ordering system with menu management, order tracking, and <strong>Uber Eats integration</strong>, reducing order processing time by 60%</li>
-      <li>Implemented <strong>bilingual support (English/Chinese)</strong>, increasing customer engagement by 40% across non-English-speaking demographics</li>
-      <li>Built admin dashboard with <strong>Recharts analytics</strong> for sales trends, peak hours, and inventory tracking, reducing manual reporting by 80%</li>
-      <li>Achieved <strong>95+ Lighthouse performance score</strong> through Next.js image optimization, lazy loading, and code splitting</li>
+      <li>Built and deployed a <strong>production web application</strong> for a Toronto sushi restaurant (2 locations), handling <strong>500+ orders/month</strong> with 99.9% uptime</li>
+      <li>Developed real-time ordering system with menu management, order tracking, and <strong>Uber Eats integration</strong>, reducing order processing time by 60%</li>
+      <li>Implemented <strong>bilingual support (EN/ZH)</strong>, increasing customer engagement by 40%; built admin dashboard with <strong>Recharts analytics</strong></li>
+      <li>Achieved <strong>95+ Lighthouse score</strong> through Next.js image optimization, lazy loading, and code splitting</li>
     </ul>
     <div class="entry-tech">Next.js, TypeScript, React, Tailwind CSS, Supabase, PostgreSQL, Vercel, Sentry</div>
   </div>
 </div>
 
-<!-- PROJECTS -->
 <div class="section">
   <div class="section-title">Projects</div>
 
@@ -169,9 +120,8 @@
     </div>
     <div class="entry-tech">Python, Streamlit, Pandas, NumPy, Scikit-learn, SQLAlchemy, Docker</div>
     <ul>
-      <li>Built an analytics platform that auto-detects column types and generates interactive visualizations from uploaded CSV datasets</li>
-      <li>Implemented <strong>automated ML model training</strong> with feature engineering, achieving <strong>85%+ prediction accuracy</strong> across multiple dataset types</li>
-      <li>Exports <strong>PDF/HTML reports</strong> with performance metrics; integrated OAuth authentication and Docker containerization for deployment</li>
+      <li>Built analytics platform with auto column-type detection and interactive visualizations from uploaded CSV datasets</li>
+      <li>Implemented <strong>automated ML model training</strong> achieving <strong>85%+ accuracy</strong>; exports PDF/HTML reports with OAuth and Docker deployment</li>
     </ul>
   </div>
 
@@ -182,9 +132,8 @@
     </div>
     <div class="entry-tech">Next.js, TypeScript, MongoDB, Kotlin, Android SDK, Room Database, Retrofit</div>
     <ul>
-      <li>Built a cross-platform social app (web + native Android) for tracking, rating, and reviewing games with <strong>RAWG API integration (500K+ titles)</strong></li>
-      <li>Designed an <strong>API-first architecture</strong> with shared Next.js backend endpoints consumed by both React frontend and Android client</li>
-      <li>Implemented <strong>offline-first architecture</strong> on Android with Room Database and achieved <strong>80% test coverage</strong> with JUnit and Espresso</li>
+      <li>Built cross-platform social app (web + native Android) for tracking and reviewing games with <strong>RAWG API (500K+ titles)</strong></li>
+      <li>Designed <strong>API-first architecture</strong> with shared backend; implemented offline-first Android with Room DB and <strong>80% test coverage</strong></li>
     </ul>
   </div>
 
@@ -195,8 +144,7 @@
     </div>
     <div class="entry-tech">Next.js, TypeScript, React, Tailwind CSS, MongoDB, Vercel</div>
     <ul>
-      <li>Built a full e-commerce experience with product catalog, shopping cart with size variants, wishlist, and responsive checkout flow</li>
-      <li>Implemented <strong>server-side rendering</strong> for SEO-optimized product pages and <strong>React Context</strong> for persistent cart/wishlist state management</li>
+      <li>Built full e-commerce experience with product catalog, cart with size variants, wishlist, and <strong>SSR for SEO-optimized</strong> product pages</li>
     </ul>
   </div>
 
@@ -207,55 +155,32 @@
     </div>
     <div class="entry-tech">ASP.NET Core MVC, C#, Entity Framework Core, SQL Server, xUnit</div>
     <ul>
-      <li>Built an enterprise inventory system with real-time stock tracking, <strong>automated low-stock alerts</strong>, role-based 2FA authentication, and <strong>75% test coverage</strong></li>
+      <li>Built enterprise inventory system with real-time tracking, <strong>automated alerts</strong>, role-based 2FA auth, and <strong>75% test coverage</strong></li>
     </ul>
   </div>
 </div>
 
-<!-- TECHNICAL SKILLS -->
 <div class="section">
   <div class="section-title">Technical Skills</div>
   <table class="skills-grid">
-    <tr>
-      <td>Languages:</td>
-      <td>Python, JavaScript, TypeScript, Java, C#, Kotlin, Swift, HTML, CSS, SQL</td>
-    </tr>
-    <tr>
-      <td>Frameworks:</td>
-      <td>React, Next.js, Node.js, Express.js, ASP.NET Core, Spring Boot, Streamlit, Android SDK, Framer Motion</td>
-    </tr>
-    <tr>
-      <td>Databases:</td>
-      <td>PostgreSQL, MongoDB, SQL Server, Supabase, Firebase, Redis</td>
-    </tr>
-    <tr>
-      <td>Cloud & Tools:</td>
-      <td>Docker, GitHub Actions, Vercel, Railway, Git, Figma, CI/CD, REST APIs, Agile/Scrum</td>
-    </tr>
-    <tr>
-      <td>Testing:</td>
-      <td>Jest, JUnit, xUnit, Espresso, Pytest, Cypress, TDD</td>
-    </tr>
+    <tr><td>Languages:</td><td>Python, JavaScript, TypeScript, Java, C#, Kotlin, Swift, HTML, CSS, SQL</td></tr>
+    <tr><td>Frameworks:</td><td>React, Next.js, Node.js, Express.js, ASP.NET Core, Spring Boot, Streamlit, Android SDK, Framer Motion</td></tr>
+    <tr><td>Databases:</td><td>PostgreSQL, MongoDB, SQL Server, Supabase, Firebase, Redis</td></tr>
+    <tr><td>Cloud & Tools:</td><td>Docker, GitHub Actions, Vercel, Railway, Git, Figma, CI/CD, REST APIs, Agile/Scrum</td></tr>
+    <tr><td>Testing:</td><td>Jest, JUnit, xUnit, Espresso, Pytest, Cypress, TDD</td></tr>
   </table>
 </div>
 
-<!-- CERTIFICATIONS -->
 <div class="section">
-  <div class="section-title">Certifications</div>
-  <div class="cert-row">
-    <span>Scrum Fundamentals Certified (SFC) &mdash; <em>SCRUMstudy</em></span>
+  <div class="section-title">Certifications & Activities</div>
+  <div class="cert-row" style="margin-bottom: 3px;">
+    <span><strong>Scrum Fundamentals Certified (SFC)</strong> &mdash; SCRUMstudy</span>
     <span>2025</span>
   </div>
-</div>
-
-<!-- ACTIVITIES -->
-<div class="section">
-  <div class="section-title">Activities & Leadership</div>
   <ul>
-    <li><strong>IEEEXtreme 19.0</strong> &mdash; Ranked <strong>#1 in Canada</strong> and 72nd globally out of 19,000+ participants in 24-hour international programming competition (2025)</li>
-    <li><strong>Microsoft Hackathon</strong> &mdash; Led team of 4 to build accessibility tool, placed <strong>top 10 out of 50 teams</strong></li>
-    <li><strong>Open Source Contributor</strong> &mdash; Contributed bug fixes and documentation improvements to <strong>Next.js</strong> (vercel/next.js)</li>
-    <li><strong>Euclid Coding Contest</strong> &mdash; Competed in programming competition (2025)</li>
+    <li><strong>IEEEXtreme 19.0</strong> &mdash; Ranked <strong>#1 in Canada</strong>, 72nd globally out of 19,000+ participants (2025)</li>
+    <li><strong>Microsoft Hackathon</strong> &mdash; Led team of 4 to build accessibility tool, placed <strong>top 10 / 50 teams</strong></li>
+    <li><strong>Open Source Contributor</strong> &mdash; Bug fixes and documentation to <strong>Next.js</strong> (vercel/next.js)</li>
   </ul>
 </div>
 
