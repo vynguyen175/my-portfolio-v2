@@ -480,15 +480,16 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.55, ease: [0.22, 1, 0.36, 1] }}
+            className="hero-cta-row"
             style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}
           >
-            <a href="#projects" className="glass-btn" style={{ background: 'rgba(240,201,70,0.85)', color: '#1a1a2e', border: '1px solid rgba(240,201,70,0.9)', boxShadow: '0 4px 20px rgba(240,201,70,0.3)' }}>
+            <a href="#projects" className="glass-btn hero-cta" style={{ background: 'rgba(240,201,70,0.85)', color: '#1a1a2e', border: '1px solid rgba(240,201,70,0.9)', boxShadow: '0 4px 20px rgba(240,201,70,0.3)' }}>
               View Projects
             </a>
-            <a href="/resume.pdf" target="_blank" className="glass-btn" style={{ color: 'var(--section-text)' }}>
+            <a href="/resume.pdf" target="_blank" className="glass-btn hero-cta" style={{ color: 'var(--section-text)' }}>
               Resume
             </a>
-            <a href="/play" className="glass-btn" style={{ background: 'rgba(229,37,33,0.8)', color: '#fff', border: '1px solid rgba(229,37,33,0.9)', boxShadow: '0 4px 20px rgba(229,37,33,0.25)', whiteSpace: 'nowrap' }}>
+            <a href="/play" className="glass-btn hero-cta" style={{ background: 'rgba(229,37,33,0.8)', color: '#fff', border: '1px solid rgba(229,37,33,0.9)', boxShadow: '0 4px 20px rgba(229,37,33,0.25)', whiteSpace: 'nowrap' }}>
               Play Mario Game
             </a>
           </motion.div>
@@ -581,6 +582,7 @@ export default function HeroSection() {
 
       {/* Scroll indicator */}
       <motion.div
+        className="hero-scroll-indicator"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2, duration: 0.8 }}
@@ -657,11 +659,17 @@ export default function HeroSection() {
           100% { transform: scale(0.9) translateX(110vw); }
         }
         @media (max-width: 900px) {
+          #hero {
+            align-items: flex-start !important;
+            padding-top: 80px !important;
+          }
           #hero > div:last-of-type {
-            grid-template-columns: 1fr !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
             text-align: center;
-            padding: 0 20px !important;
-            gap: 32px !important;
+            padding: 0 24px !important;
+            gap: 28px !important;
           }
           /* Reorder: photo first, text second */
           #hero > div:last-of-type > div:first-child {
@@ -674,32 +682,46 @@ export default function HeroSection() {
             margin-left: auto !important;
             margin-right: auto !important;
           }
-          #hero > div:last-of-type > div:first-child > div:last-child {
-            justify-content: center !important;
-          }
-          #hero > div:last-of-type > div:first-child > div:nth-last-child(2) {
+          #hero > div:last-of-type > div:first-child > div {
             justify-content: center !important;
           }
           #hero .hero-photo-wrapper {
-            width: 240px !important;
-            height: 240px !important;
-          }
-          #hero .hero-mario-sprite {
-            width: 60px !important;
-            right: -10px !important;
-          }
-        }
-        @media (max-width: 480px) {
-          #hero > div:last-of-type {
-            padding: 0 16px !important;
-          }
-          #hero .hero-photo-wrapper {
-            width: 200px !important;
-            height: 200px !important;
+            width: 180px !important;
+            height: 180px !important;
           }
           #hero .hero-mario-sprite {
             width: 50px !important;
+            right: -8px !important;
+            bottom: -5px !important;
+          }
+          #hero .hero-scroll-indicator {
+            display: none !important;
+          }
+        }
+        @media (max-width: 480px) {
+          #hero {
+            padding-top: 60px !important;
+          }
+          #hero > div:last-of-type {
+            padding: 0 16px !important;
+            gap: 20px !important;
+          }
+          #hero .hero-photo-wrapper {
+            width: 150px !important;
+            height: 150px !important;
+          }
+          #hero .hero-mario-sprite {
+            width: 40px !important;
             right: -5px !important;
+          }
+          #hero .hero-cta-row {
+            flex-direction: column !important;
+            width: 100% !important;
+          }
+          #hero .hero-cta {
+            width: 100% !important;
+            text-align: center !important;
+            justify-content: center !important;
           }
         }
       `}</style>
