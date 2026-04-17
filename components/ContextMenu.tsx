@@ -22,13 +22,34 @@ export default function ContextMenu() {
 
   const close = useCallback(() => setOpen(false), []);
 
+  // Adjust position after menu renders to keep it in viewport
+  useEffect(() => {
+    if (open && menuRef.current) {
+      const menu = menuRef.current;
+      const rect = menu.getBoundingClientRect();
+      let { x, y } = pos;
+
+      if (rect.bottom > window.innerHeight) {
+        y = window.innerHeight - rect.height - 8;
+      }
+      if (rect.right > window.innerWidth) {
+        x = window.innerWidth - rect.width - 8;
+      }
+      if (y < 0) y = 8;
+      if (x < 0) x = 8;
+
+      if (x !== pos.x || y !== pos.y) {
+        setPos({ x, y });
+      }
+    }
+  }, [open, pos]);
+
   useEffect(() => {
     const handleContext = (e: MouseEvent) => {
       e.preventDefault();
 
-      // Position menu, keeping it within viewport
-      const x = Math.min(e.clientX, window.innerWidth - 220);
-      const y = Math.min(e.clientY, window.innerHeight - 400);
+      const x = e.clientX;
+      const y = e.clientY;
 
       setPos({ x, y });
       setOpen(true);

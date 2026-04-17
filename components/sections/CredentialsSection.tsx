@@ -49,7 +49,6 @@ const credentials = [
         subtitle: 'SCRUMstudy',
         detail: 'Certificate ID: 1133190',
         year: '2025',
-        image: '/certificates/scrum-certificate.png',
       },
     ],
   },
