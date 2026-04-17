@@ -28,7 +28,7 @@ const skillCategories = [
   {
     name: 'Mobile & Tools',
     color: '#9B59B6',
-    skills: ['Android (Java)', 'Gradle', 'VS Code', 'Visual Studio', 'Figma', 'Linux', 'Agile/Scrum'],
+    skills: ['Android (Java)', 'Swift (iOS)', 'Kotlin', 'Gradle', 'VS Code', 'Visual Studio', 'Figma', 'Linux', 'Agile/Scrum'],
   },
 ];
 
