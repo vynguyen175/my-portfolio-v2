@@ -84,7 +84,7 @@ export default function HeroSection() {
             Full-Stack Developer &bull; AI Enthusiast &bull; Toronto
           </p>
           <p style={{ color: '#CBD5E1', fontSize: '13px', lineHeight: 1.7, margin: '0 0 20px' }}>
-            3 years building web apps, AI tools, and cross-platform products. AWS Certified, hackathon winner, open-source contributor.
+            3 years building web apps, AI tools, and cross-platform products. AWS Certified, hackathon winner.
           </p>
           <div style={{ display: 'flex', gap: '8px', justifyContent: 'center', marginBottom: '16px' }}>
             <a href="https://github.com/vynguyen175" target="_blank" rel="noopener noreferrer" style={{ color: '#F0C946', padding: '6px' }}><FaGithub size={20} /></a>

@@ -443,7 +443,7 @@ export default function HeroSection() {
             }}
           >
             3 years building web apps, AI tools, and cross-platform products.
-            #1 team in Canada at IEEEXtreme 19.0, hackathon winner, open-source contributor. Based in Toronto.
+            #1 team in Canada at IEEEXtreme 19.0, hackathon winner. Based in Toronto.
           </motion.p>
 
           {/* Socials */}

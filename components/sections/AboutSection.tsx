@@ -17,7 +17,7 @@ const cards = [
   },
   {
     title: 'What I Value',
-    body: 'Clean code, continuous learning, and collaboration. I approach every project with empathy for users and respect for the craft. Open-source contributor and lifelong student.',
+    body: 'Clean code, continuous learning, and collaboration. I approach every project with empathy for users and respect for the craft.',
     icon: '',
   },
 ];

@@ -33,12 +33,6 @@ const credentials = [
         detail: 'Built a winning project under time constraints',
         year: '2024',
       },
-      {
-        title: 'Open Source Contributor',
-        subtitle: 'Next.js (vercel/next.js)',
-        detail: 'Contributed bug fixes and documentation improvements',
-        year: 'Ongoing',
-      },
     ],
   },
   {

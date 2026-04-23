@@ -62,9 +62,6 @@ Type "projects" + Enter to view all →`,
 Microsoft Hackathon — Team Lead (2025)
   Led team of 4. Top 10 out of 50 teams.
 
-Open Source — Next.js (vercel/next.js)
-  Bug fixes and documentation contributions.
-
 IEEEXtreme 19.0 — 24hr programming competition (2025)`,
     action: '/about',
   },
@@ -104,7 +101,7 @@ Or use the contact form →`,
 ✓ 7+ deployed production applications
 ✓ AWS Certified Cloud Practitioner
 ✓ Microsoft Hackathon top 10 (team lead)
-✓ Open source contributor (Next.js)
+
 ✓ Full-stack: React to Python ML pipelines
 ✓ Built a real client website (Sushi Rock)
 ✓ 3.7 GPA, Dean's List

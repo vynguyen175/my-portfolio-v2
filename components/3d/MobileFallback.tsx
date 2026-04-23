@@ -58,7 +58,7 @@ export default function MobileFallback() {
         {/* Hero */}
         <MobileSectionCard title="Vy Nguyen" subtitle="Full-Stack Developer" bgGradient="linear-gradient(135deg, #0B1120, #1A3A5C)">
           <p style={{ color: '#CBD5E1', fontSize: '13px', lineHeight: 1.7, margin: '0 0 16px' }}>
-            3 years building web apps, AI tools, and cross-platform products. AWS Certified, hackathon winner, open-source contributor. Based in Toronto.
+            3 years building web apps, AI tools, and cross-platform products. AWS Certified, hackathon winner. Based in Toronto.
           </p>
           <div style={{ display: 'flex', gap: '8px', justifyContent: 'center' }}>
             <a href="https://github.com/vynguyen175" target="_blank" rel="noopener noreferrer" style={{ color: '#F0C946' }}><FaGithub size={22} /></a>

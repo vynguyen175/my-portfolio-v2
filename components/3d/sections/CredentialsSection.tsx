@@ -97,7 +97,7 @@ export default function CredentialsSection() {
           <div style={{ padding: '14px', background: 'rgba(255, 255, 255, 0.03)', border: '1px solid rgba(255, 255, 255, 0.08)', borderRadius: '10px' }}>
             <h4 style={{ color: '#E2E8F0', fontSize: '13px', fontWeight: 700, margin: '0 0 6px' }}>Activities</h4>
             <p style={{ color: '#94A3B8', fontSize: '11px', lineHeight: 1.6, margin: 0 }}>
-              IEEEXtreme 19.0 (2025) &bull; Open Source Contributor — Next.js (vercel/next.js) &bull; Peer Mentoring at George Brown
+              IEEEXtreme 19.0 (2025) &bull; Peer Mentoring at George Brown
             </p>
           </div>
         </div>
